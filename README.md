@@ -1,7 +1,7 @@
 # FR_TeachPendantV2026.02.19 Tool Introduction
 
 ## Software View
-<img width="437" height="5002" alt="image" src="https://github.com/user-attachments/assets/2f88398f-fecd-43e8-ab5e-f7585257a401" />
+<img width="437" height="500" alt="image" src="https://github.com/user-attachments/assets/2f88398f-fecd-43e8-ab5e-f7585257a401" />
 
 ## User Guide
 
