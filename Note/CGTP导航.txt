@@ -1,0 +1,8 @@
+R-30iA  IE内核 webbrowser
+http://127.0.0.1/frh/cgtp/echo.htm
+
+R-30iB  IE内核 webbrowser
+http://127.0.0.1/frh/cgtp/echo.htm
+
+R-50iA Edge内核 webview2
+http://127.0.0.1/frh/cgtp/echo.htm

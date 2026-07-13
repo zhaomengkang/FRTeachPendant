@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\signtool.exe" sign /v /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 /a "Release\FRiPendantInstallV2026.02.19.exe"

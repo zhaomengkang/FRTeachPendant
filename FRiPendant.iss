@@ -1,5 +1,5 @@
 #define MyAppName "FRiPendant"
-#define MyAppVersion "2026.02.19"
+#define MyAppVersion "2026.07.08"
 #define MyAppPublisher "Zhao,Mengkang"
 #define MyAppExeName "FRiPendant.exe"
 
@@ -26,6 +26,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "support\UIF\*"; DestDir: "{app}\support\UIF"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "support\KAREL\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "support\VC\VC2008\*"; DestDir: "{app}\support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "support\VC\VC2013\*"; DestDir: "{app}\support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
 

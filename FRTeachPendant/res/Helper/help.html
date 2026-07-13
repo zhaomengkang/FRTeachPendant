@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Help Documentation</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --primary-dark: #1d4ed8;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --bg: #f9fafb;
+            --sidebar-bg: #ffffff;
+            --sidebar-width: 260px;
+            --radius: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+        .sidebar-brand {
+            padding: 0 24px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+        .sidebar-nav {
+            list-style: none;
+            padding: 0 12px;
+        }
+        .sidebar-nav li {
+            margin-bottom: 4px;
+        }
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .sidebar-nav a .icon {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .sidebar-footer {
+            padding: 16px 24px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        /* Main */
+        .main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            min-width: 0;
+        }
+        .topbar {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 4px;
+        }
+        .lang-switch button {
+            border: none;
+            background: transparent;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+        .lang-switch button.active {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .lang-switch button:hover:not(.active) {
+            color: var(--text);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 32px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+        section {
+            margin-bottom: 40px;
+            scroll-margin-top: 80px;
+        }
+        section#project {
+            margin-top: 4px;
+            margin-bottom: 32px;
+        }
+        h2 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 12px 16px;
+            font-size: 14px;
+        }
+        .meta-grid dt { color: var(--text-secondary); }
+        .meta-grid dd { color: var(--text); }
+        .link-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .download-link {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 280px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .download-link:hover {
+            text-decoration: none;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+        }
+        .download-link .link-title {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .download-link .link-url {
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            word-break: break-all;
+        }
+        .link-url {
+            color: var(--text-secondary);
+            font-size: 12.5px;
+            word-break: break-all;
+            user-select: text;
+            cursor: text;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .instructions-list {
+            list-style: none;
+            display: grid;
+            gap: 18px;
+        }
+        .instructions-list > li {
+            position: relative;
+            padding: 18px 18px 18px 54px;
+            margin: 0;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .instructions-list > li::before {
+            content: "✦";
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-top: 2px;
+        }
+        .item-body {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .item-body strong { color: var(--text); }
+        .item-body ul, .item-body ol {
+            margin: 8px 0 8px 18px;
+        }
+        .item-body li { margin-bottom: 4px; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12.5px;
+            background: #f3f4f6;
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: #db2777;
+        }
+        .callout {
+            background: var(--primary-light);
+            border-left: 3px solid var(--primary);
+            padding: 10px 14px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--text);
+        }
+        .callout-warn {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        /* Changelog */
+        .changelog-list {
+            list-style: none;
+        }
+        .changelog-item {
+            position: relative;
+            padding-left: 24px;
+            padding-bottom: 28px;
+            border-left: 2px solid var(--border);
+        }
+        .changelog-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .changelog-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .changelog-item .version-date {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .changelog-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .changelog-item ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .changelog-item ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        /* Mobile */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #fff;
+            border: 1px solid var(--border);
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 900px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .topbar {
+                padding-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">📘 Help Docs</div>
+        <ul class="sidebar-nav">
+            <li><a href="#version" class="active" data-key="nav_version"><span class="icon">📋</span> <span class="nav-text">Version Info</span></a></li>
+            <li><a href="#download" data-key="nav_download"><span class="icon">☁️</span> <span class="nav-text">Download</span></a></li>
+            <li><a href="#changelog" data-key="nav_changelog"><span class="icon">📝</span> <span class="nav-text">Changelog</span></a></li>
+            <li><a href="#instructions" data-key="nav_instructions"><span class="icon">📖</span> <span class="nav-text">Instructions</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <span data-key="footer">© 2026 Zhao Mengkang</span>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="topbar">
+            <div class="lang-switch">
+                <button class="active" onclick="setLang('en')" id="btn-en">English</button>
+                <button onclick="setLang('zh')" id="btn-zh">中文</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1 data-key="title">Software Help Documentation</h1>
+            <p class="subtitle" data-key="subtitle">Version V26.07.07 · Author: Zhao Mengkang</p>
+
+            <section id="version">
+                <h2 data-key="sec_version">Version Information</h2>
+                <dl class="meta-grid">
+                    <dt data-key="lbl_version">Software Version</dt><dd>V26.07.07</dd>
+                    <dt data-key="lbl_author">Author</dt><dd data-key="value_author">Zhao Mengkang</dd>
+                    <dt data-key="lbl_wechat">WeChat</dt><dd>Mengk_964210817</dd>
+                    <dt data-key="lbl_qq">QQ</dt><dd>964210817</dd>
+                    <dt data-key="lbl_email">Email</dt><dd><a href="mailto:zhaomengkang@hotmail.com" style="color: var(--primary); text-decoration: none;">zhaomengkang@hotmail.com</a></dd>
+                    <dt data-key="lbl_github">GitHub</dt><dd><a href="https://github.com/zhaomengkang" target="_blank" style="color: var(--primary); text-decoration: none;">zhaomengkang (赵梦康)</a></dd>
+                </dl>
+            </section>
+
+            <section id="download">
+                <h2 data-key="sec_download">Software Update</h2>
+                <div class="link-row">
+                    <div class="download-link">
+                        <a href="https://cloud.189.cn/t/biiEJzR3emAf" target="_blank" data-key="link_download">
+                            <span class="link-title">TianYi Cloud Download</span>
+                        </a>
+                        <span class="link-url">https://cloud.189.cn/t/biiEJzR3emAf</span>
+                    </div>
+                    <span class="badge" data-key="badge_code">Code: vpb5</span>
+                </div>
+                <div class="link-row">
+                    <div class="download-link">
+                        <a href="https://github.com/zhaomengkang/FRTeachPendant/releases" target="_blank" data-key="link_github">
+                            <span class="link-title">GitHub Releases</span>
+                        </a>
+                        <span class="link-url">https://github.com/zhaomengkang/FRTeachPendant/releases</span>
+                    </div>
+                </div>
+                <section id="project">
+                    <h2 data-key="sec_project">Open Source Project Address</h2>
+                    <div class="link-row">
+                        <div class="download-link">
+                            <a href="https://github.com/zhaomengkang/FRTeachPendant" target="_blank" data-key="link_project">
+                                <span class="link-title">zhaomengkang/FRTeachPendant: Fanuc Robot Remote TeachPendant</span>
+                            </a>
+                            <span class="link-url">https://github.com/zhaomengkang/FRTeachPendant</span>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section id="changelog">
+                <h2 data-key="sec_changelog">Changelog</h2>
+                <ul class="changelog-list">
+                    <li class="changelog-item">
+                        <div class="version-date">2026.07.07</div>
+                        <ul>
+                            <li data-key="log_0707_1">Added support for R-30iA, R-30iB, R-30iB Plus, R-50iA controllers</li>
+                            <li data-key="log_0707_2">Fixed blurry screen display issue</li>
+                            <li data-key="log_0707_3">Redesigned FTP client, switched from webFTP to FTP</li>
+                            <li data-key="log_0707_4">Added program upload restriction: upload only allowed when teach pendant key switch is ON</li>
+                            <li data-key="log_0707_5">Changed the Help documentation display to HTML</li>
+                        </ul>
+                    </li>
+                    <li class="changelog-item">
+                        <div class="version-date">2026.02.19</div>
+                        <ul>
+                            <li data-key="log_0219_1">Added password unlock key calculation tool</li>
+                            <li data-key="log_0219_2">Rewrote KAREL program</li>
+                            <li data-key="log_0219_3">Redesigned UI layout</li>
+                        </ul>
+                    </li>
+                    <li class="changelog-item">
+                        <div class="version-date">2025.07.05</div>
+                        <ul>
+                            <li data-key="log_250705_1">Project launched for the first time; this tool supports remote teach pendant access</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+
+            <section id="instructions">
+                <h2 data-key="sec_instructions">Instructions</h2>
+                <ol class="instructions-list">
+                    <li>
+                        <div class="item-title" data-key="item1_title">Software Dependencies</div>
+                        <div class="item-body">
+                            <p data-key="item1_p1">iPendant Controls dependency files:</p>
+                            <ul>
+                                <li><code>fripendant.ocx</code></li>
+                                <li><code>frinppwnd.dll</code></li>
+                            </ul>
+                            <p data-key="item1_p2">VC Runtime:</p>
+                            <ul>
+                                <li>Microsoft Visual C++ 2008 Redistributable (X86)</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-title" data-key="item2_title">Password Protection</div>
+                        <div class="item-body" data-key="item2_body">
+                            If password protection is enabled, you must enter a username and password with <strong>INSTALL</strong> privilege level when connecting.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-title" data-key="item3_title">File Upload</div>
+                        <div class="item-body">
+                            <span data-key="item3_body">Drag files (PC / VR / TP / LS) to the <strong>"Upload Area"</strong> to upload them to the controller.</span>
+                            <div class="callout callout-warn" data-key="item3_warn">
+                                During this operation, the TeachPendant must be in <strong>ON mode</strong>.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-title" data-key="item4_title">Low Resolution Display Issue</div>
+                        <div class="item-body" data-key="item4_body">
+                            Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to <strong>100%</strong>.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-title" data-key="item5_title">Connection Display - Controller is Being Registered</div>
+                        <div class="item-body">
+                            <p data-key="item5_p1">If you encounter this issue, please try the following solutions in order:</p>
+                            <ol>
+                                <li data-key="item5_s1">Do not connect through a network switch. Connect the PC directly to the robot controller.</li>
+                                <li data-key="item5_s2">A local firewall may be blocking the connection. Please disable the firewall.</li>
+                                <li data-key="item5_s3">The screen resolution may be too low. Adjust it to an appropriate resolution.</li>
+                                <li data-key="item5_s4">This application cannot be added to "Allow an app through firewall" during installation. Please add it manually.</li>
+                                <li data-key="item5_s5">Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.</li>
+                                <li data-key="item5_s6"><code>fripendant.ocx</code> or <code>frinppwnd.dll</code> may have been deleted. Please reinstall this tool.</li>
+                            </ol>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const i18n = {
+            en: {
+                title: "Software Help Documentation",
+                subtitle: "Version V26.07.07 · Author: Zhao Mengkang",
+                nav_version: "Version Info",
+                nav_download: "Download",
+                nav_changelog: "Changelog",
+                nav_instructions: "Instructions",
+                footer: "© 2026 Zhao Mengkang",
+                sec_version: "Version Information",
+                sec_download: "Software Update",
+                sec_project: "Open Source Project Address",
+                sec_changelog: "Changelog",
+                sec_instructions: "Instructions",
+                lbl_version: "Software Version",
+                lbl_author: "Author",
+                value_author: "Zhao Mengkang",
+                lbl_wechat: "WeChat",
+                lbl_qq: "QQ",
+                lbl_email: "Email",
+                link_download: "TianYi Cloud Download",
+                link_github: "GitHub Releases",
+                badge_code: "Code: vpb5",
+                log_250705_1: "Project launched for the first time; this tool supports remote teach pendant access",
+                log_0707_1: "Added support for R-30iA, R-30iB, R-30iB Plus, R-50iA controllers",
+                log_0707_2: "Fixed blurry screen display issue",
+                log_0707_3: "Redesigned FTP client, switched from webFTP to FTP",
+                log_0707_4: "Added program upload restriction: upload only allowed when teach pendant key switch is ON",
+                log_0707_5: "Changed the Help documentation display to HTML",
+                log_0219_1: "Added password unlock key calculation tool",
+                log_0219_2: "Rewrote KAREL program",
+                log_0219_3: "Redesigned UI layout",
+                item1_title: "Software Dependencies",
+                item1_p1: "iPendant Controls dependency files:",
+                item1_p2: "VC Runtime:",
+                item2_title: "Password Protection",
+                item2_body: "If password protection is enabled, you must enter a username and password with <strong>INSTALL</strong> privilege level when connecting.",
+                item3_title: "File Upload",
+                item3_body: "Drag files (PC / VR / TP / LS) to the <strong>&quot;Upload Area&quot;</strong> to upload them to the controller.",
+                item3_warn: "During this operation, the teach pendant key switch must be in <strong>ON</strong> position.",
+                item4_title: "Low Resolution Display Issue",
+                item4_body: "Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to <strong>100%</strong>.",
+                item5_title: "Connection Display - Controller is Being Registered",
+                item5_p1: "If you encounter this issue, please try the following solutions in order:",
+                item5_s1: "Do not connect through a network switch. Connect the PC directly to the robot controller.",
+                item5_s2: "A local firewall may be blocking the connection. Please disable the firewall.",
+                item5_s3: "The screen resolution may be too low. Adjust it to an appropriate resolution.",
+                item5_s4: "This application cannot be added to &quot;Allow an app through firewall&quot; during installation. Please add it manually.",
+                item5_s5: "Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.",
+                item5_s6: "<code>fripendant.ocx</code> or <code>frinppwnd.dll</code> may have been deleted. Please reinstall this tool."
+            },
+            zh: {
+                title: "软件使用帮助文档",
+                subtitle: "版本 V26.07.07 · 作者：赵梦康",
+                nav_version: "版本信息",
+                nav_download: "软件更新",
+                nav_changelog: "更新日志",
+                nav_instructions: "使用说明",
+                footer: "© 2026 赵梦康",
+                sec_version: "版本信息",
+                sec_download: "软件更新",
+                sec_project: "开源项目地址",
+                sec_changelog: "更新日志",
+                sec_instructions: "使用说明",
+                lbl_version: "软件版本",
+                lbl_author: "作者",
+                value_author: "赵梦康",
+                lbl_wechat: "微信",
+                lbl_qq: "QQ",
+                lbl_email: "邮箱",
+                link_download: "天翼云盘下载",
+                link_github: "GitHub 发布页",
+                badge_code: "提取码 vpb5",
+                log_250705_1: "首次项目启动，该工具支持远程示教器访问",
+                log_0707_1: "支持 R-30iA、R-30iB、R-30iB Plus、R-50iA 控制器",
+                log_0707_2: "修复了画面显示模糊问题",
+                log_0707_3: "重做了 FTP 客户端，由 webFTP 改为 FTP",
+                log_0707_4: "新增程序上传限制，仅可在示教器旋钮开关处于 ON 时上传",
+                log_0707_5: "将帮助文档显示方式修改为 HTML",
+                log_0219_1: "新增密码解除键计算工具",
+                log_0219_2: "重写 KAREL 程序",
+                log_0219_3: "重新布局 UI 画面",
+                item1_title: "软件依赖",
+                item1_p1: "iPendant 控件依赖文件：",
+                item1_p2: "VC 运行库：",
+                item2_title: "密码保护",
+                item2_body: "若启用了密码保护，连接时需输入具有 <strong>INSTALL</strong> 权限级别的用户名和密码。",
+                item3_title: "文件上传",
+                item3_body: "将文件（PC / VR / TP / LS）拖放至<strong>&quot;上传区域&quot;</strong>即可上传至控制器。",
+                item3_warn: "执行此操作时，示教器开关必须处于 <strong>ON 模式</strong>。",
+                item4_title: "低分辨率显示问题",
+                item4_body: "分辨率过低可能导致示教器画面无法正常显示。请确保使用较高分辨率，并将显示缩放设置为 <strong>100%</strong>。",
+                item5_title: "连接显示 - 控制器正在注册",
+                item5_p1: "如遇此问题，请依次尝试：",
+                item5_s1: "不要通过网络交换机连接，直接将 PC 连接到机器人控制器。",
+                item5_s2: "本地防火墙可能阻止了连接，请暂时关闭防火墙。",
+                item5_s3: "屏幕分辨率可能过低，请调整为合适的分辨率。",
+                item5_s4: "安装过程中本应用无法自动添加到&ldquo;允许应用通过防火墙&rdquo;，请手动添加。",
+                item5_s5: "Microsoft Visual C++ 2008 (X86) 可能已被卸载，请重新安装该运行库。",
+                item5_s6: "<code>fripendant.ocx</code> 或 <code>frinppwnd.dll</code> 可能已被删除，请重新安装本工具。"
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+            document.querySelectorAll('[data-key]').forEach(function(el) {
+                var key = el.getAttribute('data-key');
+                if (i18n[lang] && i18n[lang][key] !== undefined) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+        }
+
+        // Active nav highlight on scroll
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.sidebar-nav a');
+        window.addEventListener('scroll', function() {
+            var current = '';
+            sections.forEach(function(sec) {
+                var rect = sec.getBoundingClientRect();
+                if (rect.top <= 100) current = sec.id;
+            });
+            navLinks.forEach(function(a) {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
+</body>
+</html>
