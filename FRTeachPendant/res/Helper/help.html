@@ -500,6 +500,12 @@
 					</a>
 				</li>
 				<li>
+					<a href="#errors" data-key="nav_errors">
+						<span class="icon">⚠️</span>
+						<span class="nav-text">Errors & Solutions</span>
+					</a>
+				</li>
+				<li>
 					<a href="#license" data-key="nav_license">
 						<span class="icon">⚖️</span>
 						<span class="nav-text">License</span>
@@ -636,18 +642,16 @@
 								<ul>
 									<li>Microsoft Visual C++ 2008 Redistributable (X86)</li>
 								</ul>
+								<p data-key="item1_p3">Robot option:</p>
+								<ul>
+									<li>R632 - KAREL</li>
+								</ul>
 							</div>
 						</li>
 						<li>
 							<div class="item-title" data-key="item2_title">Password Protection</div>
 							<div class="item-body" data-key="item2_body">
 								If password protection is enabled, you must enter a username and password with <strong>INSTALL</strong> privilege level when connecting.
-							</div>
-						</li>
-						<li>
-							<div class="item-title" data-key="item2_401_title">401 (Unauthorized)</div>
-							<div class="item-body" data-key="item2_401_body">
-								KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.
 							</div>
 						</li>
 						<li>
@@ -661,23 +665,41 @@
 								</div>
 							</div>
 						</li>
+					</ol>
+				</section>
+
+				<section id="errors">
+					<h2 data-key="sec_errors">Errors & Solutions</h2>
+					<ol class="instructions-list">
 						<li>
-							<div class="item-title" data-key="item4_title">Low Resolution Display Issue</div>
-							<div class="item-body" data-key="item4_body">
+							<div class="item-title" data-key="err_401_title">401 (Unauthorized)</div>
+							<div class="item-body" data-key="err_401_body">
+								KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.
+							</div>
+						</li>
+						<li>
+							<div class="item-title" data-key="err_r632_title">Verify that the R632 (KAREL) option</div>
+							<div class="item-body" data-key="err_r632_body">
+								Please confirm that the robot controller has the R632 option installed. Some versions will not load PC programs if this option is not installed.
+							</div>
+						</li>
+						<li>
+							<div class="item-title" data-key="err_lowres_title">Low Resolution Display Issue</div>
+							<div class="item-body" data-key="err_lowres_body">
 								Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to <strong>100%</strong>.
 							</div>
 						</li>
 						<li>
-							<div class="item-title" data-key="item5_title">Connection Display - Controller is Being Registered</div>
+							<div class="item-title" data-key="err_conn_title">Connection Display - Controller is Being Registered</div>
 							<div class="item-body">
-								<p data-key="item5_p1">If you encounter this issue, please try the following solutions in order:</p>
+								<p data-key="err_conn_p1">If you encounter this issue, please try the following solutions in order:</p>
 								<ol>
-									<li data-key="item5_s1">Do not connect through a network switch. Connect the PC directly to the robot controller.</li>
-									<li data-key="item5_s2">A local firewall may be blocking the connection. Please disable the firewall.</li>
-									<li data-key="item5_s3">The screen resolution may be too low. Adjust it to an appropriate resolution.</li>
-									<li data-key="item5_s4">This application cannot be added to "Allow an app through firewall" during installation. Please add it manually.</li>
-									<li data-key="item5_s5">Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.</li>
-									<li data-key="item5_s6">
+									<li data-key="err_conn_s1">Do not connect through a network switch. Connect the PC directly to the robot controller.</li>
+									<li data-key="err_conn_s2">A local firewall may be blocking the connection. Please disable the firewall.</li>
+									<li data-key="err_conn_s3">The screen resolution may be too low. Adjust it to an appropriate resolution.</li>
+									<li data-key="err_conn_s4">This application cannot be added to "Allow an app through firewall" during installation. Please add it manually.</li>
+									<li data-key="err_conn_s5">Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.</li>
+									<li data-key="err_conn_s6">
 										<code>fripendant.ocx</code> or <code>frinppwnd.dll</code> may have been deleted. Please reinstall this tool.
 									</li>
 								</ol>
@@ -731,6 +753,7 @@ SOFTWARE.
 			nav_download: "Download",
 			nav_changelog: "Changelog",
 			nav_instructions: "Instructions",
+			nav_errors: "Errors & Solutions",
 			nav_license: "License",
 			footer: "© 2026 Zhao Mengkang",
 			sec_version: "Version Information",
@@ -738,6 +761,7 @@ SOFTWARE.
 			sec_project: "Open Source Project Address",
 			sec_changelog: "Changelog",
 			sec_instructions: "Instructions",
+			sec_errors: "Errors & Solutions",
 			sec_license: "License",
 			lbl_version: "Software Version",
 			lbl_author: "Author",
@@ -763,9 +787,24 @@ SOFTWARE.
 			item1_title: "Software Dependencies",
 			item1_p1: "iPendant Controls dependency files:",
 			item1_p2: "VC Runtime:",
+			item1_p3: "Robot option:",
 			item2_body: "If password protection is enabled, you must enter a username and password with <strong>INSTALL</strong> privilege level when connecting.",
 			item2_401_title: "401 (Unauthorized)",
 			item2_401_body: "KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.",
+			err_401_title: "401 (Unauthorized)",
+			err_401_body: "KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.",
+			err_r632_title: "Verify that the R632 (KAREL) option",
+			err_r632_body: "Please confirm that the robot controller has the R632 option installed. Some versions will not load PC programs if this option is not installed.",
+			err_lowres_title: "Low Resolution Display Issue",
+			err_lowres_body: "Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to <strong>100%</strong>.",
+			err_conn_title: "Connection Display - Controller is Being Registered",
+			err_conn_p1: "If you encounter this issue, please try the following solutions in order:",
+			err_conn_s1: "Do not connect through a network switch. Connect the PC directly to the robot controller.",
+			err_conn_s2: "A local firewall may be blocking the connection. Please disable the firewall.",
+			err_conn_s3: "The screen resolution may be too low. Adjust it to an appropriate resolution.",
+			err_conn_s4: "This application cannot be added to &quot;Allow an app through firewall&quot; during installation. Please add it manually.",
+			err_conn_s5: "Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.",
+			err_conn_s6: "<code>fripendant.ocx</code> or <code>frinppwnd.dll</code> may have been deleted. Please reinstall this tool.",
 			item3_body: "Drag files (PC / VR / TP / LS) to the <strong>&quot;Upload Area&quot;</strong> to upload them to the controller.",
 			item3_warn: "During this operation, the teach pendant key switch must be in <strong>ON</strong> position.",
 			item4_title: "Low Resolution Display Issue",
@@ -786,6 +825,7 @@ SOFTWARE.
 			nav_download: "软件更新",
 			nav_changelog: "更新日志",
 			nav_instructions: "使用说明",
+			nav_errors: "错误与解决措施",
 			nav_license: "许可证",
 			footer: "© 2026 赵梦康",
 			sec_version: "版本信息",
@@ -793,6 +833,7 @@ SOFTWARE.
 			sec_project: "开源项目地址",
 			sec_changelog: "更新日志",
 			sec_instructions: "使用说明",
+			sec_errors: "错误与解决措施",
 			sec_license: "许可证",
 			lbl_version: "软件版本",
 			lbl_author: "作者",
@@ -818,9 +859,24 @@ SOFTWARE.
 			item1_title: "软件依赖",
 			item1_p1: "iPendant 控件依赖文件：",
 			item1_p2: "VC 运行库：",
-			item2_body: "若启用了密码保护，连接时需输入具有 <strong>INSTALL</strong> 权限级别的用户名和密码。",
+			item1_p3: "机器人选项：",
+			item2_body: "若启用了密码保护，连接时需输入具有 <strong>INSTALL</strong> 权限级别的用户名和密码。", 
 			item2_401_title: "401 (Unauthorized)",
 			item2_401_body: "KAREL 资源需要手动解锁。示教器中进入 MENU - 设置 - 主机通讯 - HTTP，找到 KAREL，并将资源进行解锁。",
+			err_401_title: "401 (Unauthorized)",
+			err_401_body: "KAREL 资源需要手动解锁。示教器中进入 MENU - 设置 - 主机通讯 - HTTP，找到 KAREL，并将资源进行解锁。",
+			err_r632_title: "请确认机器人控制器安装了 R632 选项",
+			err_r632_body: "请确认机器人控制器安装了 R632 选项，部分版本在未安装此选项时将无法加载 PC 程序。",
+			err_lowres_title: "低分辨率显示问题",
+			err_lowres_body: "分辨率过低可能导致示教器画面无法正常显示。请确保使用较高分辨率，并将显示缩放设置为 <strong>100%</strong>。",
+			err_conn_title: "连接显示 - 控制器正在注册",
+			err_conn_p1: "如遇此问题，请依次尝试：",
+			err_conn_s1: "不要通过网络交换机连接，直接将 PC 连接到机器人控制器。",
+			err_conn_s2: "本地防火墙可能阻止了连接，请暂时关闭防火墙。",
+			err_conn_s3: "屏幕分辨率可能过低，请调整为合适的分辨率。",
+			err_conn_s4: "安装过程中本应用无法自动添加到“允许应用通过防火墙”，请手动添加。",
+			err_conn_s5: "Microsoft Visual C++ 2008 (X86) 可能已被卸载，请重新安装本工具。", 
+			err_conn_s6: "<code>fripendant.ocx</code> 或 <code>frinppwnd.dll</code> 可能已被删除，请重新安装本工具。",
 			item3_body: "将文件（PC / VR / TP / LS）拖放至<strong>&quot;上传区域&quot;</strong>即可上传至控制器。",
 			item3_warn: "执行此操作时，示教器开关必须处于 <strong>ON 模式</strong>。",
 			item4_title: "低分辨率显示问题",
@@ -831,7 +887,7 @@ SOFTWARE.
 			item5_s2: "本地防火墙可能阻止了连接，请暂时关闭防火墙。",
 			item5_s3: "屏幕分辨率可能过低，请调整为合适的分辨率。",
 			item5_s4: "安装过程中本应用无法自动添加到“允许应用通过防火墙”，请手动添加。",
-			item5_s5: "Microsoft Visual C++ 2008 (X86) 可能已被卸载，请重新安装该运行库。",
+			item5_s5: "Microsoft Visual C++ 2008 (X86) 可能已被卸载，请重新安装本工具。", 
 			item5_s6: "<code>fripendant.ocx</code> 或 <code>frinppwnd.dll</code> 可能已被删除，请重新安装本工具。"
 			}
 			};
@@ -848,6 +904,8 @@ SOFTWARE.
 			}
 			});
 			}
+
+			setLang('en');
 
 			var sections = document.querySelectorAll('section[id]');
 			var navLinks = document.querySelectorAll('.sidebar-nav a');

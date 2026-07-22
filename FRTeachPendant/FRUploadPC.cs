@@ -77,7 +77,7 @@ namespace FRTeachPendant
             catch
             {
                 resultOk = false;
-                throw new Exception("Please input name and password");
+                throw new Exception("Failed to upload server program.\r\n1. Enter valid INSTALL username and password\r\n2. Verify that the R632(KAREL) option is installed on the robot controller");
             }
             finally
             {
