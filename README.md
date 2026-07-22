@@ -79,8 +79,13 @@ Version V2026.07.22 · Author: Zhao Mengkang
      5. Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.
      6. `fripendant.ocx` or `frinppwnd.dll` may have been deleted. Please reinstall this tool.
 
+<br>  
 
-```Text
+---
+---
+<br> 
+
+```LicenseInfo
 License
 ┌──────────────────────────────────────────────────────────────┐
 │                    FRTeachPendant                            │
