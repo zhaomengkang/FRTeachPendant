@@ -1,0 +1,281 @@
+<memberlist name="KAREL" casesensitive="no">
+    <member name="ABS" proto="ABS(value:INTEGER):INTEGER"/>
+    <member name="ABS" proto="ABS(value:REAL):REAL"/>
+    <member name="BYNAME" proto="BYNAME (prog_name:STRING, var_name:STRING, entry:INTEGER)"/>
+    <member name="EVAL" proto="EVAL(expression)"/>
+    <member name="GET_VAR" proto="GET_VAR(entry:INTEGER, prog_name:STRING, var_name:STRIING, value, status:INTEGER)"/>
+    <member name="READ" proto="READ (data_item, ...)"/>
+    <member name="READ" proto="READ file_var (data_item, ...)"/>
+    <member name="RETURN" proto="RETURN(value)"/>
+    <member name="SET_VAR" proto="SET_VAR(entry:INTEGER, prog_name:STRING, var_name:STRING, value, status:INTEGER)"/>
+    <member name="UNINIT" proto="UNINIT(variable) "/>
+    <member name="WRITE" proto="WRITE (data_item, ...)"/>
+    <member name="WRITE" proto="WRITE file_var (data_item, ...)"/>
+    <member name="CURR_PROG" proto="CURR_PROG():STRING"/>
+    <member name="CALL_PROGLIN" proto="CALL_PROGLIN(prog_name:STRING, prog_line:INTEGER, prog_index:INTEGER, paused:BOOLEAN)"/>
+    <member name="FILE_LIST" proto="FILE_LIST(file_spec:STRING, n_skip:INTEGER, format:INTEGER, ary_nam:STRING, n_files:INTEGER, status:INTEGER)"/>
+    <member name="VAR_INFO" proto="VAR_INFO(prog_name:STRING, var_name:STRING, uninit:BOOLEAN, type_nam:STRING, type_value:INTEGER, dims:INTEGER, slen:INTEGER, status:INTEGER)"/>
+    <member name="VAR_LIST" proto="VAR_LIST(prog_name:STRING, var_name:STRING, var_type:INTEGER, n_skip:INTEGER, format:INTEGER, ary_nam:STRING, n_vars:INTEGER, status:INTEGER)"/>
+    <member name="PROG_LIST" proto="PROG_LIST(prog_name:STRING, prog_type:INTEGER, n_skip:INTEGER, format:INTEGER, ary_name:STRING, n_progs:INTEGER, status:INTEGER, f_index:INTEGER(optional))"/>
+    <member name="ADD_DICT" proto="ADD_DICT(path_name:STRING, dict_name:STRING, lang_name:STRING, add_option:INTEGER, status:INTEGER)"/>
+    <member name="ACT_SCREEN" proto="ACT_SCREEN(screen_name:STRING, old_screen_n:STRING, status:INTEGER)"/>
+    <member name="APPEND_NODE" proto="APPEND_NODE(path_nam:PATH, :)"/>
+    <member name="ATT_WINDOW_S" proto="ATT_WINDOW_S(window_name:STRING, screen_name:STRING, row:INTEGER, col:INTEGER, status:INTEGER)"/>
+    <member name="CALL_PROG" proto="CALL_PROG(prog_name:STRING, prog_index:INTEGER)"/>
+    <member name="CHECK_EPOS" proto="CHECK_EPOS(eposn:XYZWPR, uframe:POSITION, utool:POSITION, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="CLEAR" proto="CLEAR(file_spec:STRING, status:INTEGER)"/>
+    <member name="CLOSE_TPE" proto="CLOSE_TPE(open_id:INTEGER, status:INTEGER)"/>
+    <member name="CLR_IO_STAT" proto="CLR_IO_STAT(file_id:FILE)"/>
+    <member name="CNV_INT_STR" proto="CNV_INT_STR(source:INTEGER, length:INTEGER, num_digits:INTEGER, target:STRING)"/>
+    <member name="CNV_STR_INT" proto="CNV_STR_INT(source:STRING, target:INTEGER)"/>
+    <member name="CNV_STR_REAL" proto="CNV_STR_REAL(source:STRING, target:REAL)"/>
+    <member name="DEF_WINDOW" proto="DEF_WINDOW(window_name:STRING, n_rows:INTEGER, n_cols:INTEGER, options:INTEGER, status:INTEGER)"/>
+    <member name="DET_WINDOW" proto="DET_WINDOW(window_name:STRING, screen_name:STRING, status:INTEGER)"/>
+    <member name="DISCTRL_FORM" proto="DISCTRL_FORM(dict_name:STRING, ele_number:INTEGER, value_array:STRING, inact_array:BOOLEAN, change_array:BOOLEAN, term_mask:INTEGER, def_item:INTEGER, term_char:INTEGER, status:INTEGER)"/>
+    <member name="DISCTRL_LIST" proto="DISCTRL_LIST(file_var:FILE, display_data:User Defined, list_data:STRING, action:INTEGER, status:INTEGER)"/>
+    <member name="FORCE_SPMENU" proto="FORCE_SPMENU(request_code:INTEGER, softpart_id:INTEGER, screen_id:INTEGER)"/>
+    <member name="FORCE_LINK" proto="FORCE_LINK(pane_id:INTEGER, url:STRING)"/>
+    <member name="GET_ATTR_PRG" proto="GET_ATTR_PRG(prog_name:STRING, attr_number:INTEGER, int_value:INTEGER, string_value:STRING, status:INTEGER)"/>
+    <member name="GET_JPOS_TPE" proto="GET_JPOS_TPE(open_id:INTEGER, position_no:INTEGER, status:INTEGER, group_no:INTEGER(optional)):JOINTPOS"/>
+    <member name="GET_POS_TPE" proto="GET_POS_TPE(open_id:INTEGER, position_no:INTEGER, status:INTEGER, group_no:INTEGER(optional)):XYZWPR"/>
+    <member name="GET_POS_FRM" proto="GET_POS_FRM(open_id:INTEGER, position_no:INTEGER, gnum:INTEGER, ufram_no:INTEGER, utool_no:INTEGER, status:INTEGER)"/>
+    <member name="GET_POS_TYP" proto="GET_POS_TYP(open_id:INTEGER, position_no:INTEGER, gnum:INTEGER, posn_typ:INTEGER, num_axs:INTEGER, status:INTEGER)"/>
+    <member name="GET_TSK_INFO" proto="GET_TSK_INFO(task_name:STRING, task_no:INTEGER, attribute:INTEGER, value_int:INTEGER, value_str:STRING, status:INTEGER)"/>
+    <member name="IO_STATUS" proto="IO_STATUS(file_id:FILE):INTEGER"/>
+    <member name="LOAD" proto="LOAD(file_spec:STRING, option_sw:INTEGER, status:INTEGER)"/>
+    <member name="LOAD_STATUS" proto="LOAD_STATUS(prog_name:STRING, loaded:BOOLEAN, initialized:BOOLEAN)"/>
+    <member name="OPEN_TPE" proto="OPEN_TPE(proc_name:STRING, open_mode:INTEGER, reject_mode:INTEGER, open_id:INTEGER, status:INTEGER)"/>
+    <member name="PATH_LEN" proto="PATH_LEN(path_nam:PATH):INTEGER"/>
+    <member name="POST_ERR" proto="POST_ERR(error_code:INTEGER, parameter:STRING, cause_code:INTEGER, severity:INTEGER)"/>
+    <member name="PUSH_KEY_RD" proto="PUSH_KEY_RD(key_dev_name:STRING, key_mask:INTEGER, pop_index:INTEGER, status:INTEGER)"/>
+    <member name="READ_DICT" proto="READ_DICT(dict_name:STRING, element_no:INTEGER, ksta:STRING, first_line:INTEGER, last_line:INTEGER, status:INTEGER)"/>
+    <member name="READ_KB" proto="READ_KB(file_var:FILE, buffer:STRING, buffer_size:INTEGER, accept_mask:INTEGER, term_mask:INTEGER, time_out:INTEGER, init_data:STRING, n_chars_got:INTEGER, term_char:INTEGER, status:INTEGER)"/>
+    <member name="SET_CURSOR" proto="SET_CURSOR(file_var:FILE, row:INTEGER, col:INTEGER, status:INTEGER)"/>
+    <member name="SET_EPOS_TPE" proto="SET_EPOS_TPE(open_id:INTEGER, position_no:INTEGER, posn:XYZWPR, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_FILE_ATR" proto="SET_FILE_ATR(file_id:FILE, atr_type:INTEGER, art_value:INTEGER(optional))"/>
+    <member name="SET_LANG" proto="SET_LANG(lang_name:STRING, status:INTEGER)"/>
+    <member name="SET_JPOS_TPE" proto="SET_JPOS_TPE(open_id:INTEGER, position_no:INTEGER, posn:JOINTPOS, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_POS_TPE" proto="SET_POS_TPE(open_id:INTEGER, position_no:INTEGER, posn:XYZWPR, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_TRNS_TPE" proto="SET_TRNS_TPE(open_id:INTEGER, position_no:INTEGER, posn:POSITION, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_TSK_ATTR" proto="SET_TSK_ATTR(task_name:STRING, attribute:INTEGER, value:INTEGER, status:INTEGER)"/>
+    <member name="WRITE_DICT" proto="WRITE_DICT(file_var:FILE, dict_name:STRING, element_no:INTEGER, status:INTEGER)"/>
+    <member name="GET_TPE_PRM" proto="GET_TPE_PRM(param_no:INTEGER, data_type:INTEGER, int_value:INTEGER, rel_value:REAL, str_value:STRING, status:INTEGER)"/>
+    <member name="PROG_BACKUP" proto="PROG_BACKUP(file_spec:STRING, prog_type:INTEGER, max_size:INTEGER, write_prot:BOOLEAN, status:INTEGER)"/>
+    <member name="PROG_CLEAR" proto="PROG_CLEAR(prog_name:STRING, prog_type:INTEGER, status:INTEGER)"/>
+    <member name="PROG_RESTORE" proto="PROG_RESTORE(file_spec:STRING, status:INTEGER)"/>
+    <member name="COMPARE_FILE" proto="COMPARE_FILE(filename1:STRING, filename2:STRING, out_file:FILE, ascii_flag:BOOLEAN, count:INTEGER, status:INTEGER)"/>
+    <member name="POST_ERR_L" proto="POST_ERR_L(error_code:INTEGER, parameter:STRING, cause_code:INTEGER, severity:INTEGER)"/>
+    <member name="DOSFILE_INF" proto="DOSFILE_INF(device:STRING, item:INTEGER, value_str:STRING, status:INTEGER)"/>
+    <member name="RMCN_SEND" proto="RMCN_SEND(xml_file:STRING, attachments:STRING, priority:INTEGER, status:INTEGER)"/>
+    <member name="RMCN_ALERT" proto="RMCN_ALERT(alertaddr:STRING, subject:STRING, message:STRING, alerturl:STRING, status:INTEGER)"/>
+    <member name="V_RUN_FIND" proto="V_RUN_FIND(vp_name:STRING, camera_view:INTEGER, status:INTEGER)"/>
+    <member name="V_SNAP_VIEW" proto="V_SNAP_VIEW(vp_name:STRING, view_index:INTEGER, imreg_index:INTEGER, status:INTEGER)"/>
+    <member name="V_FIND_VIEW" proto="V_FIND_VIEW(vp_name:STRING, view_index:INTEGER, imreg_index:INTEGER, status:INTEGER)"/>
+    <member name="V_GET_OFFSET" proto="V_GET_OFFSET(vp_name:STRING, registor_no:INTEGER, status:INTEGER)"/>
+    <member name="V_SET_REF" proto="V_SET_REF(vp_name:STRING, status:INTEGER)"/>
+    <member name="V_CAM_CALIB" proto="V_CAM_CALIB(camera_name:STRING, func_code:INTEGER, status:INTEGER)"/>
+    <member name="V_GET_PASSFL" proto="V_GET_PASSFL(vp_name:STRING, register_no:INTEGER, status:INTEGER)"/>
+    <member name="VREG_OFFSET" proto="VREG_OFFSET(visreg_no:INTEGER, posreg_no:INTEGER, status:INTEGER)"/>
+    <member name="VREG_FND_POS" proto="VREG_FND_POS(visreg_no:INTEGER, camera_view:INTEGER, posreg_no:INTEGER, status:INTEGER)"/>
+    <member name="V_GET_VPARAM" proto="V_GET_VPARAM(vp_name:STRING, vparam_id:INTEGER, view_index:INTEGER, register_no:INTEGER, status:INTEGER)"/>
+    <member name="V_OVERRIDE" proto="V_OVERRIDE(vo_name:STRING, value:REAL, status:INTEGER)"/>
+    <member name="V_ADJ_2D" proto="V_ADJ_2D(vreg_num:INTEGER, x:REAL, y:REAL)"/>
+    <member name="V_CLR_VAMAP" proto="V_CLR_VAMAP(sensor_name:STRING, status:INTEGER)"/>
+    <member name="V_ACQ_VAMAP" proto="V_ACQ_VAMAP(sensor_name:STRING, partial:BOOLEAN, center_pos:VECTOR, merge_mode:BOOLEAN, status:INTEGER)"/>
+    <member name="VT_GET_FOUND" proto="VT_GET_FOUND(vp_name:STRING, model_id:INTEGER, enc_count:INTEGER, offset:XYZWPR, found_pos:XYZWPR, meas_val:REAL, status:INTEGER)"/>
+    <member name="V_DISPLAY4D" proto="V_DISPLAY4D(tool_string:STRING, status:INTEGER)"/>
+    <member name="V_SAVE_IMREG" proto="V_SAVE_IMREG(img_reg_num:INTEGER, output_path:STRING, status:INTEGER)"/>
+    <member name="DAQ_REGPIPE" proto="DAQ_REGPIPE(pipe_num:INTEGER, mem_type:INTEGER, pipe_size:INTEGER, prog_name:STRING, var_name:STRING, pipe_name:STRING, stream_size:INTEGER, status:INTEGER)"/>
+    <member name="DAQ_UNREG" proto="DAQ_UNREG(pipe_num:INTEGER, status:INTEGER)"/>
+    <member name="DAQ_START" proto="DAQ_START(pipe_num:INTEGER, pipe_mode:INTEGER, stream_dev:STRING, status:INTEGER)"/>
+    <member name="DAQ_STOP" proto="DAQ_STOP(pipe_num:INTEGER, force_off:BOOLEAN, status:INTEGER)"/>
+    <member name="DAQ_WRITE" proto="DAQ_WRITE(pipe_num:INTEGER, prog_name:STRING, var_name:STRING, status:INTEGER)"/>
+    <member name="DAQ_CHECKP" proto="DAQ_CHECKP(pipe_num:INTEGER, pipe_stat:INTEGER, bytes_avail:INTEGER)"/>
+    <member name="ERR_DATA" proto="ERR_DATA(seq_num:INTEGER, error_code:INTEGER, error_string:STRING, cause_code:INTEGER, cause_string:STRING, time:INTEGER, severity:INTEGER, prog_nam:STRING)"/>
+    <member name="COPY_FILE" proto="COPY_FILE(from_file:STRING, to_file:STRING, overwrite_sw:BOOLEAN, nowait_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="DELETE_FILE" proto="DELETE_FILE(file_spec:STRING, nowait_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="FORMAT_DEV" proto="FORMAT_DEV(device:STRING, volume_name:STRING, nowait_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="PRINT_FILE" proto="PRINT_FILE(file_spec:STRING, nowait_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="RENAME_FILE" proto="RENAME_FILE(old_file:STRING, new_file:STRING, nowait_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="MOUNT_DEV" proto="MOUNT_DEV(device:STRING, status:INTEGER)"/>
+    <member name="DISMOUNT_DEV" proto="DISMOUNT_DEV(device:STRING, status:INTEGER)"/>
+    <member name="PURGE_DEV" proto="PURGE_DEV(device:STRING, status:INTEGER)"/>
+    <member name="MOVE_FILE" proto="MOVE_FILE(file_spec:STRING, status:INTEGER)"/>
+    <member name="CHECK_NAME" proto="CHECK_NAME(name_spec:STRING, status:INTEGER)"/>
+    <member name="BYTES_LEFT" proto="BYTES_LEFT(file_id:FILE):INTEGER"/>
+    <member name="BYTES_AHEAD" proto="BYTES_AHEAD(file_id:FILE, n_bytes:INTEGER, status:INTEGER)"/>
+    <member name="SET_FILE_POS" proto="SET_FILE_POS(file_id:FILE, new_file_pos:INTEGER, status:INTEGER)"/>
+    <member name="GET_FILE_POS" proto="GET_FILE_POS(file_id:FILE):INTEGER"/>
+    <member name="SET_PORT_ATR" proto="SET_PORT_ATR(port_id:INTEGER, atr_type:INTEGER, art_value:INTEGER):INTEGER"/>
+    <member name="GET_PORT_ATR" proto="GET_PORT_ATR(port_id:INTEGER, atr_type:INTEGER, art_value:INTEGER):INTEGER"/>
+    <member name="VOL_SPACE" proto="VOL_SPACE(device:STRING, tot_byte:INTEGER, free_byte:INTEGER, volume:STRING)"/>
+    <member name="MSG_CONNECT" proto="MSG_CONNECT(tag_name:STRING, status:INTEGER)"/>
+    <member name="MSG_DISCO" proto="MSG_DISCO(tag_name:STRING, status:INTEGER)"/>
+    <member name="MSG_PING" proto="MSG_PING(tag_name:STRING, status:INTEGER)"/>
+    <member name="PIPE_CONFIG" proto="PIPE_CONFIG(pipe_name:STRING, cmos_flag:BOOLEAN, n_sectors:INTEGER, record_size:INTEGER, form_dict:STRING, form_ele:INTEGER, status:INTEGER)"/>
+    <member name="GET_PORT_ASG" proto="GET_PORT_ASG(log_port_typ:INTEGER, log_port_no:INTEGER, rack_no:INTEGER, slot_no:INTEGER, phy_port_typ:INTEGER, phy_port_no:INTEGER, n_ports:INTEGER, status:INTEGER)"/>
+    <member name="SET_PORT_ASG" proto="SET_PORT_ASG(log_port_typ:INTEGER, log_port_no:INTEGER, rack_no:INTEGER, slot_no:INTEGER, phy_port_typ:INTEGER, phy_port_no:INTEGER, n_ports:INTEGER, status:INTEGER)"/>
+    <member name="SET_PORT_MOD" proto="SET_PORT_MOD(port_type:INTEGER, port_no:INTEGER, mode_mask:INTEGER, status:INTEGER)"/>
+    <member name="GET_PORT_MOD" proto="GET_PORT_MOD(port_type:INTEGER, port_no:INTEGER, mode_mask:INTEGER, status:INTEGER)"/>
+    <member name="SET_PORT_SIM" proto="SET_PORT_SIM(port_type:INTEGER, port_no:INTEGER, value:INTEGER, status:INTEGER)"/>
+    <member name="CLR_PORT_SIM" proto="CLR_PORT_SIM(port_type:INTEGER, port_no:INTEGER, status:INTEGER)"/>
+    <member name="GET_PORT_SIM" proto="GET_PORT_SIM(port_type:INTEGER, port_no:INTEGER, simulated:BOOLEAN, status:INTEGER)"/>
+    <member name="IO_MOD_TYPE" proto="IO_MOD_TYPE(rack_no:INTEGER, slot_no:INTEGER, mod_type:INTEGER, status:INTEGER)"/>
+    <member name="GET_PORT_CMT" proto="GET_PORT_CMT(port_type:INTEGER, port_no:INTEGER, port_name:STRING, status:INTEGER)"/>
+    <member name="SET_PORT_CMT" proto="SET_PORT_CMT(port_type:INTEGER, port_no:INTEGER, port_name:STRING, status:INTEGER)"/>
+    <member name="GET_PORT_VAL" proto="GET_PORT_VAL(port_type:INTEGER, port_no:INTEGER, port_value:INTEGER, status:INTEGER)"/>
+    <member name="SET_PORT_VAL" proto="SET_PORT_VAL(port_type:INTEGER, port_no:INTEGER, port_value:INTEGER, status:INTEGER)"/>
+    <member name="KCL" proto="KCL(command:STRING, status:INTEGER)"/>
+    <member name="KCL_NO_WAIT" proto="KCL_NO_WAIT(command:STRING, status:INTEGER)"/>
+    <member name="KCL_STATUS" proto="KCL_STATUS():INTEGER"/>
+    <member name="CREATE_VAR" proto="CREATE_VAR(var_prog_nam:STRING, var_nam:STRING, typ_prog_nam:STRING, type_nam:STRING, group_num:INTEGER, inner_dim:INTEGER, mid_num:INTEGER, outer_num:INTEGER, status:INTEGER, mem_pool:INTEGER(optional))"/>
+    <member name="RENAME_VAR" proto="RENAME_VAR(prog_nam:STRING, old_nam:STRING, new_nam:STRING, status:INTEGER)"/>
+    <member name="SAVE" proto="SAVE(prog_nam:STRING, file_spec:STRING, status:INTEGER, class:INTEGER(optional))"/>
+    <member name="RENAME_VARS" proto="RENAME_VARS(old_prog:STRING, new_prog:STRING, status:INTEGER)"/>
+    <member name="SAVE_DRAM" proto="SAVE_DRAM(prg_nm:STRING, status:INTEGER)"/>
+    <member name="MIRROR" proto="MIRROR(old_pos:XYZWPR, mirror_frame:POSITION, orient_flag:BOOLEAN):XYZWPR"/>
+    <member name="CNCL_STP_MTN" proto="CNCL_STP_MTN(group_msk:INTEGER(optional))"/>
+    <member name="MOTION_CTL" proto="MOTION_CTL(group_msk:INTEGER(optional)):BOOLEAN"/>
+    <member name="RESET" proto="RESET(successful:BOOLEAN)"/>
+    <member name="JOINT2POS" proto="JOINT2POS(in_jnt:JOINTPOS, uframe:POSITION, utool:POSITION, config_ref:INTEGER, out_pos:POSITION, wjnt_cfg:CONFIG, ext_ang:REAL, status:INTEGER)"/>
+    <member name="POS2JOINT" proto="POS2JOINT(ref_jnt:JOINTPOS, in_pos:POSITION, uframe:POSITION, utool:POSITION, config_ref:INTEGER, wjnt_cfg:CONFIG, ext_ang:REAL, out_jnt:JOINTPOS, status:INTEGER)"/>
+    <member name="ABORT_TASK" proto="ABORT_TASK(task_name:STRING, force_sw:BOOLEAN, cancl_mtn_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="CLEAR_SEMA" proto="CLEAR_SEMA(semaphore_no:INTEGER)"/>
+    <member name="LOCK_GROUP" proto="LOCK_GROUP(group_mask:INTEGER, status:INTEGER)"/>
+    <member name="PAUSE_TASK" proto="PAUSE_TASK(task_name:STRING, force_sw:BOOLEAN, stop_mtn_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="PEND_SEMA" proto="PEND_SEMA(semaphore_no:INTEGER, max_time:INTEGER, time_out:BOOLEAN)"/>
+    <member name="POST_SEMA" proto="POST_SEMA(semaphore_no:INTEGER)"/>
+    <member name="CONT_TASK" proto="CONT_TASK(task_name:STRING, status:INTEGER)"/>
+    <member name="RUN_TASK" proto="RUN_TASK(task_name:STRING, line_number:INTEGER, paus_on_sft:BOOLEAN, tp_motion:BOOLEAN, lock_mask:INTEGER, status:INTEGER)"/>
+    <member name="SEMA_COUNT" proto="SEMA_COUNT(semaphore_no:INTEGER):INTEGER"/>
+    <member name="UNLOCK_GROUP" proto="UNLOCK_GROUP(group_mask:INTEGER, status:INTEGER)"/>
+    <member name="SET_TSK_NAME" proto="SET_TSK_NAME(old_name:STRING, new_name:STRING, status:INTEGER)"/>
+    <member name="DELETE_NODE" proto="DELETE_NODE(path_nam:PATH, :, node_no:INTEGER)"/>
+    <member name="INIT_QUEUE" proto="INIT_QUEUE(queue:User Defined)"/>
+    <member name="APPEND_QUEUE" proto="APPEND_QUEUE(value:INTEGER, queue:User Defined, queue_data:INTEGER, sequence_no:INTEGER, status:INTEGER)"/>
+    <member name="INSERT_QUEUE" proto="INSERT_QUEUE(value:INTEGER, sequence_no:INTEGER, queue:User Defined, queue_data:INTEGER, status:INTEGER)"/>
+    <member name="MODIFY_QUEUE" proto="MODIFY_QUEUE(value:INTEGER, sequence_no:INTEGER, queue:User Defined, queue_data:INTEGER, status:INTEGER)"/>
+    <member name="DELETE_QUEUE" proto="DELETE_QUEUE(sequence_no:INTEGER, queue:User Defined, queue_data:INTEGER, status:INTEGER)"/>
+    <member name="GET_QUEUE" proto="GET_QUEUE(queue:User Defined, queue_data:INTEGER, value:INTEGER, sequence_no:INTEGER, status:INTEGER)"/>
+    <member name="COPY_QUEUE" proto="COPY_QUEUE(queue:User Defined, queue_data:INTEGER, n_skip:INTEGER, sequence_no:INTEGER, out_data:INTEGER, n_got:INTEGER, status:INTEGER)"/>
+    <member name="ADD_INTPC" proto="ADD_INTPC(dat_buffer:BYTE, dat_index:INTEGER, number:INTEGER, status:INTEGER)"/>
+    <member name="ADD_REALPC" proto="ADD_REALPC(dat_buffer:BYTE, dat_index:INTEGER, number:REAL, status:INTEGER)"/>
+    <member name="ADD_STRINGPC" proto="ADD_STRINGPC(dat_buffer:BYTE, dat_index:INTEGER, item:STRING, status:INTEGER)"/>
+    <member name="ADD_BYNAMEPC" proto="ADD_BYNAMEPC(dat_buffer:BYTE, dat_index:INTEGER, prog_name:STRING, var_name:STRING, status:INTEGER)"/>
+    <member name="SEND_EVENTPC" proto="SEND_EVENTPC(event_no:INTEGER, status:INTEGER)"/>
+    <member name="SEND_DATAPC" proto="SEND_DATAPC(event_no:INTEGER, dat_buffer:BYTE, status:INTEGER)"/>
+    <member name="CLR_POS_REG" proto="CLR_POS_REG(register:INTEGER, group_no:INTEGER, status:INTEGER)"/>
+    <member name="GET_JPOS_REG" proto="GET_JPOS_REG(register_no:INTEGER, status:INTEGER, group_no:INTEGER(optional)):JOINTPOS"/>
+    <member name="GET_POS_REG" proto="GET_POS_REG(register_no:INTEGER, status:INTEGER, group_no:INTEGER(optional)):XYZWPR"/>
+    <member name="GET_REG" proto="GET_REG(register_no:INTEGER, real_flag:BOOLEAN, int_value:INTEGER, real_value:REAL, status:INTEGER)"/>
+    <member name="GET_REG_CMT" proto="GET_REG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="GET_PREG_CMT" proto="GET_PREG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="SET_JPOS_REG" proto="SET_JPOS_REG(register_no:INTEGER, posn:JOINTPOS, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_POS_REG" proto="SET_POS_REG(register_no:INTEGER, posn:XYZWPR, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_INT_REG" proto="SET_INT_REG(register_no:INTEGER, int_value:INTEGER, status:INTEGER)"/>
+    <member name="SET_REAL_REG" proto="SET_REAL_REG(register_no:INTEGER, real_value:REAL, status:INTEGER)"/>
+    <member name="SET_EPOS_REG" proto="SET_EPOS_REG(register_no:INTEGER, posn:XYZWPR, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="SET_REG_CMT" proto="SET_REG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="SET_PREG_CMT" proto="SET_PREG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="POS_REG_TYPE" proto="POS_REG_TYPE(register_no:INTEGER, group_no:INTEGER, posn_type:INTEGER, num_axes:INTEGER, status:INTEGER)"/>
+    <member name="GET_SREG_CMT" proto="GET_SREG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="GET_STR_REG" proto="GET_STR_REG(register_no:INTEGER, value:STRING, status:INTEGER)"/>
+    <member name="SET_SREG_CMT" proto="SET_SREG_CMT(register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="SET_STR_REG" proto="SET_STR_REG(register_no:INTEGER, value:STRING, status:INTEGER)"/>
+    <member name="CNV_REAL_STR" proto="CNV_REAL_STR(source:REAL, length:INTEGER, num_digits:INTEGER, target:STRING)"/>
+    <member name="CNV_CONF_STR" proto="CNV_CONF_STR(source:CONFIG, target:STRING)"/>
+    <member name="CNV_STR_CONF" proto="CNV_STR_CONF(source:STRING, target:CONFIG, status:INTEGER)"/>
+    <member name="CNV_CNF_STRG" proto="CNV_CNF_STRG(source:CONFIG, target:STRING, status:INTEGER, group_no:INTEGER(optional))"/>
+    <member name="ACOS" proto="ACOS(x:REAL):REAL"/>
+    <member name="ASIN" proto="ASIN(x:REAL):REAL"/>
+    <member name="ATAN2" proto="ATAN2(x:REAL, y:REAL):REAL"/>
+    <member name="CHR" proto="CHR(code:INTEGER):STRING"/>
+    <member name="COS" proto="COS(angle:REAL):REAL"/>
+    <member name="CURJPOS" proto="CURJPOS(axs_lim_mask:INTEGER, ovr_trv_mask:INTEGER, group_no:INTEGER(optional)):JOINTPOS"/>
+    <member name="CURPOS" proto="CURPOS(axs_lim_mask:INTEGER, ovr_trv_mask:INTEGER, group_no:INTEGER(optional)):XYZWPR"/>
+    <member name="EXP" proto="EXP(x:REAL):REAL"/>
+    <member name="FRAME" proto="FRAME(pos1:POSITION, pos2:POSITION, pos3:POSITION, pos4:POSITION(optional)):POSITION"/>
+    <member name="INDEX" proto="INDEX(main:STRING, find:STRING):INTEGER"/>
+    <member name="INV" proto="INV(pos:POSITION):POSITION"/>
+    <member name="IN_RANGE" proto="IN_RANGE(pos:XYZWPR, group_no:INTEGER(optional)):BOOLEAN"/>
+    <member name="LN" proto="LN(x:REAL):REAL"/>
+    <member name="ORD" proto="ORD(str:STRING, str_index:INTEGER):INTEGER"/>
+    <member name="POS" proto="POS(x:REAL, y:REAL, z:REAL, w:REAL, p:REAL, r:REAL, c:CONFIG):XYZWPR"/>
+    <member name="ROUND" proto="ROUND(x:REAL):INTEGER"/>
+    <member name="SIN" proto="SIN(angle:REAL):REAL"/>
+    <member name="SQRT" proto="SQRT(x:REAL):REAL"/>
+    <member name="STR_LEN" proto="STR_LEN(str:STRING):INTEGER"/>
+    <member name="SUB_STR" proto="SUB_STR(src:STRING, strt:INTEGER, len:INTEGER):STRING"/>
+    <member name="TAN" proto="TAN(angle:REAL):REAL"/>
+    <member name="TRUNC" proto="TRUNC(x:REAL):INTEGER"/>
+    <member name="UNPOS" proto="UNPOS(pos:XYZWPR, x:REAL, y:REAL, z:REAL, w:REAL, p:REAL, r:REAL, c:CONFIG)"/>
+    <member name="CNV_JPOS_REL" proto="CNV_JPOS_REL(jpos:JOINTPOS, real_array:REAL, status:INTEGER)"/>
+    <member name="CNV_REL_JPOS" proto="CNV_REL_JPOS(real_array:REAL, jpos:JOINTPOS, status:INTEGER)"/>
+    <member name="SET_PERCH" proto="SET_PERCH(posn:JOINTPOS, tolerance:REAL, idx:INTEGER)"/>
+    <member name="J_IN_RANGE" proto="J_IN_RANGE(jpos:JOINTPOS, group_no:INTEGER(optional)):BOOLEAN"/>
+    <member name="GET_TIME" proto="GET_TIME(i:INTEGER)"/>
+    <member name="SET_TIME" proto="SET_TIME(i:INTEGER)"/>
+    <member name="CNV_TIME_STR" proto="CNV_TIME_STR(source:INTEGER, target:STRING)"/>
+    <member name="CNV_STR_TIME" proto="CNV_STR_TIME(source:STRING, target:INTEGER)"/>
+    <member name="GET_USEC_TIM" proto="GET_USEC_TIM():INTEGER"/>
+    <member name="GET_USEC_SUB" proto="GET_USEC_SUB(us2:INTEGER, us1:INTEGER):INTEGER"/>
+    <member name="AVL_POS_NUM" proto="AVL_POS_NUM(open_id:INTEGER, pos_num:INTEGER, status:INTEGER)"/>
+    <member name="DEL_INST_TPE" proto="DEL_INST_TPE(open_id:INTEGER, lin_num:INTEGER, status:INTEGER)"/>
+    <member name="SET_ATTR_PRG" proto="SET_ATTR_PRG(prog_name:STRING, attr_number:INTEGER, int_value:INTEGER, string_value:STRING, status:INTEGER)"/>
+    <member name="SELECT_TPE" proto="SELECT_TPE(prog_name:STRING, status:INTEGER)"/>
+    <member name="CREATE_TPE" proto="CREATE_TPE(prog_name:STRING, prog_type:INTEGER, status:INTEGER)"/>
+    <member name="COPY_TPE" proto="COPY_TPE(from_prog:STRING, to_prog:STRING, overwrite_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="GET_TPE_CMT" proto="GET_TPE_CMT(open_id:INTEGER, pos_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="SET_TPE_CMT" proto="SET_TPE_CMT(open_id:INTEGER, pos_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="TRANSLATE" proto="TRANSLATE(file_name:STRING, listing_sw:BOOLEAN, status:INTEGER)"/>
+    <member name="CHECK_DICT" proto="CHECK_DICT(dict_name:STRING, element_no:INTEGER, status:INTEGER)"/>
+    <member name="REMOVE_DICT" proto="REMOVE_DICT(dict_name:STRING, lang_name:STRING, status:INTEGER)"/>
+    <member name="DEF_SCREEN" proto="DEF_SCREEN(screen_name:STRING, disp_dev_nam:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISI" proto="INI_DYN_DISI(variable:INTEGER, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, buffer_size:INTEGER, format:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISR" proto="INI_DYN_DISR(variable:REAL, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, buffer_size:INTEGER, format:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISS" proto="INI_DYN_DISS(variable:STRING, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, buffer_size:INTEGER, format:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISB" proto="INI_DYN_DISB(variable:BOOLEAN, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, strings:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISE" proto="INI_DYN_DISE(variable:INTEGER, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, strings:STRING, status:INTEGER)"/>
+    <member name="INI_DYN_DISP" proto="INI_DYN_DISP(port_type:INTEGER, port_no:INTEGER, window_name:STRING, field_width:INTEGER, attr_mask:INTEGER, char_size:INTEGER, row:INTEGER, col:INTEGER, interval:INTEGER, strings:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISI" proto="CNC_DYN_DISI(variable:INTEGER, window_name:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISE" proto="CNC_DYN_DISE(variable:INTEGER, window_name:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISR" proto="CNC_DYN_DISR(variable:REAL, window_name:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISS" proto="CNC_DYN_DISS(variable:STRING, window_name:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISB" proto="CNC_DYN_DISB(variable:BOOLEAN, window_name:STRING, status:INTEGER)"/>
+    <member name="CNC_DYN_DISP" proto="CNC_DYN_DISP(port_type:INTEGER, port_no:INTEGER, window_name:STRING, status:INTEGER)"/>
+    <member name="DISCTRL_TBL" proto="DISCTRL_TBL(dict_name:STRING, ele_number:INTEGER, num_items:INTEGER, num_columns:INTEGER, col_data:User Defined, inact_array:BOOLEAN, change_array:BOOLEAN, def_item:INTEGER, term_char:INTEGER, term_mask:INTEGER, value_array:STRING, attach_wind:BOOLEAN, status:INTEGER)"/>
+    <member name="INIT_TBL" proto="INIT_TBL(dict_name:STRING, ele_number:INTEGER, num_items:INTEGER, num_columns:INTEGER, col_data:User Defined, inact_array:BOOLEAN, change_array:BOOLEAN, vname_array:STRING, vptr_array:INTEGER, table_data:User Defined, status:INTEGER)"/>
+    <member name="ACT_TBL" proto="ACT_TBL(action:INTEGER, def_item:INTEGER, table_data:User Defined, term_char:INTEGER, attach_wind:BOOLEAN, status:INTEGER)"/>
+    <member name="DISCTRL_SBMN" proto="DISCTRL_SBMN(dict_name:STRING, element_no:INTEGER, def_item:INTEGER, term_char:INTEGER, status:INTEGER)"/>
+    <member name="DISCTRL_PLMN" proto="DISCTRL_PLMN(dict_name:STRING, element_no:INTEGER, ftn_key_no:INTEGER, def_item:INTEGER, term_char:INTEGER, status:INTEGER)"/>
+    <member name="WRITE_DICT_V" proto="WRITE_DICT_V(file_var:FILE, dict_name:STRING, element_no:INTEGER, value_array:STRING, status:INTEGER)"/>
+    <member name="READ_DICT_V" proto="READ_DICT_V(dict_name:STRING, element_no:INTEGER, value_array:STRING, read_array:STRING, status:INTEGER)"/>
+    <member name="DISCTRL_ALPH" proto="DISCTRL_ALPH(window_name:STRING, row:INTEGER, col:INTEGER, nam_str:STRING, dict_name:STRING, dict_ele:INTEGER, term_char:INTEGER, status:INTEGER)"/>
+    <member name="APPROACH" proto="APPROACH(posn:POSITION):VECTOR"/>
+    <member name="ORIENT" proto="ORIENT(posn:POSITION):VECTOR"/>
+    <member name="XML_ADDTAG" proto="XML_ADDTAG(xml_file:FILE, tag_name:STRING, numchar:INTEGER, casecheck:BOOLEAN, tag_ident:INTEGER, status:INTEGER)"/>
+    <member name="XML_SCAN" proto="XML_SCAN(xml_file:FILE, tag_name:STRING, tag_ident:INTEGER, func_code:INTEGER, status:INTEGER)"/>
+    <member name="XML_SETVAR" proto="XML_SETVAR(xml_file:FILE, prog_name:STRING, var_name:STRING, status:INTEGER)"/>
+    <member name="XML_GETDATA" proto="XML_GETDATA(xml_file:FILE, numattr:INTEGER, attrnames:STRING, attrvalues:STRING, textdata:STRING, textdone:BOOLEAN, status:INTEGER)"/>
+    <member name="XML_REMTAG" proto="XML_REMTAG(xml_file:FILE, tag_name:STRING, status:INTEGER)"/>
+    <member name="RGET_PORTVAL" proto="RGET_PORTVAL(host_port:STRING, port_type:INTEGER, port_no:INTEGER, port_value:INTEGER, status:INTEGER)"/>
+    <member name="RSET_PORTVAL" proto="RSET_PORTVAL(host_port:STRING, port_type:INTEGER, port_no:INTEGER, port_value:INTEGER, status:INTEGER)"/>
+    <member name="RGET_PORTSIM" proto="RGET_PORTSIM(host_port:STRING, port_type:INTEGER, port_no:INTEGER, simulated:BOOLEAN, status:INTEGER)"/>
+    <member name="RSET_PORTSIM" proto="RSET_PORTSIM(host_port:STRING, port_type:INTEGER, port_no:INTEGER, value:INTEGER, status:INTEGER)"/>
+    <member name="RGET_PORTCMT" proto="RGET_PORTCMT(host_port:STRING, port_type:INTEGER, port_no:INTEGER, port_name:STRING, status:INTEGER)"/>
+    <member name="RSET_PORTCMT" proto="RSET_PORTCMT(host_port:STRING, port_type:INTEGER, port_no:INTEGER, port_name:STRING, status:INTEGER)"/>
+    <member name="RGET_REG" proto="RGET_REG(host_port:STRING, register_no:INTEGER, real_flag:BOOLEAN, int_value:INTEGER, real_value:REAL, status:INTEGER)"/>
+    <member name="RSET_INT_REG" proto="RSET_INT_REG(host_port:STRING, register_no:INTEGER, int_value:INTEGER, status:INTEGER)"/>
+    <member name="RSET_REALREG" proto="RSET_REALREG(host_port:STRING, register_no:INTEGER, real_value:REAL, status:INTEGER)"/>
+    <member name="RGET_REG_CMT" proto="RGET_REG_CMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RSET_REG_CMT" proto="RSET_REG_CMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RGET_PREGCMT" proto="RGET_PREGCMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RSET_PREGCMT" proto="RSET_PREGCMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RGET_SREGCMT" proto="RGET_SREGCMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RGET_STR_REG" proto="RGET_STR_REG(host_port:STRING, register_no:INTEGER, value:STRING, status:INTEGER)"/>
+    <member name="RSET_SREGCMT" proto="RSET_SREGCMT(host_port:STRING, register_no:INTEGER, comment:STRING, status:INTEGER)"/>
+    <member name="RSET_STR_REG" proto="RSET_STR_REG(host_port:STRING, register_no:INTEGER, value:STRING, status:INTEGER)"/>
+    <member name="RNUMREG_SEND" proto="RNUMREG_SEND(host_port:STRING, dest_idx:INTEGER, src_idx:INTEGER, option:INTEGER, status:INTEGER)"/>
+    <member name="RNUMREG_RECV" proto="RNUMREG_RECV(host_port:STRING, src_idx:INTEGER, dest_idx:INTEGER, option:INTEGER, status:INTEGER)"/>
+</memberlist>
+

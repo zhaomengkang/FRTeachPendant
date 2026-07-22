@@ -1,5 +1,5 @@
 #define MyAppName "FRiPendant"
-#define MyAppVersion "2026.07.08"
+#define MyAppVersion "2026.07.22"
 #define MyAppPublisher "Zhao,Mengkang"
 #define MyAppExeName "FRiPendant.exe"
 
@@ -24,11 +24,11 @@ SetupIconFile=icon\FRiPendant.ico
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "support\UIF\*"; DestDir: "{app}\support\UIF"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "support\KAREL\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "support\VC\VC2008\*"; DestDir: "{app}\support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "support\VC\VC2013\*"; DestDir: "{app}\support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "FRTeachPendant\bin\Release\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "Support\UIF\*"; DestDir: "{app}\Support\UIF"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "KarelProject\KAREL\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "Support\VC\VC2008\*"; DestDir: "{app}\Support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "Support\VC\VC2013\*"; DestDir: "{app}\Support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"

@@ -1,0 +1,151 @@
+<language name="TP" casesensitive="no" wordchars="[\w]">
+	<tokenset name="Line Comments" id="linecomments" type="scope" forecolor='32768' fontstyle="italic">
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token regexp="yes">:\s*!</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Directives" id="keywords" forecolor='10526720'>
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token>/PROG</token>
+			<token>/ATTR</token>
+			<token>/APPL</token>
+			<token>/MN</token>
+			<token>/POS</token>
+			<token>/END</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Attributes" id="keywords" forecolor='32768'>
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token regexp="yes">^OWNER\s*=\s*\w*;</token>
+			<token regexp="yes">^COMMENT\s*=\s*".*";</token>
+			<token regexp="yes">^PROG_SIZE\s*=\s*\d+;</token>
+			<token regexp="yes">^CREATE\s*=\s*DATE\s+\d+-\d\d-\d\d\s+TIME\s+\d\d:\d\d:\d\d;</token>
+			<token regexp="yes">^MODIFIED\s*=\s*DATE\s+\d+-\d\d-\d\d\s+TIME\s+\d\d:\d\d:\d\d;</token>
+			<token regexp="yes">^FILE_NAME\s*=\s*.*;</token>
+			<token regexp="yes">^VERSION\s*=\s*\d+;</token>
+			<token regexp="yes">^LINE_COUNT\s*=\s*\d+;</token>
+			<token regexp="yes">^MEMORY_SIZE\s*=\s*\d+;</token>
+			<token regexp="yes">^PROTECT\s*=\s*(READ_ONLY|READ_WRITE);</token>
+			<token regexp="yes">^TCD:\s+STACK_SIZE\s*=\s*\d+,</token>
+			<token regexp="yes">^\s+TASK_PRIORITY\s*=\s*5\d+,</token>
+			<token regexp="yes">^\s+TIME_SLICE\s*=\s*\d+,</token>
+			<token regexp="yes">^\s+BUSY_LAMP_OFF\s*=\s*\d+,</token>
+			<token regexp="yes">^\s+ABORT_REQUEST\s*=\s*\d+,</token>
+			<token regexp="yes">^\s+PAUSE_REQUEST\s*=\s*\d+;</token>
+			<token regexp="yes">^DEFAULT_GROUP\s*=\s*((1|\*),)+(1|\*);</token>
+			<token regexp="yes">^CONTROL_CODE\s*=\s*\d\d\d\d\d\d\d\d\s+\d\d\d\d\d\d\d\d;</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Strings" id="strings" type="scope" singlelinescope="yes" forecolor='12583104'>
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token>'</token>
+			<token>"</token>
+		</tokens>
+		<tokens2>
+			<token>'</token>
+			<token>"</token>
+		</tokens2>
+	</tokenset>
+	<tokenset name="Numbers" id="numbers" forecolor="maroon">
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token regexp="yes">-?\d+(\.\d*)?([eE][+-]?\d+)?</token>
+			<token>...</token>
+			<token>UNINIT</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Keywords" id="keywords" forecolor="blue">
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token>C</token>
+			<token>CLOSE</token>
+			<token regexp="yes">[\d\.]*CM</token>
+			<token>CONSTANT</token>
+			<token regexp="yes">[\d\.]*DEG</token>
+			<token>DISABLE</token>
+			<token>ENABLE</token>
+			<token>FALSE</token>
+			<token regexp="yes">[\d\.]*INCH</token>
+			<token>J</token>
+			<token>JOB</token>
+			<token>JPOS</token>
+			<token>L</token>
+			<token>LPOS</token>
+			<token>MACRO</token>
+			<token regexp="yes">[\d\.]*MIN</token>
+			<token regexp="yes">[\d\.]*MM</token>
+			<token regexp="yes">[\d\.]*MSEC</token>
+			<token>OFF</token>
+			<token>ON</token>
+			<token>OPEN</token>
+			<token>PROCESS</token>
+			<token>PULSE</token>
+			<token>RESET</token>
+			<token regexp="yes">[\d\.]*SEC</token>
+			<token>START</token>
+			<token>STOP</token>
+			<token>TRUE</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Positions" id="keywords" forecolor='192'>
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token>P</token>
+			<token regexp="yes">GP[1-9]\d*:</token>
+			<token>UF</token>
+			<token>UT</token>
+			<token>CONFIG</token>
+			<token regexp="yes">X|Y|Z|W|P|R\s</token>
+			<token regexp="yes">J[1-9]\d*</token>
+			<token regexp="yes">E[1-3]\d*</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Registers" id="variables" forecolor='41120'>
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+		<tokens>
+			<token>R</token>
+			<token>PR</token>
+			<token>AR</token>
+			<token>AI</token>
+			<token>AO</token>
+			<token>DI</token>
+			<token>DO</token>
+			<token>F</token>
+			<token>GI</token>
+			<token>GO</token>
+			<token>M</token>
+			<token>RI</token>
+			<token>RO</token>
+			<token>SI</token>
+			<token>SO</token>
+			<token>UI</token>
+			<token>UO</token>
+			<token>WI</token>
+			<token>WO</token>
+		</tokens>
+	</tokenset>
+  <tokenset name="System Variables" id="variables" forecolor='41120'>
+    <validscope name=""/>
+    <validscope name="Keywords"/>
+    <tokens>
+      <token regexp="yes">\$[a-zA-Z]\w*</token>
+			<token>$</token>
+    </tokens>
+  </tokenset>
+	<tokenset name="Text" id="text">
+		<validscope name=""/>
+		<validscope name="Keywords"/>
+	</tokenset>
+</language>

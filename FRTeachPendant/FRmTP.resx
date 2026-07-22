@@ -132,7 +132,8 @@ This will reset the active screen to the Program List screen (SELECT).
 
 Currently known screens that may cause crashes:
 1. 4D graphics display.
-2. Bus configuration screens that require WinCE support, such as PROFINET.</value>
+2. Bus configuration screens that require WinCE support, such as PROFINET.
+3. Keyboard View.</value>
   </data>
   <data name="bt_UploadArea.ToolTip" xml:space="preserve">
     <value>Drag program files to this area to upload them to the controller.

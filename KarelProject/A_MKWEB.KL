@@ -1,0 +1,402 @@
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- File Name : A_MKWEB.KL
+-- Author    : Zhao,Mengkang
+-- Version   : V26.07.22
+--
+-- Copyright (c) 2025-2026 Zhao Mengkang
+
+-- Permission is hereby granted, free of charge, to any person obtaining a copy
+-- of this software and associated documentation files (the "Software"), to deal
+-- in the Software without restriction, including without limitation the rights
+-- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+-- copies of the Software, and to permit persons to whom the Software is
+-- furnished to do so, subject to the following conditions:
+
+-- The above copyright notice and this permission notice shall be included in all
+-- copies or substantial portions of the Software.
+
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+-- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+-- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+-- SOFTWARE.
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+PROGRAM A_MKWEB
+%SYSTEM
+%COMMENT = 'V26.07.22'
+%NOLOCKGROUP
+%NOBUSYLAMP
+%NOPAUSESHFT
+%NOPAUSE = ERROR + COMMAND + TPENABLE
+%INVISIBLE
+CONST CLIB_VERSION = 'V26.07.22'
+
+VAR
+    func_name : STRING[50]
+
+    -- sim_key
+    key_codes : STRING[10]
+
+    -- get/set variable
+    prog_name : STRING[50]
+    var_name  : STRING[100]
+    var_value : STRING[100]
+    var_type  : STRING[10]
+
+    -- get signal
+    io_type  : STRING[10]
+    io_index : STRING[10]
+    io_value : STRING[10]
+
+    -- web
+    web_f        : FILE
+    resp_content : ARRAY[20] OF STRING[254]
+
+
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- Routine   : TO_UPPER
+-- Function  : Convert all lower-case letters in input string to upper-case.
+-- Param
+--   in_str[IN] : Input string.
+-- Return  : String
+-- Author  : Zhao,Mengkang
+-- Date    : 2025/09/20
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ROUTINE TO_UPPER(in_str : STRING) : STRING
+VAR
+    i       : INTEGER
+    c       : STRING[1]
+    out_str : STRING[254]
+BEGIN
+    out_str = ''
+
+    FOR i = 1 TO STR_LEN(in_str) DO
+        c = SUB_STR(in_str, i, 1)
+        IF (ORD(c, 1) >= 97) AND (ORD(c, 1) <= 122) THEN
+            out_str = out_str + CHR(ORD(c, 1) - 32)
+        ELSE
+            out_str = out_str + c
+        ENDIF
+    ENDFOR
+
+    RETURN (out_str)
+END TO_UPPER
+
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- Routine   : CNV_INT2STR
+-- Function  : Convert INTEGER to STRING (without leading space)
+-- Param
+--   in_int[in] : Integer value to convert.
+-- Return   : String representation.
+--
+-- Author   : Zhao,Mengkang
+-- Date     : 2025/09/20
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ROUTINE CNV_INT2STR(in_int : INTEGER) : STRING
+VAR
+    str : STRING[254]
+BEGIN
+    IF UNINIT(in_int) THEN
+        RETURN ('')
+    ENDIF
+
+    CNV_INT_STR(in_int, 0, 0, str)
+    RETURN (SUB_STR(str, 2, STR_LEN(str) - 1))
+END CNV_INT2STR
+
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- Routine   : CNV_REL2STR
+-- Function  : Convert REAL to STRING (without leading space)
+-- Param
+--   in_real[in] : Real value to convert.
+-- Return   : String representation.
+--
+-- Author   : Zhao,Mengkang
+-- Date     : 2025/09/20
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ROUTINE CNV_REL2STR(in_real : REAL) : STRING
+VAR
+    str : STRING[254]
+BEGIN
+    IF UNINIT(in_real) THEN
+        RETURN ('')
+    ENDIF
+
+    CNV_REAL_STR((in_real), 0, 0, str)
+    RETURN (SUB_STR(str, 2, STR_LEN(str) - 1))
+END CNV_REL2STR
+
+ROUTINE INIT_CONTENT(resp_content : ARRAY OF STRING)
+VAR
+    array_index : INTEGER
+    array_lenth : INTEGER
+BEGIN
+    array_lenth = ARRAY_LEN(resp_content)
+
+    FOR array_index = 1 TO array_lenth DO
+        resp_content[array_index] = ''
+    ENDFOR
+END INIT_CONTENT
+
+ROUTINE WEB_RESPONSE(content : ARRAY OF STRING)
+VAR
+    array_index : INTEGER
+    array_lenth : INTEGER
+BEGIN
+    array_lenth = ARRAY_LEN(content)
+
+    OPEN FILE web_f('RW', 'TD:RESPONSE.HTM')
+
+    FOR array_index = 1 TO array_lenth DO
+        IF (NOT UNINIT(content[array_index])) THEN
+            WRITE web_f(content[array_index])
+        ENDIF
+    ENDFOR
+
+    CLOSE FILE web_f
+END WEB_RESPONSE
+
+ROUTINE LIB_VER
+BEGIN
+    INIT_CONTENT(resp_content)
+    resp_content[1] = '<mklib>' + CHR(13) + CHR(10)
+    resp_content[2] = '<Version>' + CLIB_VERSION + '</Version>' + CHR(13) + CHR(10)
+    resp_content[3] = '</mklib>'
+    WEB_RESPONSE(resp_content)
+END LIB_VER
+
+ROUTINE SIM_TPKEY(key_codes : STRING)
+VAR
+    key_code : INTEGER
+BEGIN
+    INIT_CONTENT(resp_content)
+    resp_content[1] = '<mklib>' + CHR(13) + CHR(10)
+    resp_content[3] = '</mklib>'
+
+    IF (UNINIT(key_codes)) THEN
+        resp_content[2] = '<SimKeyStatus>-1</SimKeyStatus>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    CNV_STR_INT(key_codes, key_code)
+
+    IF (UNINIT(key_code)) THEN
+        IF (UNINIT(key_codes)) THEN
+            resp_content[2] = '<SimKeyStatus>-2</SimKeyStatus>' + CHR(13) + CHR(10)
+            WEB_RESPONSE(resp_content)
+            RETURN
+        ENDIF
+    ENDIF
+
+    SELECT key_code OF
+        CASE (153) :
+            RESET(TRUE)
+        ELSE :
+            SIM_KEY('TPKB', key_code)
+    ENDSELECT
+
+    resp_content[2] = '<SimKeyStatus>0</SimKeyStatus>' + CHR(13) + CHR(10)
+    WEB_RESPONSE(resp_content)
+END SIM_TPKEY
+
+ROUTINE READ_VAR(prg_name : STRING; var_name : STRING; var_type : STRING)
+VAR
+    var_typ   : STRING[50]
+    int_var   : INTEGER
+    real_var  : REAL
+    bool_var  : BOOLEAN
+    str_var   : STRING[254]
+    sta       : INTEGER
+    entry     : INTEGER
+    var_value : STRING[254]
+BEGIN
+    var_value = ''
+
+    INIT_CONTENT(resp_content)
+    resp_content[1] = '<mklib>' + CHR(13) + CHR(10)
+    resp_content[2] = '<ReadVar>' + CHR(13) + CHR(10)
+    resp_content[7] = '</ReadVar>' + CHR(13) + CHR(10)
+    resp_content[8] = '</mklib>'
+
+    IF (UNINIT(prg_name) OR UNINIT(var_name) OR UNINIT(var_type)) THEN
+        resp_content[3] = '<Status>-1</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    var_typ = TO_UPPER(var_type)
+
+    IF (var_typ <> 'INT') AND (var_typ <> 'BOOL') AND (var_typ <> 'REAL') AND (var_typ <> 'STR') THEN
+        resp_content[3] = '<Status>-2</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    IF (var_typ = 'INT') THEN
+        GET_VAR(entry, prg_name, var_name, int_var, sta)
+        var_value = CNV_INT2STR(int_var)
+    ENDIF
+
+    IF (var_typ = 'BOOL') THEN
+        GET_VAR(entry, prg_name, var_name, bool_var, sta)
+        IF (bool_var) THEN
+            var_value = 'TRUE'
+        ELSE
+            var_value = 'FASLE'
+        ENDIF
+    ENDIF
+
+    IF (var_typ = 'REAL') THEN
+        GET_VAR(entry, prg_name, var_name, real_var, sta)
+        IF ((sta = 0) AND (NOT UNINIT(real_var))) THEN
+            var_value = CNV_REL2STR(real_var)
+        ENDIF
+    ENDIF
+
+    IF (var_typ = 'STR') THEN
+        GET_VAR(entry, prg_name, var_name, str_var, sta)
+        IF ((sta = 0) AND (NOT UNINIT(str_var))) THEN
+            var_value = str_var
+        ENDIF
+    ENDIF
+
+    resp_content[3] = '<Program>' + prg_name + '</Program>' + CHR(13) + CHR(10)
+    resp_content[4] = '<Var>' + var_name + '</Var>' + CHR(13) + CHR(10)
+    resp_content[5] = '<Value>' + var_value + '</Value>' + CHR(13) + CHR(10)
+    resp_content[6] = '<Status>' + CNV_INT2STR(sta) + '</Status>' + CHR(13) + CHR(10)
+    WEB_RESPONSE(resp_content)
+END READ_VAR
+
+ROUTINE WRITE_VAR(prg_name : STRING; var_name : STRING; var_type : STRING; var_value : STRING)
+VAR
+    var_typ   : STRING[50]
+    int_var   : INTEGER
+    real_var  : REAL
+    bool_var  : BOOLEAN
+    str_var   : STRING[254]
+    sta       : INTEGER
+    entry     : INTEGER
+BEGIN
+    INIT_CONTENT(resp_content)
+    resp_content[1] = '<mklib>' + CHR(13) + CHR(10)
+    resp_content[2] = '<WriteVar>' + CHR(13) + CHR(10)
+    resp_content[7] = '</WriteVar>' + CHR(13) + CHR(10)
+    resp_content[8] = '</mklib>'
+
+    IF (UNINIT(prg_name) OR UNINIT(var_name) OR UNINIT(var_type) OR UNINIT(var_value)) THEN
+        resp_content[3] = '<Status>-1</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    var_typ = TO_UPPER(var_type)
+
+    IF (var_typ <> 'INT') AND (var_typ <> 'BOOL') AND (var_typ <> 'REAL') AND (var_typ <> 'STR') THEN
+        resp_content[3] = '<Status>-2</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    IF (var_typ = 'INT') THEN
+        CNV_STR_INT(var_value, int_var)
+        SET_VAR(entry, prg_name, var_name, int_var, sta)
+    ENDIF
+
+    IF (var_typ = 'BOOL') THEN
+        var_value = TO_UPPER(var_value)
+        sta = -3
+
+        IF (var_value = 'TRUE') THEN
+            SET_VAR(entry, prg_name, var_name, TRUE, sta)
+        ENDIF
+
+        IF (var_value = 'FALSE') THEN
+            SET_VAR(entry, prg_name, var_name, FALSE, sta)
+        ENDIF
+    ENDIF
+
+    IF (var_typ = 'REAL') THEN
+        CNV_STR_REAL(var_value, real_var)
+        SET_VAR(entry, prg_name, var_name, real_var, sta)
+    ENDIF
+
+    IF (var_typ = 'STR') THEN
+        str_var = var_value
+        SET_VAR(entry, prg_name, var_name, str_var, sta)
+    ENDIF
+
+    resp_content[3] = '<Program>' + prg_name + '</Program>' + CHR(13) + CHR(10)
+    resp_content[4] = '<Var>' + var_name + '</Var>' + CHR(13) + CHR(10)
+    resp_content[5] = '<Value>' + var_value + '</Value>' + CHR(13) + CHR(10)
+    resp_content[6] = '<Status>' + CNV_INT2STR(sta) + '</Status>' + CHR(13) + CHR(10)
+    WEB_RESPONSE(resp_content)
+END WRITE_VAR
+
+ROUTINE GET_IO_VALUE(io_type : STRING; io_index : STRING)
+VAR
+    port_type : INTEGER
+    port_no   : INTEGER
+    port_val  : INTEGER
+    port_sta  : INTEGER
+BEGIN
+    INIT_CONTENT(resp_content)
+    resp_content[1] = '<mklib>' + CHR(13) + CHR(10)
+    resp_content[2] = '<GetIOValue>' + CHR(13) + CHR(10)
+    resp_content[7] = '</GetIOValue>' + CHR(13) + CHR(10)
+    resp_content[8] = '</mklib>'
+
+    IF (UNINIT(io_type)) THEN
+        resp_content[5] = '<Status>-1</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    IF (UNINIT(io_index)) THEN
+        resp_content[5] = '<Status>-2</Status>' + CHR(13) + CHR(10)
+        WEB_RESPONSE(resp_content)
+        RETURN
+    ENDIF
+
+    CNV_STR_INT(io_type, port_type)
+    CNV_STR_INT(io_index, port_no)
+
+    GET_PORT_VAL(port_type, port_no, port_val, port_sta)
+
+    resp_content[3] = '<IOType>' + io_type + '</IOType>' + CHR(13) + CHR(10)
+    resp_content[4] = '<IOIndex>' + io_index + '</IOIndex>' + CHR(13) + CHR(10)
+    resp_content[5] = '<Value>' + CNV_INT2STR(port_val) + '</Value>' + CHR(13) + CHR(10)
+    resp_content[6] = '<Status>' + CNV_INT2STR(port_sta) + '</Status>' + CHR(13) + CHR(10)
+    WEB_RESPONSE(resp_content)
+END GET_IO_VALUE
+
+BEGIN
+    IF (UNINIT(func_name)) THEN
+        RETURN
+    ENDIF
+
+    func_name = TO_UPPER(func_name)
+
+    IF (func_name = 'SIM_KEY') THEN
+        SIM_TPKEY(key_codes)
+    ENDIF
+
+    IF (func_name = 'LIB_VER') THEN
+        LIB_VER
+    ENDIF
+
+    IF (func_name = 'READ_VAR') THEN
+        READ_VAR(prog_name, var_name, var_type)
+    ENDIF
+
+    IF (func_name = 'WRITE_VAR') THEN
+        WRITE_VAR(prog_name, var_name, var_type, var_value)
+    ENDIF
+
+    IF (func_name = 'GET_IO_VAL') THEN
+        GET_IO_VALUE(io_type, io_index)
+    ENDIF
+END A_MKWEB

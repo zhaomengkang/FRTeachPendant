@@ -1,3 +1,4 @@
+using FRTeachPendant.Properties;
 using FTPClient;
 using Microsoft.Web.WebView2.Core;
 using System;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace FRTeachPendant
 {
@@ -27,10 +29,10 @@ namespace FRTeachPendant
         #region ToolTips
         private void initToolTips()
         {
-            toolTip1.ToolTipTitle = "Mk Tips";
+            toolTip1.ToolTipTitle = "Mengk Tips";
 
             // Tooltip for tb_robotIP
-            toolTip1.SetToolTip(tb_robotIP, "Enter the IP address of the robot controller");
+            toolTip1.SetToolTip(tb_robotIP, "Enter the IP address of the robot controller.");
 
             // Tooltip for bt_ConnectRobot
             toolTip1.SetToolTip(bt_ConnectRobot, "Connect to the robot controller");
@@ -99,6 +101,7 @@ namespace FRTeachPendant
             }
             #endregion
 
+            // Connect to the robot controller
             if (bt_ConnectRobot.Text == "Connect")
             {
                 bt_ConnectRobot.Text = "Connecting";
@@ -111,6 +114,7 @@ namespace FRTeachPendant
                 {
                     try
                     {
+                        // Check robot type
                         robotType = RobotChecker.GetRobotVersion(robotIp);
                         if (robotType == "Unknown")
                         {
@@ -123,7 +127,7 @@ namespace FRTeachPendant
                             return;
                         }
 
-
+                        // Load Karel program to robot controller
                         bool pcLoaded = false;
                         if (robotType == "R-30iA")
                         {
@@ -142,7 +146,7 @@ namespace FRTeachPendant
                             pcLoaded = FRLoadUserPC.LoadMKWebServer(robotIp, 4, adminName, adminPass, this);
                         }
 
-
+                        // Check if Karel program is loaded successfully
                         if (!pcLoaded)
                         {
                             UpdateUI(() =>
@@ -153,7 +157,9 @@ namespace FRTeachPendant
                             return;
                         }
 
+                        // Initialize CGTP sever file
                         Uri url = new Uri("http://" + robotIp + "/frh/cgtp/echo.htm");
+                        // Initialize the UI based on the robot type
                         UpdateUI(() =>
                         {
                             if (robotType == "R-30iA" || robotType == "R-30iB" || robotType == "R-30iB Plus")
@@ -170,17 +176,36 @@ namespace FRTeachPendant
                                 wb_CGTP_IE.Url = new Uri("about:blank");
 
                                 wb_CGTP_Edge.Visible = true;
-                                wb_CGTP_Edge.ZoomFactor = 0.55;
+                                wb_CGTP_Edge.ZoomFactor = 0.5;
                                 wb_CGTP_Edge.Source = url;
                             }
-                        });
-
-                        ftpClient = new FtpClient(robotIp, adminName, adminPass);
-                        ftpClient.Connect();
+                        });  
 
                         UpdateUI(() =>
                         {
-                            robotIsConnected = true;
+                            robotIsConnected = true;                  
+                            //Show robot name
+                            try
+                            {
+                                if (robotType == "R-30iA" || robotType == "R-30iB" || robotType == "R-30iB Plus")
+                                {
+                                    robotName = MkWebClient.ReadVar("http://" + robotIp, "*SYSTEM*", "$HOSTNAME", "STR").Value;
+                                    lb_HostName.Text = "HostName:" + robotName;
+                                }
+                                else
+                                {
+                                    robotName = MkWebClient.ReadVar("http://" + robotIp, "$DID", "$HOSTCOMM.ROBOT_NAME", "STR").Value;
+                                    lb_HostName.Text = "HostName:" + robotName;
+                                }
+                            }
+                            // If the robot controller Karel resources are not unlocked, show a message to unlock KAREL resources
+                            catch
+                            {
+                                InitAll();
+                                MessageBox.Show("401(Unauthorized) error occurs during connection, go to MENU > Settings > Host Communication > HTTP to unlock KAREL resources.");
+                                return;
+                            }
+
                             // Exit View
                             if (cb_bfSelect.Checked)
                             {
@@ -196,32 +221,27 @@ namespace FRTeachPendant
                                 SendKeyCode(robotIp, (int)KeyCodes.TpiEdit);
                                 System.Threading.Thread.Sleep(50);
                             }
-                            
+
+                            // Connect to FTP server
+                            ftpClient = new FtpClient(robotIp, adminName, adminPass);
+                            ftpClient.Connect();
+
+                            // Init UI
                             timer1.Start();
                             bt_ConnectRobot.Text = "Disconnect";
                             bt_ConnectRobot.BackColor = Color.GreenYellow;
-                            
                             lb_HostName.Visible = true;
                             pnKeyboard.Enabled = true;
                             pnKeyboard.Visible = true;
                             pn_RobotCfg.Visible = false;
                             AllowDrop = true;
-                           
-                            //Show robot name
-                            if (robotType == "R-30iA" || robotType == "R-30iB" || robotType == "R-30iB Plus")
-                            {
-                                robotName = MkWebClient.ReadVar("http://" + robotIp, "*SYSTEM*", "$HOSTNAME", "STR").Value;
-                                lb_HostName.Text = "HostName:" + robotName;
-                            }
-                            else
-                            {       
-                                robotName = MkWebClient.ReadVar("http://" + robotIp, "$DID", "$HOSTCOMM.ROBOT_NAME", "STR").Value;
-                                lb_HostName.Text = "HostName:" + robotName;
-                            }
-                            
+
+                            // Save IP to file
                             SaveIP();
                         });
                     }
+
+                    // Catch any exceptions that occur during the connection process and display an error message
                     catch (Exception ex)
                     {
                         UpdateUI(() =>
@@ -232,6 +252,8 @@ namespace FRTeachPendant
                     }
                 });
             }
+
+            // Disconnect from the robot controller
             else if (bt_ConnectRobot.Text == "Disconnect")
             {
                 Task.Run(() =>
@@ -1464,47 +1486,6 @@ namespace FRTeachPendant
             lb_HostName.Visible = false;
             pn_RobotCfg.Visible = true;
 
-        }
-        #endregion
-
-        #region Disable password
-        private void bt_dispassword_Click(object sender, EventArgs e)
-        {
-            if (this.TopMost)
-            {
-                bt_topMost_Click(sender, e);
-            }
-            try
-            {
-                string passId = string.Empty;
-
-                // Manual input
-                passId = GetPassIdFromUser();
-                if (string.IsNullOrEmpty(passId)) return;
-
-                // Call DisablePass to get the ReleaseKey
-                var disablePassResp = MkWebClient.DisablePass("http://" + tb_robotIP.Text, passId);
-
-                if (disablePassResp.Status == 0)
-                {
-                    MessageBox.Show($"ReleaseKey:\n{disablePassResp.ReleaseKey}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"The server returned an error status: {disablePassResp.Status}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred during execution: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private string GetPassIdFromUser()
-        {
-            // A reference to Microsoft.VisualBasic needs to be added to the project
-            string passId = FRTeachPendant.UI.InputDialog.Show("Please enter the password ID", "Manually Enter Password ID");
-            return passId;
         }
         #endregion
 

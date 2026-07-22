@@ -1,0 +1,356 @@
+<language name="HTML" casesensitive="no" wordchars="[\w]">
+	<tokenset name="Comments" id="blockcomments" type="scope" forecolor="green" fontstyle="italic">
+		<validscope name=""/>
+		<tokens>
+			<token>&lt;!--</token>
+			<token>&lt;comment&gt;</token>
+		</tokens>
+		<tokens2>
+			<token>--&gt;</token>
+			<token>&lt;/comment&gt;</token>
+		</tokens2>
+	</tokenset>
+	<tokenset name="Tag Delimiters" id="tagdelimiters" type="scope" forecolor="blue">
+		<validscope name=""/>
+		<tokens>
+			<token action="ListMembers">&lt;</token>
+			<token action="ListMembers">&lt;/</token>
+		</tokens>
+		<tokens2>
+			<token action="commitmember">&gt;</token>
+			<token action="commitmember">&gt;</token>
+		</tokens2>
+	</tokenset>
+	<tokenset name="Strings" id="strings" type="scope" singlelinescope="yes" forecolor="purple">
+		<validscope name="Tag Delimiters"/>
+		<tokens>
+			<token>"</token>
+			<token>'</token>
+		</tokens>
+		<tokens2>
+			<token>"</token>
+			<token>'</token>
+		</tokens2>
+	</tokenset>
+	<tokenset name="Element Names" id="tagelementnames" forecolor="maroon" fontstyle="bold">
+		<validscope name="Tag Delimiters"/>
+		<tokens rule="leadwith[&lt;]|trailwith[&gt;]">
+			<token>a</token>
+			<token>abbr</token>
+			<token>acronym</token>
+			<token>address</token>
+			<token>applet</token>
+			<token>area</token>
+			<token>b</token>
+			<token>base</token>
+			<token>basefont</token>
+			<token>bdo</token>
+			<token>big</token>
+			<token>blockquote</token>
+			<token>body</token>
+			<token>br</token>
+			<token>button</token>
+			<token>caption</token>
+			<token>center</token>
+			<token>cite</token>
+			<token>code</token>
+			<token>col</token>
+			<token>colgroup</token>
+			<token>dd</token>
+			<token>del</token>
+			<token>dfn</token>
+			<token>dir</token>
+			<token>div</token>
+			<token>dl</token>
+			<token>dt</token>
+			<token>em</token>
+			<token>fieldset</token>
+			<token>font</token>
+			<token>form</token>
+			<token>frame</token>
+			<token>frameset</token>
+			<token>h1</token>
+			<token>h2</token>
+			<token>h3</token>
+			<token>h4</token>
+			<token>h5</token>
+			<token>h6</token>
+			<token>head</token>
+			<token>hr</token>
+			<token>html</token>
+			<token>i</token>
+			<token>iframe</token>
+			<token>img</token>
+			<token>input</token>
+			<token>ins</token>
+			<token>isindex</token>
+			<token>kbd</token>
+			<token>label</token>
+			<token>legend</token>
+			<token>li</token>
+			<token>link</token>
+			<token>map</token>
+			<token>menu</token>
+			<token>meta</token>
+			<token>noframes</token>
+			<token>noscript</token>
+			<token>object</token>
+			<token>ol</token>
+			<token>optgroup</token>
+			<token>option</token>
+			<token>p</token>
+			<token>param</token>
+			<token>pre</token>
+			<token>q</token>
+			<token>s</token>
+			<token>samp</token>
+			<token>script</token>
+			<token>select</token>
+			<token>small</token>
+			<token>span</token>
+			<token>strike</token>
+			<token>strong</token>
+			<token>style</token>
+			<token>sub</token>
+			<token>sup</token>
+			<token>table</token>
+			<token>tbody</token>
+			<token>td</token>
+			<token>textarea</token>
+			<token>tfoot</token>
+			<token>th</token>
+			<token>thead</token>
+			<token>title</token>
+			<token>tr</token>
+			<token>tt</token>
+			<token>u</token>
+			<token>ul</token>
+			<token>var</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Attribute Names" id="tagattributenames" forecolor="blue">
+		<validscope name="Tag Delimiters"/>
+		<tokens>
+			<token regexp="yes" rule="trailwith[=]">\w+([\-\w]*\w)?</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Entities" id="tagentities" forecolor="red">
+		<validscope name=""/>
+		<validscope name="Tag Delimiters"/>
+		<tokens>
+			<token action="ListMembers">&amp;</token>
+			<token>&amp;aacute;</token>
+			<token>&amp;acirc;</token>
+			<token>&amp;acute;</token>
+			<token>&amp;aelig;</token>
+			<token>&amp;agrave;</token>
+			<token>&amp;alefsym;</token>
+			<token>&amp;alpha;</token>
+			<token>&amp;amp;</token>
+			<token>&amp;and;</token>
+			<token>&amp;ang;</token>
+			<token>&amp;aring;</token>
+			<token>&amp;asymp;</token>
+			<token>&amp;atilde;</token>
+			<token>&amp;auml;</token>
+			<token>&amp;bdquo;</token>
+			<token>&amp;beta;</token>
+			<token>&amp;brvbar;</token>
+			<token>&amp;bull;</token>
+			<token>&amp;cap;</token>
+			<token>&amp;ccedil;</token>
+			<token>&amp;cent;</token>
+			<token>&amp;chi;</token>
+			<token>&amp;circ;</token>
+			<token>&amp;clubs;</token>
+			<token>&amp;cong;</token>
+			<token>&amp;copy;</token>
+			<token>&amp;crarr;</token>
+			<token>&amp;cup;</token>
+			<token>&amp;curren;</token>
+			<token>&amp;dagger;</token>
+			<token>&amp;darr;</token>
+			<token>&amp;deg;</token>
+			<token>&amp;delta;</token>
+			<token>&amp;diams;</token>
+			<token>&amp;divide;</token>
+			<token>&amp;eacute;</token>
+			<token>&amp;ecirc;</token>
+			<token>&amp;egrave;</token>
+			<token>&amp;empty;</token>
+			<token>&amp;emsp;</token>
+			<token>&amp;ensp;</token>
+			<token>&amp;epsilon;</token>
+			<token>&amp;equiv;</token>
+			<token>&amp;eta;</token>
+			<token>&amp;eth;</token>
+			<token>&amp;euml;</token>
+			<token>&amp;euro;</token>
+			<token>&amp;exist;</token>
+			<token>&amp;fnof;</token>
+			<token>&amp;forall;</token>
+			<token>&amp;frac12;</token>
+			<token>&amp;frac14;</token>
+			<token>&amp;frac34;</token>
+			<token>&amp;frasl;</token>
+			<token>&amp;gamma;</token>
+			<token>&amp;ge;</token>
+			<token>&amp;gt;</token>
+			<token>&amp;harr;</token>
+			<token>&amp;hearts;</token>
+			<token>&amp;hellip;</token>
+			<token>&amp;iacute;</token>
+			<token>&amp;icirc;</token>
+			<token>&amp;iexcl;</token>
+			<token>&amp;igrave;</token>
+			<token>&amp;image;</token>
+			<token>&amp;infin;</token>
+			<token>&amp;int;</token>
+			<token>&amp;iota;</token>
+			<token>&amp;iquest;</token>
+			<token>&amp;isin;</token>
+			<token>&amp;iuml;</token>
+			<token>&amp;kappa;</token>
+			<token>&amp;lambda;</token>
+			<token>&amp;lang;</token>
+			<token>&amp;laquo;</token>
+			<token>&amp;larr;</token>
+			<token>&amp;lceil;</token>
+			<token>&amp;ldquo;</token>
+			<token>&amp;le;</token>
+			<token>&amp;lfloor;</token>
+			<token>&amp;lowast;</token>
+			<token>&amp;loz;</token>
+			<token>&amp;lrm;</token>
+			<token>&amp;lsaquo;</token>
+			<token>&amp;lsquo;</token>
+			<token>&amp;lt;</token>
+			<token>&amp;macr;</token>
+			<token>&amp;mdash;</token>
+			<token>&amp;micro;</token>
+			<token>&amp;middot;</token>
+			<token>&amp;minus;</token>
+			<token>&amp;mu;</token>
+			<token>&amp;nabla;</token>
+			<token>&amp;nbsp;</token>
+			<token>&amp;ndash;</token>
+			<token>&amp;ne;</token>
+			<token>&amp;ni;</token>
+			<token>&amp;not;</token>
+			<token>&amp;notin;</token>
+			<token>&amp;nsub;</token>
+			<token>&amp;ntilde;</token>
+			<token>&amp;nu;</token>
+			<token>&amp;oacute;</token>
+			<token>&amp;ocirc;</token>
+			<token>&amp;oelig;</token>
+			<token>&amp;ograve;</token>
+			<token>&amp;oline;</token>
+			<token>&amp;omega;</token>
+			<token>&amp;omicron;</token>
+			<token>&amp;oplus;</token>
+			<token>&amp;or;</token>
+			<token>&amp;ordf;</token>
+			<token>&amp;ordm;</token>
+			<token>&amp;oslash;</token>
+			<token>&amp;otilde;</token>
+			<token>&amp;otimes;</token>
+			<token>&amp;ouml;</token>
+			<token>&amp;para;</token>
+			<token>&amp;part;</token>
+			<token>&amp;permil;</token>
+			<token>&amp;perp;</token>
+			<token>&amp;phi;</token>
+			<token>&amp;pi;</token>
+			<token>&amp;piv;</token>
+			<token>&amp;plusmn;</token>
+			<token>&amp;pound;</token>
+			<token>&amp;prime;</token>
+			<token>&amp;prod;</token>
+			<token>&amp;prop;</token>
+			<token>&amp;psi;</token>
+			<token>&amp;quot;</token>
+			<token>&amp;radic;</token>
+			<token>&amp;rang;</token>
+			<token>&amp;raquo;</token>
+			<token>&amp;rarr;</token>
+			<token>&amp;rceil;</token>
+			<token>&amp;rdquo;</token>
+			<token>&amp;real;</token>
+			<token>&amp;reg;</token>
+			<token>&amp;rfloor;</token>
+			<token>&amp;rho;</token>
+			<token>&amp;rlm;</token>
+			<token>&amp;rsaquo;</token>
+			<token>&amp;rsquo;</token>
+			<token>&amp;sbquo;</token>
+			<token>&amp;scaron;</token>
+			<token>&amp;sdot;</token>
+			<token>&amp;sect;</token>
+			<token>&amp;shy;</token>
+			<token>&amp;sigma;</token>
+			<token>&amp;sigmaf;</token>
+			<token>&amp;sim;</token>
+			<token>&amp;spades;</token>
+			<token>&amp;sub;</token>
+			<token>&amp;sube;</token>
+			<token>&amp;sum;</token>
+			<token>&amp;sup;</token>
+			<token>&amp;sup1;</token>
+			<token>&amp;sup2;</token>
+			<token>&amp;sup3;</token>
+			<token>&amp;supe;</token>
+			<token>&amp;szlig;</token>
+			<token>&amp;tau;</token>
+			<token>&amp;there4;</token>
+			<token>&amp;theta;</token>
+			<token>&amp;thetasym;</token>
+			<token>&amp;thinsp;</token>
+			<token>&amp;thorn;</token>
+			<token>&amp;tilde;</token>
+			<token>&amp;times;</token>
+			<token>&amp;trade;</token>
+			<token>&amp;uacute;</token>
+			<token>&amp;uarr;</token>
+			<token>&amp;ucirc;</token>
+			<token>&amp;ugrave;</token>
+			<token>&amp;uml;</token>
+			<token>&amp;upsih;</token>
+			<token>&amp;upsilon;</token>
+			<token>&amp;uuml;</token>
+			<token>&amp;weierp;</token>
+			<token>&amp;xi;</token>
+			<token>&amp;yacute;</token>
+			<token>&amp;yen;</token>
+			<token>&amp;yuml;</token>
+			<token>&amp;zeta;</token>
+			<token>&amp;zwj;</token>
+			<token>&amp;zwnj;</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Numbers" id="numbers">
+		<validscope name=""/>
+		<validscope name="Tag Delimiters"/>
+		<tokens>
+			<token regexp="yes">-?\d+(\.\d*)?(e-?\d+)?</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Hyperlinks" id="hyperlinks" forecolor="blue" fontstyle="underline">
+		<validscope name=""/>
+		<validscope name="Comments"/>
+		<validscope name="Tag Delimiters"/>
+		<validscope name="Strings"/>
+		<tokens regexp="yes">
+			<token>file://((\w:)?\w*)([/\\][\w\s\.]+)+([/\\][\w\.]*)+</token>
+			<token>https?://([\.~:?#=\w]+\w+)(/[\.~:?#=\w]+\w)*</token>
+			<token>(ftp|news|telnet|gopher)://[\.~:?#=\w]*\w(\.[\.~:?#=\w]*\w)+</token>
+			<token>mailto:[\w-]+(@[\w-]+(\.?[\w-])*)?</token>
+		</tokens>
+	</tokenset>
+	<tokenset name="Text" id="text">
+		<validscope name=""/>
+	</tokenset>
+	<tokenset name="Tag Text" id="tagtext" fontstyle="bold">
+		<validscope name="Tag Delimiters"/>
+	</tokenset>
+</language>
