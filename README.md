@@ -1,37 +1,35 @@
 # Software Help Documentation
-
 Version V2026.07.22 · Author: Zhao Mengkang
 
 ## Version Information
-
-- **Software Version:** V2026.07.22
-- **Author:** Zhao Mengkang
-- **WeChat:** Mengk_964210817
-- **QQ:** 964210817
-- **Email:** [zhaomengkang@hotmail.com](mailto:zhaomengkang@hotmail.com)
-- **GitHub:** [zhaomengkang (赵梦康)](https://github.com/zhaomengkang)
+| Item | Content |
+|------|---------|
+| Software Version | V2026.07.22 |
+| Author | Zhao Mengkang |
+| WeChat | Mengk_964210817 |
+| QQ | 964210817 |
+| Email | [zhaomengkang@hotmail.com](mailto:zhaomengkang@hotmail.com) |
+| GitHub | [zhaomengkang (赵梦康)](https://github.com/zhaomengkang) |
 
 ## Software Update
+### Download Links
+1. **TianYi Cloud Download**
+URL: https://cloud.189.cn/t/biiEJzR3emAf
+Code: vpb5
 
-- [TianYi Cloud Download](https://cloud.189.cn/t/biiEJzR3emAf)  
-  `https://cloud.189.cn/t/biiEJzR3emAf`  **Code:** `vpb5`
-
-- [GitHub Releases](https://github.com/zhaomengkang/FRTeachPendant/releases)  
-  `https://github.com/zhaomengkang/FRTeachPendant/releases`
+2. **GitHub Releases**
+URL: https://github.com/zhaomengkang/FRTeachPendant/releases
 
 ## Open Source Project Address
-
-- [zhaomengkang/FRTeachPendant: Fanuc Robot Remote TeachPendant](https://github.com/zhaomengkang/FRTeachPendant)
+**zhaomengkang/FRTeachPendant: Fanuc Robot Remote TeachPendant**
+URL: https://github.com/zhaomengkang/FRTeachPendant
 
 ## Changelog
-
 ### 2026.07.22
-
 - Fixed some bugs
 - Removed unsupported risk items
 
-### 2026.07.07
-
+### 2026.07.08
 - Added support for R-30iA, R-30iB, R-30iB Plus, R-50iA controllers
 - Fixed blurry screen display issue
 - Redesigned FTP client, switched from webFTP to FTP
@@ -39,52 +37,53 @@ Version V2026.07.22 · Author: Zhao Mengkang
 - Changed the Help documentation display to HTML
 
 ### 2026.02.19
-
 - Added password unlock key calculation tool
 - Rewrote KAREL program
 - Redesigned UI layout
 
 ### 2025.07.05
-
 - Project launched for the first time; this tool supports remote teach pendant access
 
 ## Instructions
+### Software Dependencies
+iPendant Controls dependency files:
+- `fripendant.ocx`
+- `frinppwnd.dll`
 
-1. **Software Dependencies**
-   - iPendant Controls dependency files:
-     - `fripendant.ocx`
-     - `frinppwnd.dll`
-   - VC Runtime:
-     - Microsoft Visual C++ 2008 Redistributable (X86)
-2. **Password Protection**
-   - If password protection is enabled, you must enter a username and password with **INSTALL** privilege level when connecting.
+VC Runtime:
+- Microsoft Visual C++ 2008 Redistributable (X86)
 
-3. **401 (Unauthorized)**
-   - KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.
+Robot option:
+- R632 - KAREL
 
-4. **File Upload**
-   - Drag files (PC / VR / TP / LS) to the **"Upload Area"** to upload them to the controller.
+### Password Protection
+If password protection is enabled, you must enter a username and password with **INSTALL** privilege level when connecting.
 
-   > **Warning:** During this operation, the teach pendant key switch must be in **ON** position.
+### File Upload
+Drag files (PC / VR / TP / LS) to the **"Upload Area"** to upload them to the controller.
 
-5. **Low Resolution Display Issue**
-   - Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to **100%**.
+> ⚠️ During this operation, the TeachPendant must be in **ON mode**.
 
-6. **Connection Display - Controller is Being Registered**
-   - If you encounter this issue, please try the following solutions in order:
-     1. Do not connect through a network switch. Connect the PC directly to the robot controller.
-     2. A local firewall may be blocking the connection. Please disable the firewall.
-     3. The screen resolution may be too low. Adjust it to an appropriate resolution.
-     4. This application cannot be added to "Allow an app through firewall" during installation. Please add it manually.
-     5. Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.
-     6. `fripendant.ocx` or `frinppwnd.dll` may have been deleted. Please reinstall this tool.
+## Errors & Solutions
+### 401 (Unauthorized)
+KAREL resources need to be manually unlocked. On the teach pendant, go to MENU - Settings - Host Communications - HTTP, find KAREL, and unlock the resource.
 
-<br>  
+### Verify that the R632 (KAREL) option
+Please confirm that the robot controller has the R632 option installed. Some versions will not load PC programs if this option is not installed.
 
----
----
-<br> 
+### Low Resolution Display Issue
+Low resolution may prevent the teach pendant screen from displaying properly. Please ensure a high resolution is used and display scaling is set to **100%**.
 
+### Connection Display - Controller is Being Registered
+If you encounter this issue, please try the following solutions in order:
+1. Do not connect through a network switch. Connect the PC directly to the robot controller.
+2. A local firewall may be blocking the connection. Please disable the firewall.
+3. The screen resolution may be too low. Adjust it to an appropriate resolution.
+4. This application cannot be added to "Allow an app through firewall" during installation. Please add it manually.
+5. Microsoft Visual C++ 2008 (X86) may have been uninstalled. Please reinstall this tool.
+6. `fripendant.ocx` or `frinppwnd.dll` may have been deleted. Please reinstall this tool.
+
+## License
 ```LicenseInfo
 License
 ┌──────────────────────────────────────────────────────────────┐
