@@ -26,7 +26,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "FRTeachPendant\bin\Release\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "Support\UIF\*"; DestDir: "{app}\Support\UIF"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "KarelProject\KAREL\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "KarelProject\release\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "Support\VC\VC2008\*"; DestDir: "{app}\Support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "Support\VC\VC2013\*"; DestDir: "{app}\Support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
 
