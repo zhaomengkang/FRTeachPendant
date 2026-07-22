@@ -14,10 +14,10 @@ Version V2026.07.22 · Author: Zhao Mengkang
 ## Software Update
 
 - [TianYi Cloud Download](https://cloud.189.cn/t/biiEJzR3emAf)  
-  `https://cloud.189.cn/t/biiEJzR3emAf`
-- **Code:** `vpb5`
+  `https://cloud.189.cn/t/biiEJzR3emAf`  **Code:** `vpb5`
 
-- [GitHub Releases](https://github.com/zhaomengkang/FRTeachPendant/releases)
+- [GitHub Releases](https://github.com/zhaomengkang/FRTeachPendant/releases)  
+  `https://github.com/zhaomengkang/FRTeachPendant/releases`
 
 ## Open Source Project Address
 
