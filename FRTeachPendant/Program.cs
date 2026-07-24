@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Principal;
 using System.Windows.Forms;
@@ -10,12 +11,27 @@ namespace FRTeachPendant
 {
     internal static class Program
     {
+        [DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
         /// <summary>
         /// Main entry point of the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            // Set DPI scaling to be handled by the application
+            try
+            {
+                SetProcessDPIAware();
+            }
+            catch
+            {
+            }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             #region Check whether the OCX is registered
 
             // Specify the registry path and value name to check
@@ -144,7 +160,6 @@ namespace FRTeachPendant
         #endregion
 
         RunApplication:
-            Application.EnableVisualStyles();
             Application.Run(new mainForm());
         }
 

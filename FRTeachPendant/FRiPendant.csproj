@@ -150,9 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <None Include="res\Helper\help.html">
+    <Content Include="res\Helper\help.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\TPicon\asc.gif" />
