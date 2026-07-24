@@ -399,9 +399,9 @@ namespace FRTeachPendant
                     int status = MkWebClient.SimTpKey("http://" + ip, keyCode.ToString());
                 }
             }
-            catch 
+            catch(Exception ex)
             {
-                //None
+                MessageBox.Show("Error sending key code: " + ex.Message);
             }
         }
         #endregion
@@ -1009,13 +1009,17 @@ namespace FRTeachPendant
             if (istbKeyboardVisible)
             {
                 pnKeyboard.Visible = true;
-                this.ClientSize = new System.Drawing.Size(700, 840);   
+                this.MaximumSize = new System.Drawing.Size(700, 800);
+                this.MinimumSize = new System.Drawing.Size(700, 800);
+                this.ClientSize = new System.Drawing.Size(700, 800);      
                 bt_tbKeyShow.BackColor = Color.GreenYellow;
             }
             else
             {
                 pnKeyboard.Visible = false;
-                this.ClientSize = new System.Drawing.Size(880, 520);
+                this.MaximumSize = new System.Drawing.Size(700, 550);
+                this.MinimumSize = new System.Drawing.Size(700, 550);
+                this.ClientSize = new System.Drawing.Size(700, 550);  
                 bt_tbKeyShow.BackColor = SystemColors.Control;    
             }
         }

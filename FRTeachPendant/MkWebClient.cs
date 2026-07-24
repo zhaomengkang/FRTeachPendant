@@ -137,19 +137,6 @@ namespace FRTeachPendant
             }
         }
 
-        public static DisablePassResponse DisablePass(string ip, string passId)
-        {
-            var queryParams = new Dictionary<string, string>
-            {
-                ["func_name"] = "DISABL_PASS",
-                ["pass_id"] = passId
-            };
-
-            var url = BuildUrl(ip, "KAREL/A_MKWEB", queryParams);
-            var xml = GetString(url);
-
-            return DisablePassResponse.Parse(xml);
-        }
 
         public static GetIoValueResponse GetIoValue(string ip, IOType ioType, int ioIndex)
         {
@@ -255,42 +242,6 @@ namespace FRTeachPendant
                 resp.Value = node.Element("Value")?.Value ?? "";
                 int.TryParse(node.Element("Status")?.Value, out int status);
                 resp.Status = status;
-            }
-            catch
-            {
-                resp.Status = -999;
-            }
-
-            return resp;
-        }
-    }
-
-    public class DisablePassResponse
-    {
-        public string PasswordID { get; set; }
-        public string ReleaseKey { get; set; }
-        public int Status { get; set; }
-
-        public static DisablePassResponse Parse(string xml)
-        {
-            var resp = new DisablePassResponse();
-
-            try
-            {
-                var doc = XDocument.Parse(xml);
-                var disablePasswordNode = doc.Root?.Element("DisablePassword");
-
-                if (disablePasswordNode != null)
-                {
-                    resp.PasswordID = disablePasswordNode.Element("PasswordID")?.Value ?? "";
-                    resp.ReleaseKey = disablePasswordNode.Element("ReleaseKey")?.Value ?? "";
-                    int.TryParse(disablePasswordNode.Element("Status")?.Value, out int status);
-                    resp.Status = status;
-                }
-                else
-                {
-                    resp.Status = -998;
-                }
             }
             catch
             {
