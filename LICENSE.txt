@@ -1,8 +1,8 @@
 ┌──────────────────────────────────────────────────────────────┐
-│                    FRTeachPendant                            │
-│                    Author: Zhao Mengkang                     │
-│              Email: zhaomengkang@hotmail.com                 │
-│           GitHub: https://github.com/zhaomengkang/           │
+                    FRTeachPendant                            
+                    Author: Zhao Mengkang                     
+              Email: zhaomengkang@hotmail.com                 
+           GitHub: https://github.com/zhaomengkang/           
 └──────────────────────────────────────────────────────────────┘
 MIT License
 

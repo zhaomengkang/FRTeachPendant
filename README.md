@@ -87,10 +87,10 @@ If you encounter this issue, please try the following solutions in order:
 ```LicenseInfo
 License
 ┌──────────────────────────────────────────────────────────────┐
-│                    FRTeachPendant                            │
-│                    Author: Zhao Mengkang                     │
-│              Email: zhaomengkang@hotmail.com                 │
-│           GitHub: https://github.com/zhaomengkang/           │
+                    FRTeachPendant                            
+                    Author: Zhao Mengkang                     
+              Email: zhaomengkang@hotmail.com                 
+           GitHub: https://github.com/zhaomengkang/           
 └──────────────────────────────────────────────────────────────┘
 
 Copyright (c) 2025-2026 Zhao Mengkang
