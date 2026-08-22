@@ -973,7 +973,7 @@ namespace FRTeachPendant
             {
                 string userDataFolder = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "MyWinFormsApp",
+                    "FRTeachPendant",
                     "WebView2");
 
                 Directory.CreateDirectory(userDataFolder);

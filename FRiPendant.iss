@@ -29,6 +29,7 @@ Source: "Support\UIF\*"; DestDir: "{app}\Support\UIF"; Flags: ignoreversion recu
 Source: "KarelProject\release\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "Support\VC\VC2008\*"; DestDir: "{app}\Support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "Support\VC\VC2013\*"; DestDir: "{app}\Support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "Support\webview2\MicrosoftEdgeWebview2Setup.exe"; DestDir: "{app}\Support\webview2"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"
@@ -40,210 +41,424 @@ const
   TypeLibKey1 = 'TypeLib\{34F4C4DB-A64B-4D87-99DA-042F7FB7DEBA}';
   TypeLibKey2 = 'TypeLib\{71060659-0E45-11D3-81B6-0000E206D650}';
   TypeLibKey3 = 'TypeLib\{F8A2CDB9-DC5A-49D2-90D1-559CAB110FFA}';
-  ocxVerNeed = 10;
+  OcxVersionRequired = 10;
+  WebView2ClientId = '{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}';
 
 var
-  OCXForceRegPage: TInputOptionWizardPage;
-  OCXCheckIndex1, OCXCheckIndex2, OCXCheckIndex3: Integer;
+  OcxForceRegPage: TInputOptionWizardPage;
+  OcxCheckIndex1: Integer;
+  OcxCheckIndex2: Integer;
+  OcxCheckIndex3: Integer;
 
-{ ========== 版本检测与注册表读取 ========== }
-
-function GetRegisteredOCXPath(const TypeLibKey: String): String;
+function GetRegisteredOcxPath(const TypeLibKey: String): String;
 begin
   Result := '';
-  if RegQueryStringValue(HKCR, TypeLibKey + '\1.0\0\win32', '', Result) then
+
+  if RegQueryStringValue(
+       HKCR,
+       TypeLibKey + '\1.0\0\win32',
+       '',
+       Result) then
+  begin
     if not FileExists(Result) then
       Result := '';
+  end;
 end;
 
-function IsOCXRegistered(const TypeLibKey: String): Boolean;
+function IsOcxRegistered(const TypeLibKey: String): Boolean;
 begin
-  Result := (GetRegisteredOCXPath(TypeLibKey) <> '');
+  Result := GetRegisteredOcxPath(TypeLibKey) <> '';
 end;
 
-function GetFileMajorVersion(const FilePath: String; var MajorVer: Cardinal): Boolean;
+function GetFileMajorVersion(
+  const FilePath: String;
+  var MajorVersion: Cardinal): Boolean;
 var
-  VersionStr, MajorStr: String;
-  DotPos: Integer;
-  Ver: Integer;
+  VersionString: String;
+  MajorString: String;
+  DotPosition: Integer;
+  VersionNumber: Integer;
 begin
   Result := False;
+  MajorVersion := 0;
+
   if not FileExists(FilePath) then
     Exit;
 
-  if not GetVersionNumbersString(FilePath, VersionStr) then
-    Exit;
-  if VersionStr = '' then
+  if not GetVersionNumbersString(FilePath, VersionString) then
     Exit;
 
-  DotPos := Pos('.', VersionStr);
-  if DotPos > 1 then
-    MajorStr := Copy(VersionStr, 1, DotPos - 1)
+  if VersionString = '' then
+    Exit;
+
+  DotPosition := Pos('.', VersionString);
+
+  if DotPosition > 1 then
+    MajorString := Copy(VersionString, 1, DotPosition - 1)
   else
-    MajorStr := VersionStr;
+    MajorString := VersionString;
 
-  Ver := StrToIntDef(MajorStr, -1);
-  if Ver < 0 then
+  VersionNumber := StrToIntDef(MajorString, -1);
+
+  if VersionNumber < 0 then
     Exit;
 
-  MajorVer := Cardinal(Ver);
+  MajorVersion := Cardinal(VersionNumber);
   Result := True;
 end;
 
-{ ========== 自定义强制注册勾选页面 ========== }
-
 procedure InitializeWizard();
 var
-  MajorVer: Cardinal;
-  RegPath: String;
-  NeedPage: Boolean;
+  MajorVersion: Cardinal;
+  RegisteredPath: String;
+  NeedOcxPage: Boolean;
 begin
-  OCXCheckIndex1 := -1;
-  OCXCheckIndex2 := -1;
-  OCXCheckIndex3 := -1;
-  NeedPage := False;
+  OcxCheckIndex1 := -1;
+  OcxCheckIndex2 := -1;
+  OcxCheckIndex3 := -1;
+  NeedOcxPage := False;
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey1);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
-    NeedPage := True;
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey1);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
+    NeedOcxPage := True;
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey2);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
-    NeedPage := True;
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey2);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
+    NeedOcxPage := True;
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey3);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
-    NeedPage := True;
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey3);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
+    NeedOcxPage := True;
 
-  if not NeedPage then
+  if not NeedOcxPage then
     Exit;
 
-  OCXForceRegPage := CreateInputOptionPage(wpSelectComponents,
+  OcxForceRegPage := CreateInputOptionPage(
+    wpSelectComponents,
     'OCX Component Registration',
-    'Some registered OCX components have versions older than ' + IntToStr(ocxVerNeed) +'.' ,
-    'Check the items below to force re-register these OCX files during installation.' + #13#10 +
-    'If left unchecked, they will only be registered if not currently present on the system.',
-    False, False);
+    'Some registered OCX components have older versions.',
+    'Select the components that should be registered again.',
+    False,
+    False);
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey1);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey1);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
   begin
-    OCXCheckIndex1 := OCXForceRegPage.Add(
-      Format('Force register fripendant.ocx (current version: %d.x)', [MajorVer]));
-    OCXForceRegPage.Values[OCXCheckIndex1] := True;
+    OcxCheckIndex1 := OcxForceRegPage.Add(
+      Format('Force register fripendant.ocx (current version: %d.x)', [MajorVersion]));
+    OcxForceRegPage.Values[OcxCheckIndex1] := True;
   end;
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey2);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey2);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
   begin
-    OCXCheckIndex2 := OCXForceRegPage.Add(
-      Format('Force register fripcontrols.ocx (current version: %d.x)', [MajorVer]));
-    OCXForceRegPage.Values[OCXCheckIndex2] := True;
+    OcxCheckIndex2 := OcxForceRegPage.Add(
+      Format('Force register fripcontrols.ocx (current version: %d.x)', [MajorVersion]));
+    OcxForceRegPage.Values[OcxCheckIndex2] := True;
   end;
 
-  RegPath := GetRegisteredOCXPath(TypeLibKey3);
-  if (RegPath <> '') and GetFileMajorVersion(RegPath, MajorVer) and (MajorVer < ocxVerNeed) then
+  RegisteredPath := GetRegisteredOcxPath(TypeLibKey3);
+  if (RegisteredPath <> '') and
+     GetFileMajorVersion(RegisteredPath, MajorVersion) and
+     (MajorVersion < OcxVersionRequired) then
   begin
-    OCXCheckIndex3 := OCXForceRegPage.Add(
-      Format('Force register frtreeview.ocx (current version: %d.x)', [MajorVer]));
-    OCXForceRegPage.Values[OCXCheckIndex3] := True;
+    OcxCheckIndex3 := OcxForceRegPage.Add(
+      Format('Force register frtreeview.ocx (current version: %d.x)', [MajorVersion]));
+    OcxForceRegPage.Values[OcxCheckIndex3] := True;
   end;
 end;
 
-{ ========== VC++ 运行时安装 ========== }
+function IsForceChecked(CheckIndex: Integer): Boolean;
+begin
+  Result :=
+    (OcxForceRegPage <> nil) and
+    (CheckIndex >= 0) and
+    OcxForceRegPage.Values[CheckIndex];
+end;
 
 procedure InstallVC2008IfNeeded();
 var
   ResultCode: Integer;
-  VCRedistExe: String;
-  ExecResult: Boolean;
+  InstallerPath: String;
 begin
-  VCRedistExe := ExpandConstant('{app}\support\VC2008\vcredist_x86.exe');
-  ExecResult := Exec(VCRedistExe, '/q /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  if not ExecResult or (ResultCode <> 0) then
-    MsgBox('VC++ 2008 Redistributable installation failed, error code: ' + IntToStr(ResultCode), mbError, MB_OK);
+  InstallerPath := ExpandConstant(
+    '{app}\Support\VC2008\vcredist_x86.exe');
+
+  if not FileExists(InstallerPath) then
+    Exit;
+
+  if not Exec(
+       InstallerPath,
+       '/q /norestart',
+       '',
+       SW_HIDE,
+       ewWaitUntilTerminated,
+       ResultCode) then
+  begin
+    MsgBox(
+      'Failed to start the VC++ 2008 Redistributable installer.',
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  if (ResultCode <> 0) and (ResultCode <> 3010) then
+  begin
+    MsgBox(
+      'VC++ 2008 Redistributable installation failed. Error code: ' +
+      IntToStr(ResultCode),
+      mbError,
+      MB_OK);
+    Abort;
+  end;
 end;
 
 procedure InstallVC2013IfNeeded();
 var
   ResultCode: Integer;
-  VCRedistExe: String;
-  ExecResult: Boolean;
+  InstallerPath: String;
 begin
-  VCRedistExe := ExpandConstant('{app}\support\VC2013\vcredist_x86.exe');
-  ExecResult := Exec(VCRedistExe, '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  if not ExecResult or (ResultCode <> 0) then
-    MsgBox('VC++ 2013 Redistributable installation failed, error code: ' + IntToStr(ResultCode), mbError, MB_OK);
+  InstallerPath := ExpandConstant(
+    '{app}\Support\VC2013\vcredist_x86.exe');
+
+  if not FileExists(InstallerPath) then
+    Exit;
+
+  if not Exec(
+       InstallerPath,
+       '/install /quiet /norestart',
+       '',
+       SW_HIDE,
+       ewWaitUntilTerminated,
+       ResultCode) then
+  begin
+    MsgBox(
+      'Failed to start the VC++ 2013 Redistributable installer.',
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  if (ResultCode <> 0) and (ResultCode <> 3010) then
+  begin
+    MsgBox(
+      'VC++ 2013 Redistributable installation failed. Error code: ' +
+      IntToStr(ResultCode),
+      mbError,
+      MB_OK);
+    Abort;
+  end;
 end;
 
-{ ========== OCX 注册（支持强制模式）========== }
-
-function IsForceChecked(CheckIndex: Integer): Boolean;
+function IsWebView2RuntimeInstalled(): Boolean;
+var
+  Version: String;
 begin
-  if (OCXForceRegPage = nil) or (CheckIndex < 0) then
-    Result := False
-  else
-    Result := OCXForceRegPage.Values[CheckIndex];
+  Result := False;
+
+  if RegQueryStringValue(
+       HKLM64,
+       'SOFTWARE\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
+       'pv',
+       Version) then
+  begin
+    Result := (Version <> '') and (Version <> '0.0.0.0');
+
+    if Result then
+      Exit;
+  end;
+
+  if RegQueryStringValue(
+       HKLM32,
+       'SOFTWARE\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
+       'pv',
+       Version) then
+  begin
+    Result := (Version <> '') and (Version <> '0.0.0.0');
+
+    if Result then
+      Exit;
+  end;
+
+  if RegQueryStringValue(
+       HKCU,
+       'Software\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
+       'pv',
+       Version) then
+  begin
+    Result := (Version <> '') and (Version <> '0.0.0.0');
+  end;
 end;
 
-procedure RegisterOCXIfNeeded(const OCXPath: String; const TypeLibKey: String; Force: Boolean);
+procedure InstallWebView2IfNeeded();
+var
+  InstallerPath: String;
+  ResultCode: Integer;
+begin
+  if IsWebView2RuntimeInstalled() then
+    Exit;
+
+  InstallerPath := ExpandConstant(
+    '{app}\Support\webview2\MicrosoftEdgeWebview2Setup.exe');
+
+  if not FileExists(InstallerPath) then
+  begin
+    MsgBox(
+      'The WebView2 Runtime installer was not found:' + #13#10 +
+      InstallerPath,
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  WizardForm.StatusLabel.Caption :=
+    'Installing Microsoft Edge WebView2 Runtime...';
+  WizardForm.Refresh;
+
+  if not Exec(
+       InstallerPath,
+       '',
+       '',
+       SW_SHOWNORMAL,
+       ewWaitUntilTerminated,
+       ResultCode) then
+  begin
+    MsgBox(
+      'Failed to start the WebView2 Runtime installer.',
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  if (ResultCode <> 0) and (ResultCode <> 3010) then
+  begin
+    MsgBox(
+      'WebView2 Runtime installation failed. Error code: ' +
+      IntToStr(ResultCode),
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  if not IsWebView2RuntimeInstalled() then
+  begin
+    MsgBox(
+      'WebView2 Runtime installation could not be verified.',
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+end;
+
+procedure RegisterOcxIfNeeded(
+  const OcxPath: String;
+  const TypeLibKey: String;
+  ForceRegister: Boolean);
 var
   ResultCode: Integer;
   ShouldRegister: Boolean;
 begin
-  ShouldRegister := False;
-
-  if Force then
-    ShouldRegister := FileExists(OCXPath)
+  if ForceRegister then
+    ShouldRegister := FileExists(OcxPath)
   else
-    ShouldRegister := (not IsOCXRegistered(TypeLibKey)) or (not FileExists(OCXPath));
+    ShouldRegister :=
+      (not IsOcxRegistered(TypeLibKey)) or
+      (not FileExists(OcxPath));
 
-  if ShouldRegister then
+  if not ShouldRegister then
+    Exit;
+
+  if not Exec(
+       'regsvr32.exe',
+       '/s "' + OcxPath + '"',
+       '',
+       SW_HIDE,
+       ewWaitUntilTerminated,
+       ResultCode) then
   begin
-    if not Exec('regsvr32.exe', '/s "' + OCXPath + '"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
-      MsgBox('Failed to execute regsvr32 to register OCX: ' + OCXPath, mbError, MB_OK)
-    else if ResultCode <> 0 then
-      MsgBox('OCX registration failed with error code: ' + IntToStr(ResultCode), mbError, MB_OK);
+    MsgBox(
+      'Failed to start regsvr32.exe for:' + #13#10 + OcxPath,
+      mbError,
+      MB_OK);
+    Abort;
+  end;
+
+  if ResultCode <> 0 then
+  begin
+    MsgBox(
+      'OCX registration failed. Error code: ' +
+      IntToStr(ResultCode) + #13#10 + OcxPath,
+      mbError,
+      MB_OK);
+    Abort;
   end;
 end;
 
-{ ========== 安装步骤回调 ========== }
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-  OCXPath1, OCXPath2, OCXPath3: String;
-  VCPath: String;
+  OcxPath1: String;
+  OcxPath2: String;
+  OcxPath3: String;
+  CleanupPath: String;
 begin
-  if CurStep = ssPostInstall then
-  begin
-    InstallVC2008IfNeeded();
-    InstallVC2013IfNeeded();
+  if CurStep <> ssPostInstall then
+    Exit;
 
-    OCXPath1 := ExpandConstant('{app}\support\UIF\fripendant.ocx');
-    RegisterOCXIfNeeded(OCXPath1, TypeLibKey1, IsForceChecked(OCXCheckIndex1));
+  InstallWebView2IfNeeded();
 
-    OCXPath2 := ExpandConstant('{app}\support\UIF\fripcontrols.ocx');
-    RegisterOCXIfNeeded(OCXPath2, TypeLibKey2, IsForceChecked(OCXCheckIndex2));
+  InstallVC2008IfNeeded();
+  InstallVC2013IfNeeded();
 
-    OCXPath3 := ExpandConstant('{app}\support\UIF\frtreeview.ocx');
-    RegisterOCXIfNeeded(OCXPath3, TypeLibKey3, IsForceChecked(OCXCheckIndex3));
+  OcxPath1 := ExpandConstant(
+    '{app}\Support\UIF\fripendant.ocx');
+  RegisterOcxIfNeeded(
+    OcxPath1,
+    TypeLibKey1,
+    IsForceChecked(OcxCheckIndex1));
 
-    WizardForm.StatusLabel.Caption := 'Cleaning up VC redistributable folder...';
-    WizardForm.Refresh;
-    Sleep(1000);
+  OcxPath2 := ExpandConstant(
+    '{app}\Support\UIF\fripcontrols.ocx');
+  RegisterOcxIfNeeded(
+    OcxPath2,
+    TypeLibKey2,
+    IsForceChecked(OcxCheckIndex2));
 
-    VCPath := ExpandConstant('{app}\support\VC2008');
-    if DirExists(VCPath) then
-      DelTree(VCPath, True, True, True);
+  OcxPath3 := ExpandConstant(
+    '{app}\Support\UIF\frtreeview.ocx');
+  RegisterOcxIfNeeded(
+    OcxPath3,
+    TypeLibKey3,
+    IsForceChecked(OcxCheckIndex3));
 
-    VCPath := ExpandConstant('{app}\support\VC2013');
-    if DirExists(VCPath) then
-      DelTree(VCPath, True, True, True);
+  WizardForm.StatusLabel.Caption :=
+    'Cleaning up runtime installer files...';
+  WizardForm.Refresh;
 
-    WizardForm.StatusLabel.Caption := 'Installation completed.';
-    WizardForm.Refresh;
-    Sleep(1000);
-  end;
+  CleanupPath := ExpandConstant('{app}\Support\VC2008');
+  if DirExists(CleanupPath) then
+    DelTree(CleanupPath, True, True, True);
+
+  CleanupPath := ExpandConstant('{app}\Support\VC2013');
+  if DirExists(CleanupPath) then
+    DelTree(CleanupPath, True, True, True);
+
+  CleanupPath := ExpandConstant('{app}\Support\webview2');
+  if DirExists(CleanupPath) then
+    DelTree(CleanupPath, True, True, True);
+
+  WizardForm.StatusLabel.Caption :=
+    'Installation completed.';
+  WizardForm.Refresh;
 end;
 
 [Run]
