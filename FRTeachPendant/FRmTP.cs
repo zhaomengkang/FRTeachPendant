@@ -1437,6 +1437,7 @@ namespace FRTeachPendant
                     try
                     {
                         PingReply reply = await ping.SendPingAsync(robotIp, timeout);
+                        
                         if (reply.Status == IPStatus.Success)
                         {
                             successCount++;
@@ -1444,13 +1445,12 @@ namespace FRTeachPendant
                     }
                     catch
                     {
-                        // ignore
+                        // None
                     }
 
                     await Task.Delay(100);
                 }
-
-                return successCount >= (retryCount / 2);
+                return !string.IsNullOrEmpty(MkWebClient.GetLibVersion("http://" + tb_robotIP.Text)) && (successCount >= (retryCount / 2));
             }
         }
 
@@ -1469,14 +1469,21 @@ namespace FRTeachPendant
 
             if (robotIsConnected)
             {
-                if (MkWebClient.GetIoValue("http://" + tb_robotIP.Text, IOType.OperatorPanelOutput, 7).Value == 0)
+                try
                 {
-                    pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;      
-                }
-                else
+                    if (MkWebClient.GetIoValue("http://" + tb_robotIP.Text, IOType.OperatorPanelOutput, 7).Value == 0)
+                    {
+                        pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;
+                    }
+                    else
+                    {
+                        pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenon;
+                    }
+                }catch
                 {
-                    pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenon;
+                    pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;
                 }
+                
             }
 
         }

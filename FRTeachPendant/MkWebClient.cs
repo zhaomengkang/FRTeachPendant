@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Collections.Generic;
 
@@ -176,9 +177,22 @@ namespace FRTeachPendant
 
         private static string GetString(string url)
         {
-            var response = _httpClient.GetAsync(url).GetAwaiter().GetResult();
-            response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            try
+            {
+                var response = _httpClient.GetAsync(url).GetAwaiter().GetResult();
+                if (!response.IsSuccessStatusCode)
+                    return string.Empty;
+
+                return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            }
+            catch (HttpRequestException)
+            {
+                return string.Empty;
+            }
+            catch
+            {    
+                return string.Empty;
+            }
         }
     }
 
