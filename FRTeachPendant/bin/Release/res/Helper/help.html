@@ -527,14 +527,14 @@
 			</div>
 
 			<div class="container">
-				<h1 data-key="title">Software Help Documentation</h1>
-				<p class="subtitle" data-key="subtitle">Version V2026.07.22 · Author: Zhao Mengkang</p>
+                <h1 data-key="title">Software Help Documentation</h1>
+                <p class="subtitle" data-key="subtitle">Version V2026.08.22 · Author: Zhao Mengkang</p>
 
 				<section id="version">
 					<h2 data-key="sec_version">Version Information</h2>
 					<dl class="meta-grid">
-						<dt data-key="lbl_version">Software Version</dt>
-						<dd>V2026.07.22</dd>
+                <dt data-key="lbl_version">Software Version</dt>
+                <dd>V2026.08.22</dd>
 						<dt data-key="lbl_author">Author</dt>
 						<dd data-key="value_author">Zhao Mengkang</dd>
 						<dt data-key="lbl_wechat">WeChat</dt>
@@ -554,16 +554,6 @@
 
 				<section id="download">
 					<h2 data-key="sec_download">Software Update</h2>
-					<div class="link-row">
-						<div class="download-link">
-							<a href="https://cloud.189.cn/t/biiEJzR3emAf" target="_blank" data-key="link_download">
-								<span class="link-title">TianYi Cloud Download</span>
-							</a>
-							<span class="link-url">https://cloud.189.cn/t/biiEJzR3emAf</span>
-						</div>
-						<span class="badge" data-key="badge_code">Code: vpb5</span>
-					</div>
-
 					<div class="link-row">
 						<div class="download-link">
 							<a href="https://github.com/zhaomengkang/FRTeachPendant/releases" target="_blank" data-key="link_github">
@@ -588,8 +578,14 @@
 
 				<section id="changelog">
 					<h2 data-key="sec_changelog">Changelog</h2>
-					<ul class="changelog-list">
-						<li class="changelog-item">
+                <ul class="changelog-list">
+                    <li class="changelog-item">
+                        <div class="version-date">2026.08.22</div>
+                        <ul>
+                            <li data-key="log_0822_1">Adjusted UI control appearance</li>
+                        </ul>
+                    </li>
+                    <li class="changelog-item">
 							<div class="version-date">2026.07.22</div>
 							<ul>
 								<li data-key="log_0722_1">Fixed some bugs</li>
@@ -748,7 +744,7 @@ SOFTWARE.
 			const i18n = {
 			en: {
 			title: "Software Help Documentation",
-			subtitle: "Version V2026.07.22 · Author: Zhao Mengkang",
+            subtitle: "Version V2026.08.22 · Author: Zhao Mengkang",
 			nav_version: "Version Info",
 			nav_download: "Download",
 			nav_changelog: "Changelog",
@@ -770,20 +766,20 @@ SOFTWARE.
 			lbl_qq: "QQ",
 			lbl_email: "Email",
 			lbl_github: "GitHub",
-			link_download: "TianYi Cloud Download",
 			link_github: "GitHub Releases",
 			badge_code: "Code: vpb5",
-			log_250705_1: "Project launched for the first time; this tool supports remote teach pendant access",
-			log_0722_1: "Fixed some bugs",
-			log_0722_2: "Removed unsupported risk items",
-			log_0707_1: "Added support for R-30iA, R-30iB, R-30iB Plus, R-50iA controllers",
-			log_0707_2: "Fixed blurry screen display issue",
-			log_0707_3: "Redesigned FTP client, switched from webFTP to FTP",
-			log_0707_4: "Added program upload restriction: upload only allowed when teach pendant key switch is ON",
-			log_0707_5: "Changed the Help documentation display to HTML",
-			log_0219_1: "Added password unlock key calculation tool",
-			log_0219_2: "Rewrote KAREL program",
-			log_0219_3: "Redesigned UI layout",
+            log_0822_1: "Adjusted UI control appearance",
+            log_0722_1: "Fixed some bugs",
+            log_0722_2: "Removed unsupported risk items",
+            log_0707_1: "Added support for R-30iA, R-30iB, R-30iB Plus, R-50iA controllers",
+            log_0707_2: "Fixed blurry screen display issue",
+            log_0707_3: "Redesigned FTP client, switched from webFTP to FTP",
+            log_0707_4: "Added program upload restriction: upload only allowed when teach pendant key switch is ON",
+            log_0707_5: "Changed the Help documentation display to HTML",
+            log_0219_1: "Added password unlock key calculation tool",
+            log_0219_2: "Rewrote KAREL program",
+            log_0219_3: "Redesigned UI layout",
+            log_250705_1: "Project launched for the first time; this tool supports remote teach pendant access",
 			item1_title: "Software Dependencies",
 			item1_p1: "iPendant Controls dependency files:",
 			item1_p2: "VC Runtime:",
@@ -820,7 +816,7 @@ SOFTWARE.
 			},
 			zh: {
 			title: "软件使用帮助文档",
-			subtitle: "版本 V2026.07.22 · 作者：赵梦康",
+                subtitle: "版本 V2026.08.22 · 作者：赵梦康",
 			nav_version: "版本信息",
 			nav_download: "软件更新",
 			nav_changelog: "更新日志",
@@ -842,20 +838,20 @@ SOFTWARE.
 			lbl_qq: "QQ",
 			lbl_email: "邮箱",
 			lbl_github: "GitHub",
-			link_download: "天翼云盘下载",
 			link_github: "GitHub 发布页",
 			badge_code: "提取码 vpb5",
-			log_250705_1: "首次项目启动，该工具支持远程示教器访问",
-			log_0722_1: "修复了一些 Bug",
-			log_0722_2: "删除了不支持的风险项",
-			log_0707_1: "支持 R-30iA、R-30iB、R-30iB Plus、R-50iA 控制器",
-			log_0707_2: "修复了画面显示模糊问题",
-			log_0707_3: "重做了 FTP 客户端，由 webFTP 改为 FTP",
-			log_0707_4: "新增程序上传限制，仅可在示教器旋钮开关处于 ON 时上传",
-			log_0707_5: "将帮助文档显示方式修改为 HTML",
-			log_0219_1: "新增密码解除键计算工具",
-			log_0219_2: "重写 KAREL 程序",
-			log_0219_3: "重新布局 UI 画面",
+            log_0822_1: "调整 UI 控件外观",
+            log_0722_1: "修复了一些 Bug",
+            log_0722_2: "删除了不支持的风险项",
+            log_0707_1: "支持 R-30iA、R-30iB、R-30iB Plus、R-50iA 控制器",
+            log_0707_2: "修复了画面显示模糊问题",
+            log_0707_3: "重做了 FTP 客户端，由 webFTP 改为 FTP",
+            log_0707_4: "新增程序上传限制，仅可在示教器旋钮开关处于 ON 时上传",
+            log_0707_5: "将帮助文档显示方式修改为 HTML",
+            log_0219_1: "新增密码解除键计算工具",
+            log_0219_2: "重写 KAREL 程序",
+            log_0219_3: "重新布局 UI 画面",
+            log_250705_1: "首次项目启动，该工具支持远程示教器访问",
 			item1_title: "软件依赖",
 			item1_p1: "iPendant 控件依赖文件：",
 			item1_p2: "VC 运行库：",

@@ -7,8 +7,24 @@
       "RelativeMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|solutionrelative:frteachpendant\\frmtp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|c:\\users\\96421\\documents\\github\\frteachpendant\\frteachpendant\\frmtp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\frteachpendant\\frmtp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|solutionrelative:frteachpendant\\frmtp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\frteachpendant\\frmtp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|solutionrelative:frteachpendant\\frmtp.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\bin\\Release\\res\\Helper\\help.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FRTeachPendant\\bin\\Release\\res\\Helper\\help.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\frteachpendant\\res\\helper\\help.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E3B88E33-2B08-4E8F-93D5-9DFF6FF7E881}|FRTeachPendant\\FRiPendant.csproj|solutionrelative:frteachpendant\\res\\helper\\help.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,12 +47,49 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FRmTP.cs",
+              "DocumentMoniker": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\FRmTP.cs",
+              "RelativeDocumentMoniker": "FRTeachPendant\\FRmTP.cs",
+              "ToolTip": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\FRmTP.cs",
+              "RelativeToolTip": "FRTeachPendant\\FRmTP.cs",
+              "ViewState": "AgIAALUFAAAAAAAAAAAhwMEFAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T14:35:36.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "help.html",
+              "DocumentMoniker": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\bin\\Release\\res\\Helper\\help.html",
+              "RelativeDocumentMoniker": "FRTeachPendant\\bin\\Release\\res\\Helper\\help.html",
+              "ToolTip": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\bin\\Release\\res\\Helper\\help.html",
+              "RelativeToolTip": "FRTeachPendant\\bin\\Release\\res\\Helper\\help.html",
+              "ViewState": "AgIAAA8DAAAAAAAAAAAAAJgDAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-08-22T13:04:09.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "help.html",
+              "DocumentMoniker": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\res\\Helper\\help.html",
+              "RelativeDocumentMoniker": "FRTeachPendant\\res\\Helper\\help.html",
+              "ToolTip": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\res\\Helper\\help.html",
+              "RelativeToolTip": "FRTeachPendant\\res\\Helper\\help.html",
+              "ViewState": "AgIAAEkDAAAAAAAAAAAAwE4CAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-08-22T13:02:47.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FRmTP.Designer.cs",
               "DocumentMoniker": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\FRmTP.Designer.cs",
               "RelativeDocumentMoniker": "FRTeachPendant\\FRmTP.Designer.cs",
               "ToolTip": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\FRTeachPendant\\FRmTP.Designer.cs",
               "RelativeToolTip": "FRTeachPendant\\FRmTP.Designer.cs",
-              "ViewState": "AgIAAPcDAAAAAAAAAAAhwAQEAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-22T12:37:12.908Z",
               "EditorCaption": ""
@@ -52,6 +105,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-22T12:22:32.113Z",
               "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\96421\\Documents\\GitHub\\FRTeachPendant\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswB8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-08-22T13:07:44.507Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,10 +1,10 @@
 # Software Help Documentation
-Version V2026.07.22 · Author: Zhao Mengkang
+Version V2026.08.22 · Author: Zhao Mengkang
 
 ## Version Information
 | Item | Content |
 |------|---------|
-| Software Version | V2026.07.22 |
+| Software Version | V2026.08.22 |
 | Author | Zhao Mengkang |
 | WeChat | Mengk_964210817 |
 | QQ | 964210817 |
@@ -13,11 +13,7 @@ Version V2026.07.22 · Author: Zhao Mengkang
 
 ## Software Update
 ### Download Links
-1. **TianYi Cloud Download**
-URL: https://cloud.189.cn/t/biiEJzR3emAf
-Code: vpb5
-
-2. **GitHub Releases**
+**GitHub Releases**
 URL: https://github.com/zhaomengkang/FRTeachPendant/releases
 
 ## Open Source Project Address
@@ -25,6 +21,9 @@ URL: https://github.com/zhaomengkang/FRTeachPendant/releases
 URL: https://github.com/zhaomengkang/FRTeachPendant
 
 ## Changelog
+### 2026.08.22
+- Adjusted UI control appearance
+
 ### 2026.07.22
 - Fixed some bugs
 - Removed unsupported risk items

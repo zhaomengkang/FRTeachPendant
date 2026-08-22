@@ -1,5 +1,5 @@
 #define MyAppName "FRiPendant"
-#define MyAppVersion "2026.07.22"
+#define MyAppVersion "2026.08.22"
 #define MyAppPublisher "Zhao,Mengkang"
 #define MyAppExeName "FRiPendant.exe"
 

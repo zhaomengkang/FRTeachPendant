@@ -1,7 +1,7 @@
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -- File Name : A_MKWEB.KL
 -- Author    : Zhao,Mengkang
--- Version   : V26.07.22
+-- Version   : V26.08.22
 --
 -- Copyright (c) 2025-2026 Zhao Mengkang
 
@@ -26,13 +26,13 @@
 
 PROGRAM A_MKWEB
 %SYSTEM
-%COMMENT = 'V26.07.22'
+%COMMENT = 'V26.08.22'
 %NOLOCKGROUP
 %NOBUSYLAMP
 %NOPAUSESHFT
 %NOPAUSE = ERROR + COMMAND + TPENABLE
 %INVISIBLE
-CONST CLIB_VERSION = 'V26.07.22'
+CONST CLIB_VERSION = 'V26.08.22'
 
 VAR
     func_name : STRING[50]

@@ -3,6 +3,7 @@ using FTPClient;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -1465,6 +1466,19 @@ namespace FRTeachPendant
                 this.robotIsConnected = false;
                 Application.Restart();
             }
+
+            if (robotIsConnected)
+            {
+                if (MkWebClient.GetIoValue("http://" + tb_robotIP.Text, IOType.OperatorPanelOutput, 7).Value == 0)
+                {
+                    pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;      
+                }
+                else
+                {
+                    pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenon;
+                }
+            }
+
         }
         #endregion
 

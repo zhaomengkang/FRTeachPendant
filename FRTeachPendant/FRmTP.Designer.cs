@@ -51,41 +51,27 @@
             this.pnCGTP = new System.Windows.Forms.Panel();
             this.wb_CGTP_Edge = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.pnKeyboard = new System.Windows.Forms.Panel();
+            this.pb_TPSwitch = new System.Windows.Forms.PictureBox();
             this.gb_FTPUtilities = new System.Windows.Forms.GroupBox();
             this.bt_Backup = new System.Windows.Forms.Button();
             this.pbBackup = new System.Windows.Forms.ProgressBar();
             this.bt_KeyBoard = new System.Windows.Forms.Button();
             this.bt_f2 = new System.Windows.Forms.Button();
+            this.bt_item = new System.Windows.Forms.Button();
+            this.bt_arrowRIGHT = new System.Windows.Forms.Button();
             this.bt_prev = new System.Windows.Forms.Button();
+            this.bt_arrowLEFT = new System.Windows.Forms.Button();
             this.bt_next = new System.Windows.Forms.Button();
+            this.bt_arrowUP = new System.Windows.Forms.Button();
+            this.bt_arrowDOWN = new System.Windows.Forms.Button();
             this.bt_f5 = new System.Windows.Forms.Button();
             this.bt_shiftL = new System.Windows.Forms.Button();
             this.bt_f4 = new System.Windows.Forms.Button();
-            this.bt_f3 = new System.Windows.Forms.Button();
-            this.bt_f1 = new System.Windows.Forms.Button();
-            this.bt_posn = new System.Windows.Forms.Button();
-            this.bt_io = new System.Windows.Forms.Button();
-            this.bt_tool1 = new System.Windows.Forms.Button();
-            this.bt_tool2 = new System.Windows.Forms.Button();
-            this.bt_moveMenu = new System.Windows.Forms.Button();
-            this.bt_setup = new System.Windows.Forms.Button();
-            this.bt_status = new System.Windows.Forms.Button();
-            this.bt_fctn = new System.Windows.Forms.Button();
-            this.bt_coord = new System.Windows.Forms.Button();
-            this.bt_data = new System.Windows.Forms.Button();
-            this.bt_group = new System.Windows.Forms.Button();
-            this.bt_edit = new System.Windows.Forms.Button();
-            this.bt_select = new System.Windows.Forms.Button();
-            this.bt_menu = new System.Windows.Forms.Button();
-            this.pn_RobotCfg = new System.Windows.Forms.Panel();
-            this.bt_item = new System.Windows.Forms.Button();
-            this.bt_arrowRIGHT = new System.Windows.Forms.Button();
-            this.bt_arrowLEFT = new System.Windows.Forms.Button();
-            this.bt_arrowUP = new System.Windows.Forms.Button();
-            this.bt_arrowDOWN = new System.Windows.Forms.Button();
             this.bt_num7 = new System.Windows.Forms.Button();
+            this.bt_f3 = new System.Windows.Forms.Button();
             this.bt_num8 = new System.Windows.Forms.Button();
             this.bt_num9 = new System.Windows.Forms.Button();
+            this.bt_f1 = new System.Windows.Forms.Button();
             this.bt_num4 = new System.Windows.Forms.Button();
             this.bt_num5 = new System.Windows.Forms.Button();
             this.bt_num6 = new System.Windows.Forms.Button();
@@ -96,16 +82,32 @@
             this.bt_dot = new System.Windows.Forms.Button();
             this.bt_comm = new System.Windows.Forms.Button();
             this.bt_diag = new System.Windows.Forms.Button();
+            this.bt_posn = new System.Windows.Forms.Button();
+            this.bt_io = new System.Windows.Forms.Button();
+            this.bt_tool1 = new System.Windows.Forms.Button();
+            this.bt_tool2 = new System.Windows.Forms.Button();
+            this.bt_moveMenu = new System.Windows.Forms.Button();
+            this.bt_setup = new System.Windows.Forms.Button();
             this.bt_step = new System.Windows.Forms.Button();
+            this.bt_status = new System.Windows.Forms.Button();
             this.bt_disp = new System.Windows.Forms.Button();
+            this.bt_fctn = new System.Windows.Forms.Button();
+            this.bt_coord = new System.Windows.Forms.Button();
+            this.bt_data = new System.Windows.Forms.Button();
+            this.bt_group = new System.Windows.Forms.Button();
+            this.bt_edit = new System.Windows.Forms.Button();
             this.bt_speedUp = new System.Windows.Forms.Button();
+            this.bt_select = new System.Windows.Forms.Button();
             this.bt_speedDown = new System.Windows.Forms.Button();
+            this.bt_menu = new System.Windows.Forms.Button();
             this.bt_reset = new System.Windows.Forms.Button();
             this.bt_backspace = new System.Windows.Forms.Button();
             this.bt_enter = new System.Windows.Forms.Button();
+            this.pn_RobotCfg = new System.Windows.Forms.Panel();
             this.pnCGTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wb_CGTP_Edge)).BeginInit();
             this.pnKeyboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_TPSwitch)).BeginInit();
             this.gb_FTPUtilities.SuspendLayout();
             this.pn_RobotCfg.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +116,7 @@
             // 
             this.wb_CGTP_IE.AllowWebBrowserDrop = false;
             this.wb_CGTP_IE.IsWebBrowserContextMenuEnabled = false;
-            this.wb_CGTP_IE.Location = new System.Drawing.Point(2, 1);
+            this.wb_CGTP_IE.Location = new System.Drawing.Point(3, 3);
             this.wb_CGTP_IE.Margin = new System.Windows.Forms.Padding(2);
             this.wb_CGTP_IE.MinimumSize = new System.Drawing.Size(11, 13);
             this.wb_CGTP_IE.Name = "wb_CGTP_IE";
@@ -302,8 +304,8 @@
             // pnCGTP
             // 
             this.pnCGTP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnCGTP.Controls.Add(this.wb_CGTP_IE);
             this.pnCGTP.Controls.Add(this.wb_CGTP_Edge);
+            this.pnCGTP.Controls.Add(this.wb_CGTP_IE);
             this.pnCGTP.Location = new System.Drawing.Point(12, 21);
             this.pnCGTP.Margin = new System.Windows.Forms.Padding(2);
             this.pnCGTP.Name = "pnCGTP";
@@ -315,7 +317,7 @@
             this.wb_CGTP_Edge.AllowExternalDrop = true;
             this.wb_CGTP_Edge.CreationProperties = null;
             this.wb_CGTP_Edge.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.wb_CGTP_Edge.Location = new System.Drawing.Point(2, 1);
+            this.wb_CGTP_Edge.Location = new System.Drawing.Point(3, 3);
             this.wb_CGTP_Edge.Margin = new System.Windows.Forms.Padding(2);
             this.wb_CGTP_Edge.Name = "wb_CGTP_Edge";
             this.wb_CGTP_Edge.Size = new System.Drawing.Size(640, 480);
@@ -325,6 +327,7 @@
             // pnKeyboard
             // 
             this.pnKeyboard.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnKeyboard.Controls.Add(this.pb_TPSwitch);
             this.pnKeyboard.Controls.Add(this.gb_FTPUtilities);
             this.pnKeyboard.Controls.Add(this.bt_KeyBoard);
             this.pnKeyboard.Controls.Add(this.bt_f2);
@@ -381,6 +384,15 @@
             this.pnKeyboard.Size = new System.Drawing.Size(528, 309);
             this.pnKeyboard.TabIndex = 86;
             // 
+            // pb_TPSwitch
+            // 
+            this.pb_TPSwitch.Image = global::FRTeachPendant.Properties.Resources.tpenoff;
+            this.pb_TPSwitch.Location = new System.Drawing.Point(4, 206);
+            this.pb_TPSwitch.Name = "pb_TPSwitch";
+            this.pb_TPSwitch.Size = new System.Drawing.Size(43, 38);
+            this.pb_TPSwitch.TabIndex = 167;
+            this.pb_TPSwitch.TabStop = false;
+            // 
             // gb_FTPUtilities
             // 
             this.gb_FTPUtilities.Controls.Add(this.bt_UploadArea);
@@ -422,7 +434,7 @@
             // bt_KeyBoard
             // 
             this.bt_KeyBoard.Font = new System.Drawing.Font("宋体", 8F);
-            this.bt_KeyBoard.Location = new System.Drawing.Point(2, 142);
+            this.bt_KeyBoard.Location = new System.Drawing.Point(2, 129);
             this.bt_KeyBoard.Margin = new System.Windows.Forms.Padding(2);
             this.bt_KeyBoard.Name = "bt_KeyBoard";
             this.bt_KeyBoard.Size = new System.Drawing.Size(64, 45);
@@ -442,276 +454,6 @@
             this.bt_f2.Text = "F2";
             this.bt_f2.UseVisualStyleBackColor = true;
             this.bt_f2.Click += new System.EventHandler(this.bt_f2_Click);
-            // 
-            // bt_prev
-            // 
-            this.bt_prev.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_prev.Location = new System.Drawing.Point(2, 0);
-            this.bt_prev.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_prev.Name = "bt_prev";
-            this.bt_prev.Size = new System.Drawing.Size(45, 30);
-            this.bt_prev.TabIndex = 154;
-            this.bt_prev.Text = "PREV";
-            this.bt_prev.UseVisualStyleBackColor = true;
-            this.bt_prev.Click += new System.EventHandler(this.bt_prev_Click);
-            // 
-            // bt_next
-            // 
-            this.bt_next.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_next.Location = new System.Drawing.Point(476, 0);
-            this.bt_next.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_next.Name = "bt_next";
-            this.bt_next.Size = new System.Drawing.Size(45, 30);
-            this.bt_next.TabIndex = 160;
-            this.bt_next.Text = "NEXT";
-            this.bt_next.UseVisualStyleBackColor = true;
-            this.bt_next.Click += new System.EventHandler(this.bt_next_Click);
-            // 
-            // bt_f5
-            // 
-            this.bt_f5.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_f5.Location = new System.Drawing.Point(397, 0);
-            this.bt_f5.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_f5.Name = "bt_f5";
-            this.bt_f5.Size = new System.Drawing.Size(45, 30);
-            this.bt_f5.TabIndex = 159;
-            this.bt_f5.Text = "F5";
-            this.bt_f5.UseVisualStyleBackColor = true;
-            this.bt_f5.Click += new System.EventHandler(this.bt_f5_Click);
-            // 
-            // bt_shiftL
-            // 
-            this.bt_shiftL.BackColor = System.Drawing.Color.MediumBlue;
-            this.bt_shiftL.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_shiftL.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_shiftL.Location = new System.Drawing.Point(2, 47);
-            this.bt_shiftL.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_shiftL.Name = "bt_shiftL";
-            this.bt_shiftL.Size = new System.Drawing.Size(54, 69);
-            this.bt_shiftL.TabIndex = 117;
-            this.bt_shiftL.Text = "SHIFT";
-            this.bt_shiftL.UseVisualStyleBackColor = false;
-            this.bt_shiftL.Click += new System.EventHandler(this.bt_shiftL_Click);
-            // 
-            // bt_f4
-            // 
-            this.bt_f4.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_f4.Location = new System.Drawing.Point(318, 0);
-            this.bt_f4.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_f4.Name = "bt_f4";
-            this.bt_f4.Size = new System.Drawing.Size(45, 30);
-            this.bt_f4.TabIndex = 158;
-            this.bt_f4.Text = "F4";
-            this.bt_f4.UseVisualStyleBackColor = true;
-            this.bt_f4.Click += new System.EventHandler(this.bt_f4_Click);
-            // 
-            // bt_f3
-            // 
-            this.bt_f3.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_f3.Location = new System.Drawing.Point(239, 0);
-            this.bt_f3.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_f3.Name = "bt_f3";
-            this.bt_f3.Size = new System.Drawing.Size(45, 30);
-            this.bt_f3.TabIndex = 157;
-            this.bt_f3.Text = "F3";
-            this.bt_f3.UseVisualStyleBackColor = true;
-            this.bt_f3.Click += new System.EventHandler(this.bt_f3_Click);
-            // 
-            // bt_f1
-            // 
-            this.bt_f1.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_f1.Location = new System.Drawing.Point(81, 0);
-            this.bt_f1.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_f1.Name = "bt_f1";
-            this.bt_f1.Size = new System.Drawing.Size(45, 30);
-            this.bt_f1.TabIndex = 155;
-            this.bt_f1.Text = "F1";
-            this.bt_f1.UseVisualStyleBackColor = true;
-            this.bt_f1.Click += new System.EventHandler(this.bt_f1_Click);
-            // 
-            // bt_posn
-            // 
-            this.bt_posn.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_posn.Location = new System.Drawing.Point(153, 269);
-            this.bt_posn.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_posn.Name = "bt_posn";
-            this.bt_posn.Size = new System.Drawing.Size(45, 35);
-            this.bt_posn.TabIndex = 131;
-            this.bt_posn.Text = "POSN";
-            this.bt_posn.UseVisualStyleBackColor = true;
-            this.bt_posn.Click += new System.EventHandler(this.bt_posn_Click);
-            // 
-            // bt_io
-            // 
-            this.bt_io.BackColor = System.Drawing.SystemColors.Control;
-            this.bt_io.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_io.Location = new System.Drawing.Point(198, 269);
-            this.bt_io.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_io.Name = "bt_io";
-            this.bt_io.Size = new System.Drawing.Size(45, 35);
-            this.bt_io.TabIndex = 132;
-            this.bt_io.Text = "I/O";
-            this.bt_io.UseVisualStyleBackColor = false;
-            this.bt_io.Click += new System.EventHandler(this.bt_io_Click);
-            // 
-            // bt_tool1
-            // 
-            this.bt_tool1.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_tool1.Location = new System.Drawing.Point(248, 114);
-            this.bt_tool1.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_tool1.Name = "bt_tool1";
-            this.bt_tool1.Size = new System.Drawing.Size(45, 35);
-            this.bt_tool1.TabIndex = 133;
-            this.bt_tool1.Text = "TOOL1";
-            this.bt_tool1.UseVisualStyleBackColor = true;
-            this.bt_tool1.Click += new System.EventHandler(this.bt_tool1_Click);
-            // 
-            // bt_tool2
-            // 
-            this.bt_tool2.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_tool2.Location = new System.Drawing.Point(248, 152);
-            this.bt_tool2.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_tool2.Name = "bt_tool2";
-            this.bt_tool2.Size = new System.Drawing.Size(45, 35);
-            this.bt_tool2.TabIndex = 134;
-            this.bt_tool2.Text = "TOOL2";
-            this.bt_tool2.UseVisualStyleBackColor = true;
-            this.bt_tool2.Click += new System.EventHandler(this.bt_tool2_Click);
-            // 
-            // bt_moveMenu
-            // 
-            this.bt_moveMenu.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_moveMenu.Location = new System.Drawing.Point(248, 191);
-            this.bt_moveMenu.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_moveMenu.Name = "bt_moveMenu";
-            this.bt_moveMenu.Size = new System.Drawing.Size(45, 35);
-            this.bt_moveMenu.TabIndex = 135;
-            this.bt_moveMenu.Text = "MOVEM";
-            this.bt_moveMenu.UseVisualStyleBackColor = true;
-            this.bt_moveMenu.Click += new System.EventHandler(this.bt_moveMenu_Click);
-            // 
-            // bt_setup
-            // 
-            this.bt_setup.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_setup.Location = new System.Drawing.Point(248, 230);
-            this.bt_setup.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_setup.Name = "bt_setup";
-            this.bt_setup.Size = new System.Drawing.Size(45, 35);
-            this.bt_setup.TabIndex = 136;
-            this.bt_setup.Text = "SETUP";
-            this.bt_setup.UseVisualStyleBackColor = true;
-            this.bt_setup.Click += new System.EventHandler(this.bt_setup_Click);
-            // 
-            // bt_status
-            // 
-            this.bt_status.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_status.Location = new System.Drawing.Point(248, 269);
-            this.bt_status.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_status.Name = "bt_status";
-            this.bt_status.Size = new System.Drawing.Size(45, 35);
-            this.bt_status.TabIndex = 137;
-            this.bt_status.Text = "STATUS";
-            this.bt_status.UseVisualStyleBackColor = true;
-            this.bt_status.Click += new System.EventHandler(this.bt_status_Click);
-            // 
-            // bt_fctn
-            // 
-            this.bt_fctn.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_fctn.Location = new System.Drawing.Point(353, 31);
-            this.bt_fctn.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_fctn.Name = "bt_fctn";
-            this.bt_fctn.Size = new System.Drawing.Size(45, 35);
-            this.bt_fctn.TabIndex = 165;
-            this.bt_fctn.Text = "FCTN";
-            this.bt_fctn.UseVisualStyleBackColor = true;
-            this.bt_fctn.Click += new System.EventHandler(this.bt_fctn_Click);
-            // 
-            // bt_coord
-            // 
-            this.bt_coord.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_coord.Location = new System.Drawing.Point(299, 152);
-            this.bt_coord.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_coord.Name = "bt_coord";
-            this.bt_coord.Size = new System.Drawing.Size(45, 35);
-            this.bt_coord.TabIndex = 138;
-            this.bt_coord.Text = "COORD";
-            this.bt_coord.UseVisualStyleBackColor = true;
-            this.bt_coord.Click += new System.EventHandler(this.bt_coord_Click);
-            // 
-            // bt_data
-            // 
-            this.bt_data.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_data.Location = new System.Drawing.Point(286, 31);
-            this.bt_data.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_data.Name = "bt_data";
-            this.bt_data.Size = new System.Drawing.Size(45, 35);
-            this.bt_data.TabIndex = 164;
-            this.bt_data.Text = "DATA";
-            this.bt_data.UseVisualStyleBackColor = true;
-            this.bt_data.Click += new System.EventHandler(this.bt_data_Click);
-            // 
-            // bt_group
-            // 
-            this.bt_group.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_group.Location = new System.Drawing.Point(299, 191);
-            this.bt_group.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_group.Name = "bt_group";
-            this.bt_group.Size = new System.Drawing.Size(45, 35);
-            this.bt_group.TabIndex = 139;
-            this.bt_group.Text = "GROUP";
-            this.bt_group.UseVisualStyleBackColor = true;
-            this.bt_group.Click += new System.EventHandler(this.bt_group_Click);
-            // 
-            // bt_edit
-            // 
-            this.bt_edit.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_edit.Location = new System.Drawing.Point(219, 31);
-            this.bt_edit.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_edit.Name = "bt_edit";
-            this.bt_edit.Size = new System.Drawing.Size(45, 35);
-            this.bt_edit.TabIndex = 163;
-            this.bt_edit.Text = "EDIT";
-            this.bt_edit.UseVisualStyleBackColor = true;
-            this.bt_edit.Click += new System.EventHandler(this.bt_edit_Click);
-            // 
-            // bt_select
-            // 
-            this.bt_select.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_select.Location = new System.Drawing.Point(152, 31);
-            this.bt_select.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_select.Name = "bt_select";
-            this.bt_select.Size = new System.Drawing.Size(45, 35);
-            this.bt_select.TabIndex = 162;
-            this.bt_select.Text = "SELECT";
-            this.bt_select.UseVisualStyleBackColor = true;
-            this.bt_select.Click += new System.EventHandler(this.bt_select_Click);
-            // 
-            // bt_menu
-            // 
-            this.bt_menu.Font = new System.Drawing.Font("宋体", 7F);
-            this.bt_menu.Location = new System.Drawing.Point(85, 31);
-            this.bt_menu.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_menu.Name = "bt_menu";
-            this.bt_menu.Size = new System.Drawing.Size(45, 35);
-            this.bt_menu.TabIndex = 161;
-            this.bt_menu.Text = "MENU";
-            this.bt_menu.UseVisualStyleBackColor = true;
-            this.bt_menu.Click += new System.EventHandler(this.bt_menu_Click);
-            // 
-            // pn_RobotCfg
-            // 
-            this.pn_RobotCfg.Controls.Add(this.tb_robotIP);
-            this.pn_RobotCfg.Controls.Add(this.tb_name);
-            this.pn_RobotCfg.Controls.Add(this.cb_bfSelect);
-            this.pn_RobotCfg.Controls.Add(this.tb_password);
-            this.pn_RobotCfg.Controls.Add(this.lb_name);
-            this.pn_RobotCfg.Controls.Add(this.lb_password);
-            this.pn_RobotCfg.Font = new System.Drawing.Font("宋体", 6.6F);
-            this.pn_RobotCfg.Location = new System.Drawing.Point(94, 1);
-            this.pn_RobotCfg.Margin = new System.Windows.Forms.Padding(2);
-            this.pn_RobotCfg.Name = "pn_RobotCfg";
-            this.pn_RobotCfg.Size = new System.Drawing.Size(357, 19);
-            this.pn_RobotCfg.TabIndex = 2;
             // 
             // bt_item
             // 
@@ -737,6 +479,18 @@
             this.bt_arrowRIGHT.UseVisualStyleBackColor = true;
             this.bt_arrowRIGHT.Click += new System.EventHandler(this.bt_arrowRIGHT_Click);
             // 
+            // bt_prev
+            // 
+            this.bt_prev.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_prev.Location = new System.Drawing.Point(2, 0);
+            this.bt_prev.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_prev.Name = "bt_prev";
+            this.bt_prev.Size = new System.Drawing.Size(45, 30);
+            this.bt_prev.TabIndex = 154;
+            this.bt_prev.Text = "PREV";
+            this.bt_prev.UseVisualStyleBackColor = true;
+            this.bt_prev.Click += new System.EventHandler(this.bt_prev_Click);
+            // 
             // bt_arrowLEFT
             // 
             this.bt_arrowLEFT.Font = new System.Drawing.Font("宋体", 6.5F);
@@ -748,6 +502,18 @@
             this.bt_arrowLEFT.TabIndex = 150;
             this.bt_arrowLEFT.UseVisualStyleBackColor = true;
             this.bt_arrowLEFT.Click += new System.EventHandler(this.bt_arrowLEFT_Click);
+            // 
+            // bt_next
+            // 
+            this.bt_next.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_next.Location = new System.Drawing.Point(476, 0);
+            this.bt_next.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_next.Name = "bt_next";
+            this.bt_next.Size = new System.Drawing.Size(45, 30);
+            this.bt_next.TabIndex = 160;
+            this.bt_next.Text = "NEXT";
+            this.bt_next.UseVisualStyleBackColor = true;
+            this.bt_next.Click += new System.EventHandler(this.bt_next_Click);
             // 
             // bt_arrowUP
             // 
@@ -773,6 +539,44 @@
             this.bt_arrowDOWN.UseVisualStyleBackColor = true;
             this.bt_arrowDOWN.Click += new System.EventHandler(this.bt_arrowDOWN_Click);
             // 
+            // bt_f5
+            // 
+            this.bt_f5.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f5.Location = new System.Drawing.Point(397, 0);
+            this.bt_f5.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_f5.Name = "bt_f5";
+            this.bt_f5.Size = new System.Drawing.Size(45, 30);
+            this.bt_f5.TabIndex = 159;
+            this.bt_f5.Text = "F5";
+            this.bt_f5.UseVisualStyleBackColor = true;
+            this.bt_f5.Click += new System.EventHandler(this.bt_f5_Click);
+            // 
+            // bt_shiftL
+            // 
+            this.bt_shiftL.BackColor = System.Drawing.Color.MediumBlue;
+            this.bt_shiftL.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_shiftL.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.bt_shiftL.Location = new System.Drawing.Point(2, 43);
+            this.bt_shiftL.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_shiftL.Name = "bt_shiftL";
+            this.bt_shiftL.Size = new System.Drawing.Size(54, 69);
+            this.bt_shiftL.TabIndex = 117;
+            this.bt_shiftL.Text = "SHIFT";
+            this.bt_shiftL.UseVisualStyleBackColor = false;
+            this.bt_shiftL.Click += new System.EventHandler(this.bt_shiftL_Click);
+            // 
+            // bt_f4
+            // 
+            this.bt_f4.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f4.Location = new System.Drawing.Point(318, 0);
+            this.bt_f4.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_f4.Name = "bt_f4";
+            this.bt_f4.Size = new System.Drawing.Size(45, 30);
+            this.bt_f4.TabIndex = 158;
+            this.bt_f4.Text = "F4";
+            this.bt_f4.UseVisualStyleBackColor = true;
+            this.bt_f4.Click += new System.EventHandler(this.bt_f4_Click);
+            // 
             // bt_num7
             // 
             this.bt_num7.Font = new System.Drawing.Font("宋体", 6.5F);
@@ -784,6 +588,18 @@
             this.bt_num7.TabIndex = 118;
             this.bt_num7.UseVisualStyleBackColor = true;
             this.bt_num7.Click += new System.EventHandler(this.bt_num7_Click);
+            // 
+            // bt_f3
+            // 
+            this.bt_f3.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f3.Location = new System.Drawing.Point(239, 0);
+            this.bt_f3.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_f3.Name = "bt_f3";
+            this.bt_f3.Size = new System.Drawing.Size(45, 30);
+            this.bt_f3.TabIndex = 157;
+            this.bt_f3.Text = "F3";
+            this.bt_f3.UseVisualStyleBackColor = true;
+            this.bt_f3.Click += new System.EventHandler(this.bt_f3_Click);
             // 
             // bt_num8
             // 
@@ -808,6 +624,18 @@
             this.bt_num9.TabIndex = 120;
             this.bt_num9.UseVisualStyleBackColor = true;
             this.bt_num9.Click += new System.EventHandler(this.bt_num9_Click);
+            // 
+            // bt_f1
+            // 
+            this.bt_f1.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f1.Location = new System.Drawing.Point(81, 0);
+            this.bt_f1.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_f1.Name = "bt_f1";
+            this.bt_f1.Size = new System.Drawing.Size(45, 30);
+            this.bt_f1.TabIndex = 155;
+            this.bt_f1.Text = "F1";
+            this.bt_f1.UseVisualStyleBackColor = true;
+            this.bt_f1.Click += new System.EventHandler(this.bt_f1_Click);
             // 
             // bt_num4
             // 
@@ -929,6 +757,79 @@
             this.bt_diag.UseVisualStyleBackColor = true;
             this.bt_diag.Click += new System.EventHandler(this.bt_diag_Click);
             // 
+            // bt_posn
+            // 
+            this.bt_posn.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_posn.Location = new System.Drawing.Point(153, 269);
+            this.bt_posn.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_posn.Name = "bt_posn";
+            this.bt_posn.Size = new System.Drawing.Size(45, 35);
+            this.bt_posn.TabIndex = 131;
+            this.bt_posn.Text = "POSN";
+            this.bt_posn.UseVisualStyleBackColor = true;
+            this.bt_posn.Click += new System.EventHandler(this.bt_posn_Click);
+            // 
+            // bt_io
+            // 
+            this.bt_io.BackColor = System.Drawing.SystemColors.Control;
+            this.bt_io.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_io.Location = new System.Drawing.Point(198, 269);
+            this.bt_io.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_io.Name = "bt_io";
+            this.bt_io.Size = new System.Drawing.Size(45, 35);
+            this.bt_io.TabIndex = 132;
+            this.bt_io.Text = "I/O";
+            this.bt_io.UseVisualStyleBackColor = false;
+            this.bt_io.Click += new System.EventHandler(this.bt_io_Click);
+            // 
+            // bt_tool1
+            // 
+            this.bt_tool1.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_tool1.Location = new System.Drawing.Point(248, 114);
+            this.bt_tool1.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_tool1.Name = "bt_tool1";
+            this.bt_tool1.Size = new System.Drawing.Size(45, 35);
+            this.bt_tool1.TabIndex = 133;
+            this.bt_tool1.Text = "TOOL1";
+            this.bt_tool1.UseVisualStyleBackColor = true;
+            this.bt_tool1.Click += new System.EventHandler(this.bt_tool1_Click);
+            // 
+            // bt_tool2
+            // 
+            this.bt_tool2.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_tool2.Location = new System.Drawing.Point(248, 152);
+            this.bt_tool2.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_tool2.Name = "bt_tool2";
+            this.bt_tool2.Size = new System.Drawing.Size(45, 35);
+            this.bt_tool2.TabIndex = 134;
+            this.bt_tool2.Text = "TOOL2";
+            this.bt_tool2.UseVisualStyleBackColor = true;
+            this.bt_tool2.Click += new System.EventHandler(this.bt_tool2_Click);
+            // 
+            // bt_moveMenu
+            // 
+            this.bt_moveMenu.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_moveMenu.Location = new System.Drawing.Point(248, 191);
+            this.bt_moveMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_moveMenu.Name = "bt_moveMenu";
+            this.bt_moveMenu.Size = new System.Drawing.Size(45, 35);
+            this.bt_moveMenu.TabIndex = 135;
+            this.bt_moveMenu.Text = "MOVEM";
+            this.bt_moveMenu.UseVisualStyleBackColor = true;
+            this.bt_moveMenu.Click += new System.EventHandler(this.bt_moveMenu_Click);
+            // 
+            // bt_setup
+            // 
+            this.bt_setup.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_setup.Location = new System.Drawing.Point(248, 230);
+            this.bt_setup.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_setup.Name = "bt_setup";
+            this.bt_setup.Size = new System.Drawing.Size(45, 35);
+            this.bt_setup.TabIndex = 136;
+            this.bt_setup.Text = "SETUP";
+            this.bt_setup.UseVisualStyleBackColor = true;
+            this.bt_setup.Click += new System.EventHandler(this.bt_setup_Click);
+            // 
             // bt_step
             // 
             this.bt_step.Font = new System.Drawing.Font("宋体", 6.5F);
@@ -941,17 +842,89 @@
             this.bt_step.UseVisualStyleBackColor = true;
             this.bt_step.Click += new System.EventHandler(this.bt_step_Click);
             // 
+            // bt_status
+            // 
+            this.bt_status.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_status.Location = new System.Drawing.Point(248, 269);
+            this.bt_status.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_status.Name = "bt_status";
+            this.bt_status.Size = new System.Drawing.Size(45, 35);
+            this.bt_status.TabIndex = 137;
+            this.bt_status.Text = "STATUS";
+            this.bt_status.UseVisualStyleBackColor = true;
+            this.bt_status.Click += new System.EventHandler(this.bt_status_Click);
+            // 
             // bt_disp
             // 
             this.bt_disp.Font = new System.Drawing.Font("宋体", 6.5F);
             this.bt_disp.Image = global::FRTeachPendant.Properties.Resources.tpdispch;
-            this.bt_disp.Location = new System.Drawing.Point(60, 91);
+            this.bt_disp.Location = new System.Drawing.Point(60, 77);
             this.bt_disp.Margin = new System.Windows.Forms.Padding(2);
             this.bt_disp.Name = "bt_disp";
             this.bt_disp.Size = new System.Drawing.Size(45, 35);
             this.bt_disp.TabIndex = 146;
             this.bt_disp.UseVisualStyleBackColor = true;
             this.bt_disp.Click += new System.EventHandler(this.bt_disp_Click);
+            // 
+            // bt_fctn
+            // 
+            this.bt_fctn.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_fctn.Location = new System.Drawing.Point(353, 31);
+            this.bt_fctn.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_fctn.Name = "bt_fctn";
+            this.bt_fctn.Size = new System.Drawing.Size(45, 35);
+            this.bt_fctn.TabIndex = 165;
+            this.bt_fctn.Text = "FCTN";
+            this.bt_fctn.UseVisualStyleBackColor = true;
+            this.bt_fctn.Click += new System.EventHandler(this.bt_fctn_Click);
+            // 
+            // bt_coord
+            // 
+            this.bt_coord.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_coord.Location = new System.Drawing.Point(299, 152);
+            this.bt_coord.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_coord.Name = "bt_coord";
+            this.bt_coord.Size = new System.Drawing.Size(45, 35);
+            this.bt_coord.TabIndex = 138;
+            this.bt_coord.Text = "COORD";
+            this.bt_coord.UseVisualStyleBackColor = true;
+            this.bt_coord.Click += new System.EventHandler(this.bt_coord_Click);
+            // 
+            // bt_data
+            // 
+            this.bt_data.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_data.Location = new System.Drawing.Point(286, 31);
+            this.bt_data.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_data.Name = "bt_data";
+            this.bt_data.Size = new System.Drawing.Size(45, 35);
+            this.bt_data.TabIndex = 164;
+            this.bt_data.Text = "DATA";
+            this.bt_data.UseVisualStyleBackColor = true;
+            this.bt_data.Click += new System.EventHandler(this.bt_data_Click);
+            // 
+            // bt_group
+            // 
+            this.bt_group.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_group.Location = new System.Drawing.Point(299, 191);
+            this.bt_group.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_group.Name = "bt_group";
+            this.bt_group.Size = new System.Drawing.Size(45, 35);
+            this.bt_group.TabIndex = 139;
+            this.bt_group.Text = "GROUP";
+            this.bt_group.UseVisualStyleBackColor = true;
+            this.bt_group.Click += new System.EventHandler(this.bt_group_Click);
+            // 
+            // bt_edit
+            // 
+            this.bt_edit.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_edit.Location = new System.Drawing.Point(219, 31);
+            this.bt_edit.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_edit.Name = "bt_edit";
+            this.bt_edit.Size = new System.Drawing.Size(45, 35);
+            this.bt_edit.TabIndex = 163;
+            this.bt_edit.Text = "EDIT";
+            this.bt_edit.UseVisualStyleBackColor = true;
+            this.bt_edit.Click += new System.EventHandler(this.bt_edit_Click);
             // 
             // bt_speedUp
             // 
@@ -965,6 +938,18 @@
             this.bt_speedUp.UseVisualStyleBackColor = true;
             this.bt_speedUp.Click += new System.EventHandler(this.bt_speedUp_Click);
             // 
+            // bt_select
+            // 
+            this.bt_select.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_select.Location = new System.Drawing.Point(152, 31);
+            this.bt_select.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_select.Name = "bt_select";
+            this.bt_select.Size = new System.Drawing.Size(45, 35);
+            this.bt_select.TabIndex = 162;
+            this.bt_select.Text = "SELECT";
+            this.bt_select.UseVisualStyleBackColor = true;
+            this.bt_select.Click += new System.EventHandler(this.bt_select_Click);
+            // 
             // bt_speedDown
             // 
             this.bt_speedDown.Font = new System.Drawing.Font("宋体", 6.5F);
@@ -976,6 +961,18 @@
             this.bt_speedDown.TabIndex = 141;
             this.bt_speedDown.UseVisualStyleBackColor = true;
             this.bt_speedDown.Click += new System.EventHandler(this.bt_speedDown_Click);
+            // 
+            // bt_menu
+            // 
+            this.bt_menu.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_menu.Location = new System.Drawing.Point(85, 31);
+            this.bt_menu.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_menu.Name = "bt_menu";
+            this.bt_menu.Size = new System.Drawing.Size(45, 35);
+            this.bt_menu.TabIndex = 161;
+            this.bt_menu.Text = "MENU";
+            this.bt_menu.UseVisualStyleBackColor = true;
+            this.bt_menu.Click += new System.EventHandler(this.bt_menu_Click);
             // 
             // bt_reset
             // 
@@ -1013,11 +1010,26 @@
             this.bt_enter.UseVisualStyleBackColor = true;
             this.bt_enter.Click += new System.EventHandler(this.bt_enter_Click);
             // 
+            // pn_RobotCfg
+            // 
+            this.pn_RobotCfg.Controls.Add(this.tb_robotIP);
+            this.pn_RobotCfg.Controls.Add(this.tb_name);
+            this.pn_RobotCfg.Controls.Add(this.cb_bfSelect);
+            this.pn_RobotCfg.Controls.Add(this.tb_password);
+            this.pn_RobotCfg.Controls.Add(this.lb_name);
+            this.pn_RobotCfg.Controls.Add(this.lb_password);
+            this.pn_RobotCfg.Font = new System.Drawing.Font("宋体", 6.6F);
+            this.pn_RobotCfg.Location = new System.Drawing.Point(94, 1);
+            this.pn_RobotCfg.Margin = new System.Windows.Forms.Padding(2);
+            this.pn_RobotCfg.Name = "pn_RobotCfg";
+            this.pn_RobotCfg.Size = new System.Drawing.Size(357, 19);
+            this.pn_RobotCfg.TabIndex = 2;
+            // 
             // mainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(684, 831);
+            this.ClientSize = new System.Drawing.Size(684, 823);
             this.Controls.Add(this.pn_RobotCfg);
             this.Controls.Add(this.pnKeyboard);
             this.Controls.Add(this.lb_HostName);
@@ -1035,13 +1047,14 @@
             this.MinimumSize = new System.Drawing.Size(700, 550);
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TeachPendantV26.07.22";
+            this.Text = "TeachPendantV26.08.22";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.pnCGTP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wb_CGTP_Edge)).EndInit();
             this.pnKeyboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_TPSwitch)).EndInit();
             this.gb_FTPUtilities.ResumeLayout(false);
             this.gb_FTPUtilities.PerformLayout();
             this.pn_RobotCfg.ResumeLayout(false);
@@ -1126,5 +1139,6 @@
         private System.Windows.Forms.Button bt_enter;
         private Microsoft.Web.WebView2.WinForms.WebView2 wb_CGTP_Edge;
         private System.Windows.Forms.Panel pn_RobotCfg;
+        private System.Windows.Forms.PictureBox pb_TPSwitch;
     }
 }
