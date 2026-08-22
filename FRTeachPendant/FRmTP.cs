@@ -1009,9 +1009,9 @@ namespace FRTeachPendant
             if (istbKeyboardVisible)
             {
                 pnKeyboard.Visible = true;
-                this.MaximumSize = new System.Drawing.Size(700, 800);
-                this.MinimumSize = new System.Drawing.Size(700, 800);
-                this.ClientSize = new System.Drawing.Size(700, 800);      
+                this.MaximumSize = new System.Drawing.Size(700, 870);
+                this.MinimumSize = new System.Drawing.Size(700, 870);
+                this.ClientSize = new System.Drawing.Size(700, 870);      
                 bt_tbKeyShow.BackColor = Color.GreenYellow;
             }
             else

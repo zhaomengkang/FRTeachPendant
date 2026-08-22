@@ -56,21 +56,36 @@
             this.pbBackup = new System.Windows.Forms.ProgressBar();
             this.bt_KeyBoard = new System.Windows.Forms.Button();
             this.bt_f2 = new System.Windows.Forms.Button();
-            this.bt_item = new System.Windows.Forms.Button();
-            this.bt_arrowRIGHT = new System.Windows.Forms.Button();
             this.bt_prev = new System.Windows.Forms.Button();
-            this.bt_arrowLEFT = new System.Windows.Forms.Button();
             this.bt_next = new System.Windows.Forms.Button();
-            this.bt_arrowUP = new System.Windows.Forms.Button();
-            this.bt_arrowDOWN = new System.Windows.Forms.Button();
             this.bt_f5 = new System.Windows.Forms.Button();
             this.bt_shiftL = new System.Windows.Forms.Button();
             this.bt_f4 = new System.Windows.Forms.Button();
-            this.bt_num7 = new System.Windows.Forms.Button();
             this.bt_f3 = new System.Windows.Forms.Button();
+            this.bt_f1 = new System.Windows.Forms.Button();
+            this.bt_posn = new System.Windows.Forms.Button();
+            this.bt_io = new System.Windows.Forms.Button();
+            this.bt_tool1 = new System.Windows.Forms.Button();
+            this.bt_tool2 = new System.Windows.Forms.Button();
+            this.bt_moveMenu = new System.Windows.Forms.Button();
+            this.bt_setup = new System.Windows.Forms.Button();
+            this.bt_status = new System.Windows.Forms.Button();
+            this.bt_fctn = new System.Windows.Forms.Button();
+            this.bt_coord = new System.Windows.Forms.Button();
+            this.bt_data = new System.Windows.Forms.Button();
+            this.bt_group = new System.Windows.Forms.Button();
+            this.bt_edit = new System.Windows.Forms.Button();
+            this.bt_select = new System.Windows.Forms.Button();
+            this.bt_menu = new System.Windows.Forms.Button();
+            this.pn_RobotCfg = new System.Windows.Forms.Panel();
+            this.bt_item = new System.Windows.Forms.Button();
+            this.bt_arrowRIGHT = new System.Windows.Forms.Button();
+            this.bt_arrowLEFT = new System.Windows.Forms.Button();
+            this.bt_arrowUP = new System.Windows.Forms.Button();
+            this.bt_arrowDOWN = new System.Windows.Forms.Button();
+            this.bt_num7 = new System.Windows.Forms.Button();
             this.bt_num8 = new System.Windows.Forms.Button();
             this.bt_num9 = new System.Windows.Forms.Button();
-            this.bt_f1 = new System.Windows.Forms.Button();
             this.bt_num4 = new System.Windows.Forms.Button();
             this.bt_num5 = new System.Windows.Forms.Button();
             this.bt_num6 = new System.Windows.Forms.Button();
@@ -81,28 +96,13 @@
             this.bt_dot = new System.Windows.Forms.Button();
             this.bt_comm = new System.Windows.Forms.Button();
             this.bt_diag = new System.Windows.Forms.Button();
-            this.bt_posn = new System.Windows.Forms.Button();
-            this.bt_io = new System.Windows.Forms.Button();
-            this.bt_tool1 = new System.Windows.Forms.Button();
-            this.bt_tool2 = new System.Windows.Forms.Button();
-            this.bt_moveMenu = new System.Windows.Forms.Button();
-            this.bt_setup = new System.Windows.Forms.Button();
             this.bt_step = new System.Windows.Forms.Button();
-            this.bt_status = new System.Windows.Forms.Button();
             this.bt_disp = new System.Windows.Forms.Button();
-            this.bt_fctn = new System.Windows.Forms.Button();
-            this.bt_coord = new System.Windows.Forms.Button();
-            this.bt_data = new System.Windows.Forms.Button();
-            this.bt_group = new System.Windows.Forms.Button();
-            this.bt_edit = new System.Windows.Forms.Button();
             this.bt_speedUp = new System.Windows.Forms.Button();
-            this.bt_select = new System.Windows.Forms.Button();
             this.bt_speedDown = new System.Windows.Forms.Button();
-            this.bt_menu = new System.Windows.Forms.Button();
             this.bt_reset = new System.Windows.Forms.Button();
             this.bt_backspace = new System.Windows.Forms.Button();
             this.bt_enter = new System.Windows.Forms.Button();
-            this.pn_RobotCfg = new System.Windows.Forms.Panel();
             this.pnCGTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wb_CGTP_Edge)).BeginInit();
             this.pnKeyboard.SuspendLayout();
@@ -249,10 +249,10 @@
             this.bt_UploadArea.AllowDrop = true;
             this.bt_UploadArea.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.bt_UploadArea.Font = new System.Drawing.Font("宋体", 6.6F);
-            this.bt_UploadArea.Location = new System.Drawing.Point(1, 60);
+            this.bt_UploadArea.Location = new System.Drawing.Point(3, 86);
             this.bt_UploadArea.Margin = new System.Windows.Forms.Padding(2);
             this.bt_UploadArea.Name = "bt_UploadArea";
-            this.bt_UploadArea.Size = new System.Drawing.Size(104, 42);
+            this.bt_UploadArea.Size = new System.Drawing.Size(150, 42);
             this.bt_UploadArea.TabIndex = 114;
             this.bt_UploadArea.Text = "UpLoad Area";
             this.toolTip1.SetToolTip(this.bt_UploadArea, resources.GetString("bt_UploadArea.ToolTip"));
@@ -262,11 +262,11 @@
             // 
             // bt_download
             // 
-            this.bt_download.Font = new System.Drawing.Font("宋体", 6F);
-            this.bt_download.Location = new System.Drawing.Point(5, 38);
+            this.bt_download.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_download.Location = new System.Drawing.Point(3, 52);
             this.bt_download.Margin = new System.Windows.Forms.Padding(2);
             this.bt_download.Name = "bt_download";
-            this.bt_download.Size = new System.Drawing.Size(53, 18);
+            this.bt_download.Size = new System.Drawing.Size(55, 35);
             this.bt_download.TabIndex = 113;
             this.bt_download.Text = "DownLoad";
             this.toolTip1.SetToolTip(this.bt_download, "Download the currently selected program ($TP_DEFPROG).\r\nNote: System macros are e" +
@@ -279,7 +279,7 @@
             this.cb_Comment.AutoSize = true;
             this.cb_Comment.Checked = true;
             this.cb_Comment.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_Comment.Font = new System.Drawing.Font("宋体", 6.6F);
+            this.cb_Comment.Font = new System.Drawing.Font("宋体", 7F);
             this.cb_Comment.Location = new System.Drawing.Point(62, 17);
             this.cb_Comment.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Comment.Name = "cb_Comment";
@@ -375,10 +375,10 @@
             this.pnKeyboard.Controls.Add(this.bt_backspace);
             this.pnKeyboard.Controls.Add(this.bt_enter);
             this.pnKeyboard.Enabled = false;
-            this.pnKeyboard.Location = new System.Drawing.Point(70, 515);
+            this.pnKeyboard.Location = new System.Drawing.Point(57, 515);
             this.pnKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnKeyboard.Name = "pnKeyboard";
-            this.pnKeyboard.Size = new System.Drawing.Size(515, 238);
+            this.pnKeyboard.Size = new System.Drawing.Size(528, 309);
             this.pnKeyboard.TabIndex = 86;
             // 
             // gb_FTPUtilities
@@ -388,23 +388,23 @@
             this.gb_FTPUtilities.Controls.Add(this.bt_Backup);
             this.gb_FTPUtilities.Controls.Add(this.cb_Comment);
             this.gb_FTPUtilities.Controls.Add(this.pbBackup);
-            this.gb_FTPUtilities.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.gb_FTPUtilities.Location = new System.Drawing.Point(336, 119);
+            this.gb_FTPUtilities.Font = new System.Drawing.Font("宋体", 7F);
+            this.gb_FTPUtilities.Location = new System.Drawing.Point(355, 172);
             this.gb_FTPUtilities.Margin = new System.Windows.Forms.Padding(2);
             this.gb_FTPUtilities.Name = "gb_FTPUtilities";
             this.gb_FTPUtilities.Padding = new System.Windows.Forms.Padding(2);
-            this.gb_FTPUtilities.Size = new System.Drawing.Size(157, 106);
+            this.gb_FTPUtilities.Size = new System.Drawing.Size(157, 132);
             this.gb_FTPUtilities.TabIndex = 166;
             this.gb_FTPUtilities.TabStop = false;
             this.gb_FTPUtilities.Text = "FTP Utilities";
             // 
             // bt_Backup
             // 
-            this.bt_Backup.Font = new System.Drawing.Font("宋体", 6F);
+            this.bt_Backup.Font = new System.Drawing.Font("宋体", 7F);
             this.bt_Backup.Location = new System.Drawing.Point(3, 13);
             this.bt_Backup.Margin = new System.Windows.Forms.Padding(2);
             this.bt_Backup.Name = "bt_Backup";
-            this.bt_Backup.Size = new System.Drawing.Size(55, 18);
+            this.bt_Backup.Size = new System.Drawing.Size(55, 35);
             this.bt_Backup.TabIndex = 0;
             this.bt_Backup.Text = "Backup";
             this.bt_Backup.UseVisualStyleBackColor = true;
@@ -412,20 +412,20 @@
             // 
             // pbBackup
             // 
-            this.pbBackup.Location = new System.Drawing.Point(62, 42);
+            this.pbBackup.Location = new System.Drawing.Point(59, 34);
             this.pbBackup.Margin = new System.Windows.Forms.Padding(2);
             this.pbBackup.Name = "pbBackup";
-            this.pbBackup.Size = new System.Drawing.Size(51, 14);
+            this.pbBackup.Size = new System.Drawing.Size(92, 14);
             this.pbBackup.TabIndex = 79;
             this.pbBackup.Visible = false;
             // 
             // bt_KeyBoard
             // 
-            this.bt_KeyBoard.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_KeyBoard.Location = new System.Drawing.Point(26, 130);
+            this.bt_KeyBoard.Font = new System.Drawing.Font("宋体", 8F);
+            this.bt_KeyBoard.Location = new System.Drawing.Point(2, 142);
             this.bt_KeyBoard.Margin = new System.Windows.Forms.Padding(2);
             this.bt_KeyBoard.Name = "bt_KeyBoard";
-            this.bt_KeyBoard.Size = new System.Drawing.Size(55, 45);
+            this.bt_KeyBoard.Size = new System.Drawing.Size(64, 45);
             this.bt_KeyBoard.TabIndex = 116;
             this.bt_KeyBoard.Text = "KeyBoard";
             this.bt_KeyBoard.UseVisualStyleBackColor = true;
@@ -433,107 +433,47 @@
             // 
             // bt_f2
             // 
-            this.bt_f2.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_f2.Location = new System.Drawing.Point(154, 3);
+            this.bt_f2.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f2.Location = new System.Drawing.Point(160, 0);
             this.bt_f2.Margin = new System.Windows.Forms.Padding(2);
             this.bt_f2.Name = "bt_f2";
-            this.bt_f2.Size = new System.Drawing.Size(45, 20);
+            this.bt_f2.Size = new System.Drawing.Size(45, 30);
             this.bt_f2.TabIndex = 156;
             this.bt_f2.Text = "F2";
             this.bt_f2.UseVisualStyleBackColor = true;
             this.bt_f2.Click += new System.EventHandler(this.bt_f2_Click);
             // 
-            // bt_item
-            // 
-            this.bt_item.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_item.Image = global::FRTeachPendant.Properties.Resources.tpitemeg;
-            this.bt_item.Location = new System.Drawing.Point(193, 100);
-            this.bt_item.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_item.Name = "bt_item";
-            this.bt_item.Size = new System.Drawing.Size(45, 20);
-            this.bt_item.TabIndex = 144;
-            this.bt_item.UseVisualStyleBackColor = true;
-            this.bt_item.Click += new System.EventHandler(this.bt_item_Click);
-            // 
-            // bt_arrowRIGHT
-            // 
-            this.bt_arrowRIGHT.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_arrowRIGHT.Image = global::FRTeachPendant.Properties.Resources.tprightarrow;
-            this.bt_arrowRIGHT.Location = new System.Drawing.Point(229, 62);
-            this.bt_arrowRIGHT.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_arrowRIGHT.Name = "bt_arrowRIGHT";
-            this.bt_arrowRIGHT.Size = new System.Drawing.Size(33, 22);
-            this.bt_arrowRIGHT.TabIndex = 151;
-            this.bt_arrowRIGHT.UseVisualStyleBackColor = true;
-            this.bt_arrowRIGHT.Click += new System.EventHandler(this.bt_arrowRIGHT_Click);
-            // 
             // bt_prev
             // 
-            this.bt_prev.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_prev.Location = new System.Drawing.Point(5, 3);
+            this.bt_prev.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_prev.Location = new System.Drawing.Point(2, 0);
             this.bt_prev.Margin = new System.Windows.Forms.Padding(2);
             this.bt_prev.Name = "bt_prev";
-            this.bt_prev.Size = new System.Drawing.Size(45, 20);
+            this.bt_prev.Size = new System.Drawing.Size(45, 30);
             this.bt_prev.TabIndex = 154;
             this.bt_prev.Text = "PREV";
             this.bt_prev.UseVisualStyleBackColor = true;
             this.bt_prev.Click += new System.EventHandler(this.bt_prev_Click);
             // 
-            // bt_arrowLEFT
-            // 
-            this.bt_arrowLEFT.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_arrowLEFT.Image = global::FRTeachPendant.Properties.Resources.tpleftarrow;
-            this.bt_arrowLEFT.Location = new System.Drawing.Point(157, 62);
-            this.bt_arrowLEFT.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_arrowLEFT.Name = "bt_arrowLEFT";
-            this.bt_arrowLEFT.Size = new System.Drawing.Size(33, 22);
-            this.bt_arrowLEFT.TabIndex = 150;
-            this.bt_arrowLEFT.UseVisualStyleBackColor = true;
-            this.bt_arrowLEFT.Click += new System.EventHandler(this.bt_arrowLEFT_Click);
-            // 
             // bt_next
             // 
-            this.bt_next.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_next.Location = new System.Drawing.Point(451, 3);
+            this.bt_next.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_next.Location = new System.Drawing.Point(476, 0);
             this.bt_next.Margin = new System.Windows.Forms.Padding(2);
             this.bt_next.Name = "bt_next";
-            this.bt_next.Size = new System.Drawing.Size(45, 20);
+            this.bt_next.Size = new System.Drawing.Size(45, 30);
             this.bt_next.TabIndex = 160;
             this.bt_next.Text = "NEXT";
             this.bt_next.UseVisualStyleBackColor = true;
             this.bt_next.Click += new System.EventHandler(this.bt_next_Click);
             // 
-            // bt_arrowUP
-            // 
-            this.bt_arrowUP.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_arrowUP.Image = global::FRTeachPendant.Properties.Resources.tpuparrow;
-            this.bt_arrowUP.Location = new System.Drawing.Point(193, 51);
-            this.bt_arrowUP.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_arrowUP.Name = "bt_arrowUP";
-            this.bt_arrowUP.Size = new System.Drawing.Size(33, 22);
-            this.bt_arrowUP.TabIndex = 149;
-            this.bt_arrowUP.UseVisualStyleBackColor = true;
-            this.bt_arrowUP.Click += new System.EventHandler(this.bt_arrowUP_Click);
-            // 
-            // bt_arrowDOWN
-            // 
-            this.bt_arrowDOWN.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_arrowDOWN.Image = global::FRTeachPendant.Properties.Resources.tpdownarrow;
-            this.bt_arrowDOWN.Location = new System.Drawing.Point(193, 76);
-            this.bt_arrowDOWN.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_arrowDOWN.Name = "bt_arrowDOWN";
-            this.bt_arrowDOWN.Size = new System.Drawing.Size(33, 22);
-            this.bt_arrowDOWN.TabIndex = 148;
-            this.bt_arrowDOWN.UseVisualStyleBackColor = true;
-            this.bt_arrowDOWN.Click += new System.EventHandler(this.bt_arrowDOWN_Click);
-            // 
             // bt_f5
             // 
-            this.bt_f5.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_f5.Location = new System.Drawing.Point(377, 3);
+            this.bt_f5.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f5.Location = new System.Drawing.Point(397, 0);
             this.bt_f5.Margin = new System.Windows.Forms.Padding(2);
             this.bt_f5.Name = "bt_f5";
-            this.bt_f5.Size = new System.Drawing.Size(45, 20);
+            this.bt_f5.Size = new System.Drawing.Size(45, 30);
             this.bt_f5.TabIndex = 159;
             this.bt_f5.Text = "F5";
             this.bt_f5.UseVisualStyleBackColor = true;
@@ -544,7 +484,7 @@
             this.bt_shiftL.BackColor = System.Drawing.Color.MediumBlue;
             this.bt_shiftL.Font = new System.Drawing.Font("宋体", 6.5F);
             this.bt_shiftL.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bt_shiftL.Location = new System.Drawing.Point(26, 47);
+            this.bt_shiftL.Location = new System.Drawing.Point(2, 47);
             this.bt_shiftL.Margin = new System.Windows.Forms.Padding(2);
             this.bt_shiftL.Name = "bt_shiftL";
             this.bt_shiftL.Size = new System.Drawing.Size(54, 69);
@@ -555,203 +495,47 @@
             // 
             // bt_f4
             // 
-            this.bt_f4.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_f4.Location = new System.Drawing.Point(302, 3);
+            this.bt_f4.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f4.Location = new System.Drawing.Point(318, 0);
             this.bt_f4.Margin = new System.Windows.Forms.Padding(2);
             this.bt_f4.Name = "bt_f4";
-            this.bt_f4.Size = new System.Drawing.Size(45, 20);
+            this.bt_f4.Size = new System.Drawing.Size(45, 30);
             this.bt_f4.TabIndex = 158;
             this.bt_f4.Text = "F4";
             this.bt_f4.UseVisualStyleBackColor = true;
             this.bt_f4.Click += new System.EventHandler(this.bt_f4_Click);
             // 
-            // bt_num7
-            // 
-            this.bt_num7.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num7.Image = global::FRTeachPendant.Properties.Resources.tpseven;
-            this.bt_num7.Location = new System.Drawing.Point(112, 122);
-            this.bt_num7.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num7.Name = "bt_num7";
-            this.bt_num7.Size = new System.Drawing.Size(45, 20);
-            this.bt_num7.TabIndex = 118;
-            this.bt_num7.UseVisualStyleBackColor = true;
-            this.bt_num7.Click += new System.EventHandler(this.bt_num7_Click);
-            // 
             // bt_f3
             // 
-            this.bt_f3.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_f3.Location = new System.Drawing.Point(228, 3);
+            this.bt_f3.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f3.Location = new System.Drawing.Point(239, 0);
             this.bt_f3.Margin = new System.Windows.Forms.Padding(2);
             this.bt_f3.Name = "bt_f3";
-            this.bt_f3.Size = new System.Drawing.Size(45, 20);
+            this.bt_f3.Size = new System.Drawing.Size(45, 30);
             this.bt_f3.TabIndex = 157;
             this.bt_f3.Text = "F3";
             this.bt_f3.UseVisualStyleBackColor = true;
             this.bt_f3.Click += new System.EventHandler(this.bt_f3_Click);
             // 
-            // bt_num8
-            // 
-            this.bt_num8.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num8.Image = global::FRTeachPendant.Properties.Resources.tpeight;
-            this.bt_num8.Location = new System.Drawing.Point(154, 122);
-            this.bt_num8.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num8.Name = "bt_num8";
-            this.bt_num8.Size = new System.Drawing.Size(45, 20);
-            this.bt_num8.TabIndex = 119;
-            this.bt_num8.UseVisualStyleBackColor = true;
-            this.bt_num8.Click += new System.EventHandler(this.bt_num8_Click);
-            // 
-            // bt_num9
-            // 
-            this.bt_num9.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num9.Image = global::FRTeachPendant.Properties.Resources.tpnine;
-            this.bt_num9.Location = new System.Drawing.Point(193, 122);
-            this.bt_num9.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num9.Name = "bt_num9";
-            this.bt_num9.Size = new System.Drawing.Size(45, 20);
-            this.bt_num9.TabIndex = 120;
-            this.bt_num9.UseVisualStyleBackColor = true;
-            this.bt_num9.Click += new System.EventHandler(this.bt_num9_Click);
-            // 
             // bt_f1
             // 
-            this.bt_f1.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_f1.Location = new System.Drawing.Point(79, 3);
+            this.bt_f1.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_f1.Location = new System.Drawing.Point(81, 0);
             this.bt_f1.Margin = new System.Windows.Forms.Padding(2);
             this.bt_f1.Name = "bt_f1";
-            this.bt_f1.Size = new System.Drawing.Size(45, 20);
+            this.bt_f1.Size = new System.Drawing.Size(45, 30);
             this.bt_f1.TabIndex = 155;
             this.bt_f1.Text = "F1";
             this.bt_f1.UseVisualStyleBackColor = true;
             this.bt_f1.Click += new System.EventHandler(this.bt_f1_Click);
             // 
-            // bt_num4
-            // 
-            this.bt_num4.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num4.Image = global::FRTeachPendant.Properties.Resources.tpfour;
-            this.bt_num4.Location = new System.Drawing.Point(112, 144);
-            this.bt_num4.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num4.Name = "bt_num4";
-            this.bt_num4.Size = new System.Drawing.Size(45, 20);
-            this.bt_num4.TabIndex = 121;
-            this.bt_num4.UseVisualStyleBackColor = true;
-            this.bt_num4.Click += new System.EventHandler(this.bt_num4_Click);
-            // 
-            // bt_num5
-            // 
-            this.bt_num5.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num5.Image = global::FRTeachPendant.Properties.Resources.tpfive;
-            this.bt_num5.Location = new System.Drawing.Point(154, 144);
-            this.bt_num5.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num5.Name = "bt_num5";
-            this.bt_num5.Size = new System.Drawing.Size(45, 20);
-            this.bt_num5.TabIndex = 122;
-            this.bt_num5.UseVisualStyleBackColor = true;
-            this.bt_num5.Click += new System.EventHandler(this.bt_num5_Click);
-            // 
-            // bt_num6
-            // 
-            this.bt_num6.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num6.Image = global::FRTeachPendant.Properties.Resources.tpsix;
-            this.bt_num6.Location = new System.Drawing.Point(193, 144);
-            this.bt_num6.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num6.Name = "bt_num6";
-            this.bt_num6.Size = new System.Drawing.Size(45, 20);
-            this.bt_num6.TabIndex = 123;
-            this.bt_num6.UseVisualStyleBackColor = true;
-            this.bt_num6.Click += new System.EventHandler(this.bt_num6_Click);
-            // 
-            // bt_num1
-            // 
-            this.bt_num1.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num1.Image = global::FRTeachPendant.Properties.Resources.tpone;
-            this.bt_num1.Location = new System.Drawing.Point(112, 165);
-            this.bt_num1.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num1.Name = "bt_num1";
-            this.bt_num1.Size = new System.Drawing.Size(45, 20);
-            this.bt_num1.TabIndex = 124;
-            this.bt_num1.UseVisualStyleBackColor = true;
-            this.bt_num1.Click += new System.EventHandler(this.bt_num1_Click);
-            // 
-            // bt_num2
-            // 
-            this.bt_num2.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num2.Image = global::FRTeachPendant.Properties.Resources.tptwo;
-            this.bt_num2.Location = new System.Drawing.Point(154, 165);
-            this.bt_num2.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num2.Name = "bt_num2";
-            this.bt_num2.Size = new System.Drawing.Size(45, 20);
-            this.bt_num2.TabIndex = 125;
-            this.bt_num2.UseVisualStyleBackColor = true;
-            this.bt_num2.Click += new System.EventHandler(this.bt_num2_Click);
-            // 
-            // bt_num3
-            // 
-            this.bt_num3.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num3.Image = global::FRTeachPendant.Properties.Resources.tpthree;
-            this.bt_num3.Location = new System.Drawing.Point(193, 165);
-            this.bt_num3.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num3.Name = "bt_num3";
-            this.bt_num3.Size = new System.Drawing.Size(45, 20);
-            this.bt_num3.TabIndex = 126;
-            this.bt_num3.UseVisualStyleBackColor = true;
-            this.bt_num3.Click += new System.EventHandler(this.bt_num3_Click);
-            // 
-            // bt_num0
-            // 
-            this.bt_num0.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_num0.Image = global::FRTeachPendant.Properties.Resources.tpzero;
-            this.bt_num0.Location = new System.Drawing.Point(112, 189);
-            this.bt_num0.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_num0.Name = "bt_num0";
-            this.bt_num0.Size = new System.Drawing.Size(45, 20);
-            this.bt_num0.TabIndex = 127;
-            this.bt_num0.UseVisualStyleBackColor = true;
-            this.bt_num0.Click += new System.EventHandler(this.bt_num0_Click);
-            // 
-            // bt_dot
-            // 
-            this.bt_dot.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_dot.Image = global::FRTeachPendant.Properties.Resources.tpdot;
-            this.bt_dot.Location = new System.Drawing.Point(154, 189);
-            this.bt_dot.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_dot.Name = "bt_dot";
-            this.bt_dot.Size = new System.Drawing.Size(45, 20);
-            this.bt_dot.TabIndex = 128;
-            this.bt_dot.UseVisualStyleBackColor = true;
-            this.bt_dot.Click += new System.EventHandler(this.bt_dot_Click);
-            // 
-            // bt_comm
-            // 
-            this.bt_comm.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_comm.Image = global::FRTeachPendant.Properties.Resources.tpminus;
-            this.bt_comm.Location = new System.Drawing.Point(193, 189);
-            this.bt_comm.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_comm.Name = "bt_comm";
-            this.bt_comm.Size = new System.Drawing.Size(45, 20);
-            this.bt_comm.TabIndex = 129;
-            this.bt_comm.UseVisualStyleBackColor = true;
-            this.bt_comm.Click += new System.EventHandler(this.bt_comm_Click);
-            // 
-            // bt_diag
-            // 
-            this.bt_diag.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_diag.Image = global::FRTeachPendant.Properties.Resources.tphelpeg;
-            this.bt_diag.Location = new System.Drawing.Point(112, 210);
-            this.bt_diag.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_diag.Name = "bt_diag";
-            this.bt_diag.Size = new System.Drawing.Size(45, 20);
-            this.bt_diag.TabIndex = 130;
-            this.bt_diag.UseVisualStyleBackColor = true;
-            this.bt_diag.Click += new System.EventHandler(this.bt_diag_Click);
-            // 
             // bt_posn
             // 
-            this.bt_posn.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_posn.Location = new System.Drawing.Point(154, 210);
+            this.bt_posn.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_posn.Location = new System.Drawing.Point(153, 269);
             this.bt_posn.Margin = new System.Windows.Forms.Padding(2);
             this.bt_posn.Name = "bt_posn";
-            this.bt_posn.Size = new System.Drawing.Size(45, 20);
+            this.bt_posn.Size = new System.Drawing.Size(45, 35);
             this.bt_posn.TabIndex = 131;
             this.bt_posn.Text = "POSN";
             this.bt_posn.UseVisualStyleBackColor = true;
@@ -760,11 +544,11 @@
             // bt_io
             // 
             this.bt_io.BackColor = System.Drawing.SystemColors.Control;
-            this.bt_io.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_io.Location = new System.Drawing.Point(193, 210);
+            this.bt_io.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_io.Location = new System.Drawing.Point(198, 269);
             this.bt_io.Margin = new System.Windows.Forms.Padding(2);
             this.bt_io.Name = "bt_io";
-            this.bt_io.Size = new System.Drawing.Size(45, 20);
+            this.bt_io.Size = new System.Drawing.Size(45, 35);
             this.bt_io.TabIndex = 132;
             this.bt_io.Text = "I/O";
             this.bt_io.UseVisualStyleBackColor = false;
@@ -772,11 +556,11 @@
             // 
             // bt_tool1
             // 
-            this.bt_tool1.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_tool1.Location = new System.Drawing.Point(242, 122);
+            this.bt_tool1.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_tool1.Location = new System.Drawing.Point(248, 114);
             this.bt_tool1.Margin = new System.Windows.Forms.Padding(2);
             this.bt_tool1.Name = "bt_tool1";
-            this.bt_tool1.Size = new System.Drawing.Size(45, 20);
+            this.bt_tool1.Size = new System.Drawing.Size(45, 35);
             this.bt_tool1.TabIndex = 133;
             this.bt_tool1.Text = "TOOL1";
             this.bt_tool1.UseVisualStyleBackColor = true;
@@ -784,11 +568,11 @@
             // 
             // bt_tool2
             // 
-            this.bt_tool2.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_tool2.Location = new System.Drawing.Point(242, 144);
+            this.bt_tool2.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_tool2.Location = new System.Drawing.Point(248, 152);
             this.bt_tool2.Margin = new System.Windows.Forms.Padding(2);
             this.bt_tool2.Name = "bt_tool2";
-            this.bt_tool2.Size = new System.Drawing.Size(45, 20);
+            this.bt_tool2.Size = new System.Drawing.Size(45, 35);
             this.bt_tool2.TabIndex = 134;
             this.bt_tool2.Text = "TOOL2";
             this.bt_tool2.UseVisualStyleBackColor = true;
@@ -796,11 +580,11 @@
             // 
             // bt_moveMenu
             // 
-            this.bt_moveMenu.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_moveMenu.Location = new System.Drawing.Point(242, 165);
+            this.bt_moveMenu.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_moveMenu.Location = new System.Drawing.Point(248, 191);
             this.bt_moveMenu.Margin = new System.Windows.Forms.Padding(2);
             this.bt_moveMenu.Name = "bt_moveMenu";
-            this.bt_moveMenu.Size = new System.Drawing.Size(45, 20);
+            this.bt_moveMenu.Size = new System.Drawing.Size(45, 35);
             this.bt_moveMenu.TabIndex = 135;
             this.bt_moveMenu.Text = "MOVEM";
             this.bt_moveMenu.UseVisualStyleBackColor = true;
@@ -808,59 +592,35 @@
             // 
             // bt_setup
             // 
-            this.bt_setup.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_setup.Location = new System.Drawing.Point(242, 189);
+            this.bt_setup.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_setup.Location = new System.Drawing.Point(248, 230);
             this.bt_setup.Margin = new System.Windows.Forms.Padding(2);
             this.bt_setup.Name = "bt_setup";
-            this.bt_setup.Size = new System.Drawing.Size(45, 20);
+            this.bt_setup.Size = new System.Drawing.Size(45, 35);
             this.bt_setup.TabIndex = 136;
             this.bt_setup.Text = "SETUP";
             this.bt_setup.UseVisualStyleBackColor = true;
             this.bt_setup.Click += new System.EventHandler(this.bt_setup_Click);
             // 
-            // bt_step
-            // 
-            this.bt_step.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_step.Image = global::FRTeachPendant.Properties.Resources.tpstep;
-            this.bt_step.Location = new System.Drawing.Point(285, 100);
-            this.bt_step.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_step.Name = "bt_step";
-            this.bt_step.Size = new System.Drawing.Size(45, 20);
-            this.bt_step.TabIndex = 147;
-            this.bt_step.UseVisualStyleBackColor = true;
-            this.bt_step.Click += new System.EventHandler(this.bt_step_Click);
-            // 
             // bt_status
             // 
-            this.bt_status.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_status.Location = new System.Drawing.Point(242, 210);
+            this.bt_status.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_status.Location = new System.Drawing.Point(248, 269);
             this.bt_status.Margin = new System.Windows.Forms.Padding(2);
             this.bt_status.Name = "bt_status";
-            this.bt_status.Size = new System.Drawing.Size(45, 20);
+            this.bt_status.Size = new System.Drawing.Size(45, 35);
             this.bt_status.TabIndex = 137;
             this.bt_status.Text = "STATUS";
             this.bt_status.UseVisualStyleBackColor = true;
             this.bt_status.Click += new System.EventHandler(this.bt_status_Click);
             // 
-            // bt_disp
-            // 
-            this.bt_disp.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_disp.Image = global::FRTeachPendant.Properties.Resources.tpdispch;
-            this.bt_disp.Location = new System.Drawing.Point(105, 58);
-            this.bt_disp.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_disp.Name = "bt_disp";
-            this.bt_disp.Size = new System.Drawing.Size(35, 30);
-            this.bt_disp.TabIndex = 146;
-            this.bt_disp.UseVisualStyleBackColor = true;
-            this.bt_disp.Click += new System.EventHandler(this.bt_disp_Click);
-            // 
             // bt_fctn
             // 
-            this.bt_fctn.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_fctn.Location = new System.Drawing.Point(293, 27);
+            this.bt_fctn.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_fctn.Location = new System.Drawing.Point(353, 31);
             this.bt_fctn.Margin = new System.Windows.Forms.Padding(2);
             this.bt_fctn.Name = "bt_fctn";
-            this.bt_fctn.Size = new System.Drawing.Size(45, 20);
+            this.bt_fctn.Size = new System.Drawing.Size(45, 35);
             this.bt_fctn.TabIndex = 165;
             this.bt_fctn.Text = "FCTN";
             this.bt_fctn.UseVisualStyleBackColor = true;
@@ -868,11 +628,11 @@
             // 
             // bt_coord
             // 
-            this.bt_coord.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_coord.Location = new System.Drawing.Point(285, 144);
+            this.bt_coord.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_coord.Location = new System.Drawing.Point(299, 152);
             this.bt_coord.Margin = new System.Windows.Forms.Padding(2);
             this.bt_coord.Name = "bt_coord";
-            this.bt_coord.Size = new System.Drawing.Size(45, 20);
+            this.bt_coord.Size = new System.Drawing.Size(45, 35);
             this.bt_coord.TabIndex = 138;
             this.bt_coord.Text = "COORD";
             this.bt_coord.UseVisualStyleBackColor = true;
@@ -880,11 +640,11 @@
             // 
             // bt_data
             // 
-            this.bt_data.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_data.Location = new System.Drawing.Point(245, 27);
+            this.bt_data.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_data.Location = new System.Drawing.Point(286, 31);
             this.bt_data.Margin = new System.Windows.Forms.Padding(2);
             this.bt_data.Name = "bt_data";
-            this.bt_data.Size = new System.Drawing.Size(45, 20);
+            this.bt_data.Size = new System.Drawing.Size(45, 35);
             this.bt_data.TabIndex = 164;
             this.bt_data.Text = "DATA";
             this.bt_data.UseVisualStyleBackColor = true;
@@ -892,11 +652,11 @@
             // 
             // bt_group
             // 
-            this.bt_group.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_group.Location = new System.Drawing.Point(285, 165);
+            this.bt_group.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_group.Location = new System.Drawing.Point(299, 191);
             this.bt_group.Margin = new System.Windows.Forms.Padding(2);
             this.bt_group.Name = "bt_group";
-            this.bt_group.Size = new System.Drawing.Size(45, 20);
+            this.bt_group.Size = new System.Drawing.Size(45, 35);
             this.bt_group.TabIndex = 139;
             this.bt_group.Text = "GROUP";
             this.bt_group.UseVisualStyleBackColor = true;
@@ -904,99 +664,39 @@
             // 
             // bt_edit
             // 
-            this.bt_edit.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_edit.Location = new System.Drawing.Point(193, 27);
+            this.bt_edit.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_edit.Location = new System.Drawing.Point(219, 31);
             this.bt_edit.Margin = new System.Windows.Forms.Padding(2);
             this.bt_edit.Name = "bt_edit";
-            this.bt_edit.Size = new System.Drawing.Size(45, 20);
+            this.bt_edit.Size = new System.Drawing.Size(45, 35);
             this.bt_edit.TabIndex = 163;
             this.bt_edit.Text = "EDIT";
             this.bt_edit.UseVisualStyleBackColor = true;
             this.bt_edit.Click += new System.EventHandler(this.bt_edit_Click);
             // 
-            // bt_speedUp
-            // 
-            this.bt_speedUp.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_speedUp.Image = global::FRTeachPendant.Properties.Resources.tpoverrideup;
-            this.bt_speedUp.Location = new System.Drawing.Point(285, 188);
-            this.bt_speedUp.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_speedUp.Name = "bt_speedUp";
-            this.bt_speedUp.Size = new System.Drawing.Size(45, 20);
-            this.bt_speedUp.TabIndex = 140;
-            this.bt_speedUp.UseVisualStyleBackColor = true;
-            this.bt_speedUp.Click += new System.EventHandler(this.bt_speedUp_Click);
-            // 
             // bt_select
             // 
-            this.bt_select.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_select.Location = new System.Drawing.Point(142, 27);
+            this.bt_select.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_select.Location = new System.Drawing.Point(152, 31);
             this.bt_select.Margin = new System.Windows.Forms.Padding(2);
             this.bt_select.Name = "bt_select";
-            this.bt_select.Size = new System.Drawing.Size(45, 20);
+            this.bt_select.Size = new System.Drawing.Size(45, 35);
             this.bt_select.TabIndex = 162;
             this.bt_select.Text = "SELECT";
             this.bt_select.UseVisualStyleBackColor = true;
             this.bt_select.Click += new System.EventHandler(this.bt_select_Click);
             // 
-            // bt_speedDown
-            // 
-            this.bt_speedDown.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_speedDown.Image = global::FRTeachPendant.Properties.Resources.tpoverridedown;
-            this.bt_speedDown.Location = new System.Drawing.Point(285, 212);
-            this.bt_speedDown.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_speedDown.Name = "bt_speedDown";
-            this.bt_speedDown.Size = new System.Drawing.Size(45, 20);
-            this.bt_speedDown.TabIndex = 141;
-            this.bt_speedDown.UseVisualStyleBackColor = true;
-            this.bt_speedDown.Click += new System.EventHandler(this.bt_speedDown_Click);
-            // 
             // bt_menu
             // 
-            this.bt_menu.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_menu.Location = new System.Drawing.Point(93, 27);
+            this.bt_menu.Font = new System.Drawing.Font("宋体", 7F);
+            this.bt_menu.Location = new System.Drawing.Point(85, 31);
             this.bt_menu.Margin = new System.Windows.Forms.Padding(2);
             this.bt_menu.Name = "bt_menu";
-            this.bt_menu.Size = new System.Drawing.Size(45, 20);
+            this.bt_menu.Size = new System.Drawing.Size(45, 35);
             this.bt_menu.TabIndex = 161;
             this.bt_menu.Text = "MENU";
             this.bt_menu.UseVisualStyleBackColor = true;
             this.bt_menu.Click += new System.EventHandler(this.bt_menu_Click);
-            // 
-            // bt_reset
-            // 
-            this.bt_reset.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_reset.Image = global::FRTeachPendant.Properties.Resources.tpreseteg;
-            this.bt_reset.Location = new System.Drawing.Point(112, 100);
-            this.bt_reset.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_reset.Name = "bt_reset";
-            this.bt_reset.Size = new System.Drawing.Size(45, 20);
-            this.bt_reset.TabIndex = 142;
-            this.bt_reset.UseVisualStyleBackColor = true;
-            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
-            // 
-            // bt_backspace
-            // 
-            this.bt_backspace.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_backspace.Image = global::FRTeachPendant.Properties.Resources.tpbseg;
-            this.bt_backspace.Location = new System.Drawing.Point(154, 100);
-            this.bt_backspace.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_backspace.Name = "bt_backspace";
-            this.bt_backspace.Size = new System.Drawing.Size(45, 20);
-            this.bt_backspace.TabIndex = 143;
-            this.bt_backspace.UseVisualStyleBackColor = true;
-            this.bt_backspace.Click += new System.EventHandler(this.bt_backspace_Click);
-            // 
-            // bt_enter
-            // 
-            this.bt_enter.Font = new System.Drawing.Font("宋体", 6.5F);
-            this.bt_enter.Image = global::FRTeachPendant.Properties.Resources.tpentereg;
-            this.bt_enter.Location = new System.Drawing.Point(242, 100);
-            this.bt_enter.Margin = new System.Windows.Forms.Padding(2);
-            this.bt_enter.Name = "bt_enter";
-            this.bt_enter.Size = new System.Drawing.Size(45, 20);
-            this.bt_enter.TabIndex = 145;
-            this.bt_enter.UseVisualStyleBackColor = true;
-            this.bt_enter.Click += new System.EventHandler(this.bt_enter_Click);
             // 
             // pn_RobotCfg
             // 
@@ -1013,12 +713,311 @@
             this.pn_RobotCfg.Size = new System.Drawing.Size(357, 19);
             this.pn_RobotCfg.TabIndex = 2;
             // 
+            // bt_item
+            // 
+            this.bt_item.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_item.Image = global::FRTeachPendant.Properties.Resources.tpitemeg;
+            this.bt_item.Location = new System.Drawing.Point(198, 77);
+            this.bt_item.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_item.Name = "bt_item";
+            this.bt_item.Size = new System.Drawing.Size(45, 35);
+            this.bt_item.TabIndex = 144;
+            this.bt_item.UseVisualStyleBackColor = true;
+            this.bt_item.Click += new System.EventHandler(this.bt_item_Click);
+            // 
+            // bt_arrowRIGHT
+            // 
+            this.bt_arrowRIGHT.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_arrowRIGHT.Image = global::FRTeachPendant.Properties.Resources.tprightarrow;
+            this.bt_arrowRIGHT.Location = new System.Drawing.Point(461, 90);
+            this.bt_arrowRIGHT.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_arrowRIGHT.Name = "bt_arrowRIGHT";
+            this.bt_arrowRIGHT.Size = new System.Drawing.Size(45, 35);
+            this.bt_arrowRIGHT.TabIndex = 151;
+            this.bt_arrowRIGHT.UseVisualStyleBackColor = true;
+            this.bt_arrowRIGHT.Click += new System.EventHandler(this.bt_arrowRIGHT_Click);
+            // 
+            // bt_arrowLEFT
+            // 
+            this.bt_arrowLEFT.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_arrowLEFT.Image = global::FRTeachPendant.Properties.Resources.tpleftarrow;
+            this.bt_arrowLEFT.Location = new System.Drawing.Point(368, 91);
+            this.bt_arrowLEFT.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_arrowLEFT.Name = "bt_arrowLEFT";
+            this.bt_arrowLEFT.Size = new System.Drawing.Size(45, 35);
+            this.bt_arrowLEFT.TabIndex = 150;
+            this.bt_arrowLEFT.UseVisualStyleBackColor = true;
+            this.bt_arrowLEFT.Click += new System.EventHandler(this.bt_arrowLEFT_Click);
+            // 
+            // bt_arrowUP
+            // 
+            this.bt_arrowUP.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_arrowUP.Image = global::FRTeachPendant.Properties.Resources.tpuparrow;
+            this.bt_arrowUP.Location = new System.Drawing.Point(414, 65);
+            this.bt_arrowUP.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_arrowUP.Name = "bt_arrowUP";
+            this.bt_arrowUP.Size = new System.Drawing.Size(45, 35);
+            this.bt_arrowUP.TabIndex = 149;
+            this.bt_arrowUP.UseVisualStyleBackColor = true;
+            this.bt_arrowUP.Click += new System.EventHandler(this.bt_arrowUP_Click);
+            // 
+            // bt_arrowDOWN
+            // 
+            this.bt_arrowDOWN.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_arrowDOWN.Image = global::FRTeachPendant.Properties.Resources.tpdownarrow;
+            this.bt_arrowDOWN.Location = new System.Drawing.Point(414, 114);
+            this.bt_arrowDOWN.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_arrowDOWN.Name = "bt_arrowDOWN";
+            this.bt_arrowDOWN.Size = new System.Drawing.Size(45, 35);
+            this.bt_arrowDOWN.TabIndex = 148;
+            this.bt_arrowDOWN.UseVisualStyleBackColor = true;
+            this.bt_arrowDOWN.Click += new System.EventHandler(this.bt_arrowDOWN_Click);
+            // 
+            // bt_num7
+            // 
+            this.bt_num7.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num7.Image = global::FRTeachPendant.Properties.Resources.tpseven;
+            this.bt_num7.Location = new System.Drawing.Point(108, 114);
+            this.bt_num7.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num7.Name = "bt_num7";
+            this.bt_num7.Size = new System.Drawing.Size(45, 35);
+            this.bt_num7.TabIndex = 118;
+            this.bt_num7.UseVisualStyleBackColor = true;
+            this.bt_num7.Click += new System.EventHandler(this.bt_num7_Click);
+            // 
+            // bt_num8
+            // 
+            this.bt_num8.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num8.Image = global::FRTeachPendant.Properties.Resources.tpeight;
+            this.bt_num8.Location = new System.Drawing.Point(153, 114);
+            this.bt_num8.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num8.Name = "bt_num8";
+            this.bt_num8.Size = new System.Drawing.Size(45, 35);
+            this.bt_num8.TabIndex = 119;
+            this.bt_num8.UseVisualStyleBackColor = true;
+            this.bt_num8.Click += new System.EventHandler(this.bt_num8_Click);
+            // 
+            // bt_num9
+            // 
+            this.bt_num9.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num9.Image = global::FRTeachPendant.Properties.Resources.tpnine;
+            this.bt_num9.Location = new System.Drawing.Point(198, 114);
+            this.bt_num9.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num9.Name = "bt_num9";
+            this.bt_num9.Size = new System.Drawing.Size(45, 35);
+            this.bt_num9.TabIndex = 120;
+            this.bt_num9.UseVisualStyleBackColor = true;
+            this.bt_num9.Click += new System.EventHandler(this.bt_num9_Click);
+            // 
+            // bt_num4
+            // 
+            this.bt_num4.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num4.Image = global::FRTeachPendant.Properties.Resources.tpfour;
+            this.bt_num4.Location = new System.Drawing.Point(108, 152);
+            this.bt_num4.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num4.Name = "bt_num4";
+            this.bt_num4.Size = new System.Drawing.Size(45, 35);
+            this.bt_num4.TabIndex = 121;
+            this.bt_num4.UseVisualStyleBackColor = true;
+            this.bt_num4.Click += new System.EventHandler(this.bt_num4_Click);
+            // 
+            // bt_num5
+            // 
+            this.bt_num5.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num5.Image = global::FRTeachPendant.Properties.Resources.tpfive;
+            this.bt_num5.Location = new System.Drawing.Point(153, 152);
+            this.bt_num5.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num5.Name = "bt_num5";
+            this.bt_num5.Size = new System.Drawing.Size(45, 35);
+            this.bt_num5.TabIndex = 122;
+            this.bt_num5.UseVisualStyleBackColor = true;
+            this.bt_num5.Click += new System.EventHandler(this.bt_num5_Click);
+            // 
+            // bt_num6
+            // 
+            this.bt_num6.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num6.Image = global::FRTeachPendant.Properties.Resources.tpsix;
+            this.bt_num6.Location = new System.Drawing.Point(198, 152);
+            this.bt_num6.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num6.Name = "bt_num6";
+            this.bt_num6.Size = new System.Drawing.Size(45, 35);
+            this.bt_num6.TabIndex = 123;
+            this.bt_num6.UseVisualStyleBackColor = true;
+            this.bt_num6.Click += new System.EventHandler(this.bt_num6_Click);
+            // 
+            // bt_num1
+            // 
+            this.bt_num1.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num1.Image = global::FRTeachPendant.Properties.Resources.tpone;
+            this.bt_num1.Location = new System.Drawing.Point(108, 191);
+            this.bt_num1.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num1.Name = "bt_num1";
+            this.bt_num1.Size = new System.Drawing.Size(45, 35);
+            this.bt_num1.TabIndex = 124;
+            this.bt_num1.UseVisualStyleBackColor = true;
+            this.bt_num1.Click += new System.EventHandler(this.bt_num1_Click);
+            // 
+            // bt_num2
+            // 
+            this.bt_num2.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num2.Image = global::FRTeachPendant.Properties.Resources.tptwo;
+            this.bt_num2.Location = new System.Drawing.Point(153, 191);
+            this.bt_num2.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num2.Name = "bt_num2";
+            this.bt_num2.Size = new System.Drawing.Size(45, 35);
+            this.bt_num2.TabIndex = 125;
+            this.bt_num2.UseVisualStyleBackColor = true;
+            this.bt_num2.Click += new System.EventHandler(this.bt_num2_Click);
+            // 
+            // bt_num3
+            // 
+            this.bt_num3.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num3.Image = global::FRTeachPendant.Properties.Resources.tpthree;
+            this.bt_num3.Location = new System.Drawing.Point(198, 191);
+            this.bt_num3.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num3.Name = "bt_num3";
+            this.bt_num3.Size = new System.Drawing.Size(45, 35);
+            this.bt_num3.TabIndex = 126;
+            this.bt_num3.UseVisualStyleBackColor = true;
+            this.bt_num3.Click += new System.EventHandler(this.bt_num3_Click);
+            // 
+            // bt_num0
+            // 
+            this.bt_num0.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_num0.Image = global::FRTeachPendant.Properties.Resources.tpzero;
+            this.bt_num0.Location = new System.Drawing.Point(108, 230);
+            this.bt_num0.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_num0.Name = "bt_num0";
+            this.bt_num0.Size = new System.Drawing.Size(45, 35);
+            this.bt_num0.TabIndex = 127;
+            this.bt_num0.UseVisualStyleBackColor = true;
+            this.bt_num0.Click += new System.EventHandler(this.bt_num0_Click);
+            // 
+            // bt_dot
+            // 
+            this.bt_dot.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_dot.Image = global::FRTeachPendant.Properties.Resources.tpdot;
+            this.bt_dot.Location = new System.Drawing.Point(153, 230);
+            this.bt_dot.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_dot.Name = "bt_dot";
+            this.bt_dot.Size = new System.Drawing.Size(45, 35);
+            this.bt_dot.TabIndex = 128;
+            this.bt_dot.UseVisualStyleBackColor = true;
+            this.bt_dot.Click += new System.EventHandler(this.bt_dot_Click);
+            // 
+            // bt_comm
+            // 
+            this.bt_comm.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_comm.Image = global::FRTeachPendant.Properties.Resources.tpminus;
+            this.bt_comm.Location = new System.Drawing.Point(198, 230);
+            this.bt_comm.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_comm.Name = "bt_comm";
+            this.bt_comm.Size = new System.Drawing.Size(45, 35);
+            this.bt_comm.TabIndex = 129;
+            this.bt_comm.UseVisualStyleBackColor = true;
+            this.bt_comm.Click += new System.EventHandler(this.bt_comm_Click);
+            // 
+            // bt_diag
+            // 
+            this.bt_diag.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_diag.Image = global::FRTeachPendant.Properties.Resources.tphelpeg;
+            this.bt_diag.Location = new System.Drawing.Point(108, 269);
+            this.bt_diag.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_diag.Name = "bt_diag";
+            this.bt_diag.Size = new System.Drawing.Size(45, 35);
+            this.bt_diag.TabIndex = 130;
+            this.bt_diag.UseVisualStyleBackColor = true;
+            this.bt_diag.Click += new System.EventHandler(this.bt_diag_Click);
+            // 
+            // bt_step
+            // 
+            this.bt_step.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_step.Image = global::FRTeachPendant.Properties.Resources.tpstep;
+            this.bt_step.Location = new System.Drawing.Point(299, 77);
+            this.bt_step.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_step.Name = "bt_step";
+            this.bt_step.Size = new System.Drawing.Size(45, 35);
+            this.bt_step.TabIndex = 147;
+            this.bt_step.UseVisualStyleBackColor = true;
+            this.bt_step.Click += new System.EventHandler(this.bt_step_Click);
+            // 
+            // bt_disp
+            // 
+            this.bt_disp.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_disp.Image = global::FRTeachPendant.Properties.Resources.tpdispch;
+            this.bt_disp.Location = new System.Drawing.Point(60, 91);
+            this.bt_disp.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_disp.Name = "bt_disp";
+            this.bt_disp.Size = new System.Drawing.Size(45, 35);
+            this.bt_disp.TabIndex = 146;
+            this.bt_disp.UseVisualStyleBackColor = true;
+            this.bt_disp.Click += new System.EventHandler(this.bt_disp_Click);
+            // 
+            // bt_speedUp
+            // 
+            this.bt_speedUp.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_speedUp.Image = global::FRTeachPendant.Properties.Resources.tpoverrideup;
+            this.bt_speedUp.Location = new System.Drawing.Point(299, 230);
+            this.bt_speedUp.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_speedUp.Name = "bt_speedUp";
+            this.bt_speedUp.Size = new System.Drawing.Size(45, 35);
+            this.bt_speedUp.TabIndex = 140;
+            this.bt_speedUp.UseVisualStyleBackColor = true;
+            this.bt_speedUp.Click += new System.EventHandler(this.bt_speedUp_Click);
+            // 
+            // bt_speedDown
+            // 
+            this.bt_speedDown.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_speedDown.Image = global::FRTeachPendant.Properties.Resources.tpoverridedown;
+            this.bt_speedDown.Location = new System.Drawing.Point(299, 269);
+            this.bt_speedDown.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_speedDown.Name = "bt_speedDown";
+            this.bt_speedDown.Size = new System.Drawing.Size(45, 35);
+            this.bt_speedDown.TabIndex = 141;
+            this.bt_speedDown.UseVisualStyleBackColor = true;
+            this.bt_speedDown.Click += new System.EventHandler(this.bt_speedDown_Click);
+            // 
+            // bt_reset
+            // 
+            this.bt_reset.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_reset.Image = global::FRTeachPendant.Properties.Resources.tpreseteg;
+            this.bt_reset.Location = new System.Drawing.Point(108, 77);
+            this.bt_reset.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_reset.Name = "bt_reset";
+            this.bt_reset.Size = new System.Drawing.Size(45, 35);
+            this.bt_reset.TabIndex = 142;
+            this.bt_reset.UseVisualStyleBackColor = true;
+            this.bt_reset.Click += new System.EventHandler(this.bt_reset_Click);
+            // 
+            // bt_backspace
+            // 
+            this.bt_backspace.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_backspace.Image = global::FRTeachPendant.Properties.Resources.tpbseg;
+            this.bt_backspace.Location = new System.Drawing.Point(153, 77);
+            this.bt_backspace.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_backspace.Name = "bt_backspace";
+            this.bt_backspace.Size = new System.Drawing.Size(45, 35);
+            this.bt_backspace.TabIndex = 143;
+            this.bt_backspace.UseVisualStyleBackColor = true;
+            this.bt_backspace.Click += new System.EventHandler(this.bt_backspace_Click);
+            // 
+            // bt_enter
+            // 
+            this.bt_enter.Font = new System.Drawing.Font("宋体", 6.5F);
+            this.bt_enter.Image = global::FRTeachPendant.Properties.Resources.tpentereg;
+            this.bt_enter.Location = new System.Drawing.Point(248, 77);
+            this.bt_enter.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_enter.Name = "bt_enter";
+            this.bt_enter.Size = new System.Drawing.Size(45, 35);
+            this.bt_enter.TabIndex = 145;
+            this.bt_enter.UseVisualStyleBackColor = true;
+            this.bt_enter.Click += new System.EventHandler(this.bt_enter_Click);
+            // 
             // mainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(684, 761);
+            this.ClientSize = new System.Drawing.Size(684, 831);
             this.Controls.Add(this.pn_RobotCfg);
             this.Controls.Add(this.pnKeyboard);
             this.Controls.Add(this.lb_HostName);
@@ -1032,7 +1031,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(700, 800);
+            this.MaximumSize = new System.Drawing.Size(700, 870);
             this.MinimumSize = new System.Drawing.Size(700, 550);
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
