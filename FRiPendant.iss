@@ -39,14 +39,18 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"
 [Code]
 
 const
+  { OCX type library registry keys }
   TypeLibKey1 = 'TypeLib\{34F4C4DB-A64B-4D87-99DA-042F7FB7DEBA}';
   TypeLibKey2 = 'TypeLib\{71060659-0E45-11D3-81B6-0000E206D650}';
   TypeLibKey3 = 'TypeLib\{F8A2CDB9-DC5A-49D2-90D1-559CAB110FFA}';
 
+  { Minimum required major version for OCX components }
   OcxVersionRequired = 10;
 
+  { Microsoft Edge WebView2 Runtime client ID }
   WebView2ClientId = '{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}';
 
+  { VC++ Redistributable product codes }
   VC2008ProductCode = '{9BE518E6-ECC6-35A9-88E4-87755C07200F}';
   VC2013ProductCode = '{13A4EE12-23EA-3371-91EE-EFB36DDFFF3E}';
 
@@ -58,6 +62,7 @@ var
   InstallationFailed: Boolean;
 
 
+{ Returns the registered path of an OCX component. }
 function GetRegisteredOcxPath(const TypeLibKey: String): String;
 begin
   Result := '';
@@ -74,12 +79,14 @@ begin
 end;
 
 
+{ Checks whether an OCX is registered and its file exists. }
 function IsOcxRegistered(const TypeLibKey: String): Boolean;
 begin
   Result := GetRegisteredOcxPath(TypeLibKey) <> '';
 end;
 
 
+{ Reads the major version from a file version resource. }
 function GetFileMajorVersion(
   const FilePath: String;
   var MajorVersion: Cardinal): Boolean;
@@ -118,6 +125,7 @@ begin
 end;
 
 
+{ Creates the OCX re-registration page when an older version is detected. }
 procedure InitializeWizard();
 var
   MajorVersion: Cardinal;
@@ -204,18 +212,21 @@ begin
 end;
 
 
+{ Marks the installation as failed. }
 procedure MarkInstallationAsFailed();
 begin
   InstallationFailed := True;
 end;
 
 
+{ Returns True only when no fatal installation error occurred. }
 function IsInstallationSuccessful(): Boolean;
 begin
   Result := not InstallationFailed;
 end;
 
 
+{ Hides the Finished page after a fatal installation error. }
 function ShouldSkipPage(PageID: Integer): Boolean;
 begin
   Result := False;
@@ -225,6 +236,7 @@ begin
 end;
 
 
+{ Returns True when the specified OCX option is selected. }
 function IsForceChecked(CheckIndex: Integer): Boolean;
 begin
   Result :=
@@ -234,6 +246,7 @@ begin
 end;
 
 
+{ Removes files, shortcuts, and firewall rules after a failed installation. }
 procedure CleanupFailedInstallation();
 var
   AppPath: String;
@@ -275,12 +288,14 @@ begin
 end;
 
 
+{ Checks whether a product is registered in the uninstall registry. }
 function IsProductInstalled(const ProductCode: String): Boolean;
 var
   DisplayVersion: String;
 begin
   Result := False;
 
+  { Check the 32-bit registry view. }
   if RegQueryStringValue(
        HKLM32,
        'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\' +
@@ -289,10 +304,12 @@ begin
        DisplayVersion) then
   begin
     Result := DisplayVersion <> '';
+
     if Result then
       Exit;
   end;
 
+  { Check the 64-bit registry view. }
   if RegQueryStringValue(
        HKLM64,
        'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\' +
@@ -301,10 +318,12 @@ begin
        DisplayVersion) then
   begin
     Result := DisplayVersion <> '';
+
     if Result then
       Exit;
   end;
 
+  { Check the current-user registry. }
   if RegQueryStringValue(
        HKCU,
        'Software\Microsoft\Windows\CurrentVersion\Uninstall\' +
@@ -315,18 +334,21 @@ begin
 end;
 
 
+{ Skips VC++ 2008 installation when the product is already installed. }
 function IsVC2008Installed(): Boolean;
 begin
   Result := IsProductInstalled(VC2008ProductCode);
 end;
 
 
+{ Skips VC++ 2013 installation when the product is already installed. }
 function IsVC2013Installed(): Boolean;
 begin
   Result := IsProductInstalled(VC2013ProductCode);
 end;
 
 
+{ Accepts successful, reboot-required, and already-newer-version results. }
 function IsSuccessfulRuntimeResult(ResultCode: Integer): Boolean;
 begin
   Result :=
@@ -337,6 +359,7 @@ begin
 end;
 
 
+{ Installs VC++ 2008 only when it is not already installed. }
 procedure InstallVC2008IfNeeded();
 var
   ResultCode: Integer;
@@ -384,6 +407,7 @@ begin
 end;
 
 
+{ Installs VC++ 2013 only when it is not already installed. }
 procedure InstallVC2013IfNeeded();
 var
   ResultCode: Integer;
@@ -431,12 +455,14 @@ begin
 end;
 
 
+{ Checks the WebView2 Runtime in machine and current-user registry locations. }
 function IsWebView2RuntimeInstalled(): Boolean;
 var
   Version: String;
 begin
   Result := False;
 
+  { Check the 64-bit machine registry. }
   if RegQueryStringValue(
        HKLM64,
        'SOFTWARE\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
@@ -449,6 +475,7 @@ begin
       Exit;
   end;
 
+  { Check the 32-bit machine registry. }
   if RegQueryStringValue(
        HKLM32,
        'SOFTWARE\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
@@ -461,6 +488,7 @@ begin
       Exit;
   end;
 
+  { Check the current-user registry. }
   if RegQueryStringValue(
        HKCU,
        'Software\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId,
@@ -470,6 +498,7 @@ begin
 end;
 
 
+{ Installs and verifies WebView2 when it is not already installed. }
 procedure InstallWebView2IfNeeded();
 var
   InstallerPath: String;
@@ -543,6 +572,7 @@ begin
 end;
 
 
+{ Registers an OCX when registration is missing or force registration is selected. }
 procedure RegisterOcxIfNeeded(
   const OcxPath: String;
   const TypeLibKey: String;
@@ -596,6 +626,7 @@ begin
 end;
 
 
+{ Executes runtime installation, OCX registration, and temporary-file cleanup. }
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   OcxPath1: String;
@@ -660,14 +691,17 @@ end;
 
 
 [Run]
+; Remove any existing firewall rule before creating a new one.
 Filename: "netsh.exe"; \
   Parameters: "advfirewall firewall delete rule name=""FRiPendant"" program=""{app}\bin\{#MyAppExeName}"" dir=in"; \
   Flags: runhidden waituntilterminated
 
+; Allow FRiPendant to receive inbound network connections.
 Filename: "netsh.exe"; \
   Parameters: "advfirewall firewall add rule name=""FRiPendant"" dir=in action=allow program=""{app}\bin\{#MyAppExeName}"" enable=yes profile=domain,private,public"; \
   Flags: runhidden waituntilterminated
 
+; Launch the application only after a successful installation.
 Filename: "{app}\bin\{#MyAppExeName}"; \
   Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; \
   Flags: nowait postinstall skipifsilent; \
@@ -675,6 +709,7 @@ Filename: "{app}\bin\{#MyAppExeName}"; \
 
 
 [UninstallRun]
+; Remove all firewall rules created for FRiPendant.
 Filename: "netsh.exe"; \
   Parameters: "advfirewall firewall delete rule name=""FRiPendant"""; \
   Flags: runhidden waituntilterminated; \
@@ -682,4 +717,5 @@ Filename: "netsh.exe"; \
 
 
 [UninstallDelete]
+; Remove the complete application directory during uninstallation.
 Type: filesandordirs; Name: "{app}"
