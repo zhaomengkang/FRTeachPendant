@@ -1,4 +1,4 @@
-using FRTeachPendant.Properties;
+﻿using FRTeachPendant.Properties;
 using FTPClient;
 using Microsoft.Web.WebView2.Core;
 using System;
@@ -1429,19 +1429,15 @@ namespace FRTeachPendant
         #region Ping Robot Connection
         private async Task<bool> IsRobotConnectedAsync(string robotIp, int retryCount = 3, int timeout = 1000)
         {
-            if (string.IsNullOrWhiteSpace(robotIp))
+            using (Ping ping = new Ping())
             {
-                return false;
-            }
-
-            int successCount = 0;
-            using (var ping = new Ping())
-            {
+                int successCount = 0;
                 for (int i = 0; i < retryCount; i++)
                 {
                     try
                     {
                         PingReply reply = await ping.SendPingAsync(robotIp, timeout);
+                        
                         if (reply.Status == IPStatus.Success)
                         {
                             successCount++;
@@ -1449,16 +1445,13 @@ namespace FRTeachPendant
                     }
                     catch
                     {
-                        // ignore individual ping errors
+                        // None
                     }
 
                     await Task.Delay(100);
                 }
+                return !string.IsNullOrEmpty(MkWebClient.GetLibVersion("http://" + tb_robotIP.Text)) && (successCount >= (retryCount / 2));
             }
-
-            // Require a majority of pings to succeed (round up)
-            int required = (int)Math.Ceiling(retryCount * 0.5);
-            return successCount >= required;
         }
 
         private async void timer1_Tick(object sender, EventArgs e)
@@ -1471,11 +1464,9 @@ namespace FRTeachPendant
             else
             {
                 this.robotIsConnected = false;
-                InitAll();
                 Application.Restart();
             }
 
-            // Update the teach pendant switch image based on the robot's connection status
             if (robotIsConnected)
             {
                 try
@@ -1488,8 +1479,7 @@ namespace FRTeachPendant
                     {
                         pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenon;
                     }
-                }
-                catch
+                }catch
                 {
                     pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;
                 }
