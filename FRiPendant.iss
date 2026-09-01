@@ -8,57 +8,95 @@ AppId={{267B176E-6D8C-431C-B4FF-D1D9BDF12ADD}}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
+
+; Install the application for all users.
 DefaultDirName={autopf}\FRiPendant
-DisableDirPage=yes
-UninstallDisplayIcon={app}\bin\{#MyAppExeName}
-DefaultGroupName=FRiPendant
-DisableProgramGroupPage=yes
 PrivilegesRequired=admin
+
+DisableDirPage=yes
+DisableProgramGroupPage=yes
+DefaultGroupName=FRiPendant
+
+UninstallDisplayIcon={app}\bin\{#MyAppExeName}
+
 OutputDir=Release
 OutputBaseFilename=FRiPendantInstallV{#MyAppVersion}
+
 SolidCompression=yes
 WizardStyle=classic
 SetupIconFile=icon\FRiPendant.ico
+
+; Try to close the running application before replacing files.
+CloseApplications=yes
+RestartApplications=no
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "FRTeachPendant\bin\Release\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "Support\UIF\*"; DestDir: "{app}\Support\UIF"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "KarelProject\release\*"; DestDir: "{app}\bin\KAREL"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "Support\VC\VC2008\*"; DestDir: "{app}\Support\VC2008"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "Support\VC\VC2013\*"; DestDir: "{app}\Support\VC2013"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "Support\webview2\MicrosoftEdgeWebview2Setup.exe"; DestDir: "{app}\Support\webview2"; Flags: ignoreversion
+; Main application files.
+Source: "FRTeachPendant\bin\Release\*"; \
+  DestDir: "{app}\bin"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+
+; OCX components and related UI files.
+Source: "Support\UIF\*"; \
+  DestDir: "{app}\Support\UIF"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+
+; KAREL project files.
+Source: "KarelProject\release\*"; \
+  DestDir: "{app}\bin\KAREL"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+
+; VC++ 2008 Redistributable installer.
+Source: "Support\VC\VC2008\*"; \
+  DestDir: "{app}\Support\VC2008"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+
+; VC++ 2013 Redistributable installer.
+Source: "Support\VC\VC2013\*"; \
+  DestDir: "{app}\Support\VC2013"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
+
+; Microsoft Edge WebView2 Runtime installer.
+Source: "Support\webview2\MicrosoftEdgeWebview2Setup.exe"; \
+  DestDir: "{app}\Support\webview2"; \
+  Flags: ignoreversion
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\bin\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; \
+  Filename: "{app}\bin\{#MyAppExeName}"
+
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; \
+  Filename: "{uninstallexe}"
+
+Name: "{autodesktop}\{#MyAppName}"; \
+  Filename: "{app}\bin\{#MyAppExeName}"
 
 [Code]
 
 const
-  { OCX type library registry keys }
+  { OCX type library registry keys. }
   TypeLibKey1 = 'TypeLib\{34F4C4DB-A64B-4D87-99DA-042F7FB7DEBA}';
   TypeLibKey2 = 'TypeLib\{71060659-0E45-11D3-81B6-0000E206D650}';
   TypeLibKey3 = 'TypeLib\{F8A2CDB9-DC5A-49D2-90D1-559CAB110FFA}';
 
-  { Minimum required major version for OCX components }
+  { Minimum required major version for OCX components. }
   OcxVersionRequired = 10;
 
-  { Microsoft Edge WebView2 Runtime client ID }
+  { Microsoft Edge WebView2 Runtime client ID. }
   WebView2ClientId = '{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}';
-
-  { VC++ Redistributable product codes }
-  VC2008ProductCode = '{9BE518E6-ECC6-35A9-88E4-87755C07200F}';
-  VC2013ProductCode = '{13A4EE12-23EA-3371-91EE-EFB36DDFFF3E}';
 
 var
   OcxForceRegPage: TInputOptionWizardPage;
+
+  { Indexes of the OCX checkboxes. }
   OcxCheckIndex1: Integer;
   OcxCheckIndex2: Integer;
   OcxCheckIndex3: Integer;
+
+  { Indicates whether a fatal installation error occurred. }
   InstallationFailed: Boolean;
 
 
@@ -73,13 +111,14 @@ begin
        '',
        Result) then
   begin
+    { Ignore registry entries that point to a missing file. }
     if not FileExists(Result) then
       Result := '';
   end;
 end;
 
 
-{ Checks whether an OCX is registered and its file exists. }
+{ Returns True when the OCX is registered and the registered file exists. }
 function IsOcxRegistered(const TypeLibKey: String): Boolean;
 begin
   Result := GetRegisteredOcxPath(TypeLibKey) <> '';
@@ -125,7 +164,7 @@ begin
 end;
 
 
-{ Creates the OCX re-registration page when an older version is detected. }
+{ Creates the OCX re-registration page when an older OCX version is detected. }
 procedure InitializeWizard();
 var
   MajorVersion: Cardinal;
@@ -139,6 +178,7 @@ begin
   OcxCheckIndex3 := -1;
   NeedOcxPage := False;
 
+  { Check the first OCX component. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey1);
 
   if (RegisteredPath <> '') and
@@ -146,6 +186,7 @@ begin
      (MajorVersion < OcxVersionRequired) then
     NeedOcxPage := True;
 
+  { Check the second OCX component. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey2);
 
   if (RegisteredPath <> '') and
@@ -153,6 +194,7 @@ begin
      (MajorVersion < OcxVersionRequired) then
     NeedOcxPage := True;
 
+  { Check the third OCX component. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey3);
 
   if (RegisteredPath <> '') and
@@ -160,6 +202,7 @@ begin
      (MajorVersion < OcxVersionRequired) then
     NeedOcxPage := True;
 
+  { Do not create the page when no old OCX version was found. }
   if not NeedOcxPage then
     Exit;
 
@@ -171,6 +214,7 @@ begin
     False,
     False);
 
+  { Add the first OCX option. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey1);
 
   if (RegisteredPath <> '') and
@@ -184,6 +228,7 @@ begin
     OcxForceRegPage.Values[OcxCheckIndex1] := True;
   end;
 
+  { Add the second OCX option. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey2);
 
   if (RegisteredPath <> '') and
@@ -197,6 +242,7 @@ begin
     OcxForceRegPage.Values[OcxCheckIndex2] := True;
   end;
 
+  { Add the third OCX option. }
   RegisteredPath := GetRegisteredOcxPath(TypeLibKey3);
 
   if (RegisteredPath <> '') and
@@ -257,6 +303,7 @@ var
 begin
   AppPath := ExpandConstant('{app}');
 
+  { Remove the firewall rule created by the installer. }
   Exec(
     'netsh.exe',
     'advfirewall firewall delete rule name="FRiPendant"',
@@ -265,90 +312,34 @@ begin
     ewWaitUntilTerminated,
     ResultCode);
 
+  { Remove the desktop shortcut. }
   DesktopShortcut := ExpandConstant(
     '{autodesktop}\{#MyAppName}.lnk');
 
   if FileExists(DesktopShortcut) then
     DeleteFile(DesktopShortcut);
 
+  { Remove the Start Menu shortcut. }
   StartMenuShortcut := ExpandConstant(
     '{group}\{#MyAppName}.lnk');
 
   if FileExists(StartMenuShortcut) then
     DeleteFile(StartMenuShortcut);
 
+  { Remove the uninstaller shortcut. }
   UninstallShortcut := ExpandConstant(
     '{group}\{cm:UninstallProgram,{#MyAppName}}.lnk');
 
   if FileExists(UninstallShortcut) then
     DeleteFile(UninstallShortcut);
 
+  { Remove the complete application directory. }
   if DirExists(AppPath) then
     DelTree(AppPath, True, True, True);
 end;
 
 
-{ Checks whether a product is registered in the uninstall registry. }
-function IsProductInstalled(const ProductCode: String): Boolean;
-var
-  DisplayVersion: String;
-begin
-  Result := False;
-
-  { Check the 32-bit registry view. }
-  if RegQueryStringValue(
-       HKLM32,
-       'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\' +
-       ProductCode,
-       'DisplayVersion',
-       DisplayVersion) then
-  begin
-    Result := DisplayVersion <> '';
-
-    if Result then
-      Exit;
-  end;
-
-  { Check the 64-bit registry view. }
-  if RegQueryStringValue(
-       HKLM64,
-       'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\' +
-       ProductCode,
-       'DisplayVersion',
-       DisplayVersion) then
-  begin
-    Result := DisplayVersion <> '';
-
-    if Result then
-      Exit;
-  end;
-
-  { Check the current-user registry. }
-  if RegQueryStringValue(
-       HKCU,
-       'Software\Microsoft\Windows\CurrentVersion\Uninstall\' +
-       ProductCode,
-       'DisplayVersion',
-       DisplayVersion) then
-    Result := DisplayVersion <> '';
-end;
-
-
-{ Skips VC++ 2008 installation when the product is already installed. }
-function IsVC2008Installed(): Boolean;
-begin
-  Result := IsProductInstalled(VC2008ProductCode);
-end;
-
-
-{ Skips VC++ 2013 installation when the product is already installed. }
-function IsVC2013Installed(): Boolean;
-begin
-  Result := IsProductInstalled(VC2013ProductCode);
-end;
-
-
-{ Accepts successful, reboot-required, and already-newer-version results. }
+{ Returns True for successful or acceptable runtime installer results. }
 function IsSuccessfulRuntimeResult(ResultCode: Integer): Boolean;
 begin
   Result :=
@@ -359,20 +350,30 @@ begin
 end;
 
 
-{ Installs VC++ 2008 only when it is not already installed. }
-procedure InstallVC2008IfNeeded();
+{ Installs VC++ 2008 every time without checking the registry. }
+procedure InstallVC2008();
 var
   ResultCode: Integer;
   InstallerPath: String;
 begin
-  if IsVC2008Installed() then
-    Exit;
-
   InstallerPath := ExpandConstant(
     '{app}\Support\VC2008\vcredist_x86.exe');
 
   if not FileExists(InstallerPath) then
-    Exit;
+  begin
+    MsgBox(
+      'The VC++ 2008 Redistributable installer was not found:' + #13#10 + InstallerPath,
+      mbError,
+      MB_OK);
+
+    MarkInstallationAsFailed();
+    CleanupFailedInstallation();
+    Abort;
+  end;
+
+  WizardForm.StatusLabel.Caption :=
+    'Installing Microsoft Visual C++ 2008 Redistributable...';
+  WizardForm.Refresh;
 
   if not Exec(
        InstallerPath,
@@ -407,20 +408,30 @@ begin
 end;
 
 
-{ Installs VC++ 2013 only when it is not already installed. }
-procedure InstallVC2013IfNeeded();
+{ Installs VC++ 2013 every time without checking the registry. }
+procedure InstallVC2013();
 var
   ResultCode: Integer;
   InstallerPath: String;
 begin
-  if IsVC2013Installed() then
-    Exit;
-
   InstallerPath := ExpandConstant(
     '{app}\Support\VC2013\vcredist_x86.exe');
 
   if not FileExists(InstallerPath) then
-    Exit;
+  begin
+    MsgBox(
+      'The VC++ 2013 Redistributable installer was not found:' + #13#10 + InstallerPath,
+      mbError,
+      MB_OK);
+
+    MarkInstallationAsFailed();
+    CleanupFailedInstallation();
+    Abort;
+  end;
+
+  WizardForm.StatusLabel.Caption :=
+    'Installing Microsoft Visual C++ 2013 Redistributable...';
+  WizardForm.Refresh;
 
   if not Exec(
        InstallerPath,
@@ -455,7 +466,7 @@ begin
 end;
 
 
-{ Checks the WebView2 Runtime in machine and current-user registry locations. }
+{ Checks whether Microsoft Edge WebView2 Runtime is installed. }
 function IsWebView2RuntimeInstalled(): Boolean;
 var
   Version: String;
@@ -498,7 +509,7 @@ begin
 end;
 
 
-{ Installs and verifies WebView2 when it is not already installed. }
+{ Installs and verifies WebView2 when it is not installed. }
 procedure InstallWebView2IfNeeded();
 var
   InstallerPath: String;
@@ -513,8 +524,7 @@ begin
   if not FileExists(InstallerPath) then
   begin
     MsgBox(
-      'The WebView2 Runtime installer was not found:' + #13#10 +
-      InstallerPath,
+      'The WebView2 Runtime installer was not found:' + #13#10 + InstallerPath,
       mbError,
       MB_OK);
 
@@ -545,6 +555,7 @@ begin
     Abort;
   end;
 
+  { 0 means success; 3010 means success with reboot required. }
   if (ResultCode <> 0) and (ResultCode <> 3010) then
   begin
     MsgBox(
@@ -558,6 +569,7 @@ begin
     Abort;
   end;
 
+  { Verify that WebView2 was actually installed. }
   if not IsWebView2RuntimeInstalled() then
   begin
     MsgBox(
@@ -581,12 +593,22 @@ var
   ResultCode: Integer;
   ShouldRegister: Boolean;
 begin
-  if ForceRegister then
-    ShouldRegister := FileExists(OcxPath)
-  else
-    ShouldRegister :=
-      (not IsOcxRegistered(TypeLibKey)) or
-      (not FileExists(OcxPath));
+  if not FileExists(OcxPath) then
+  begin
+    MsgBox(
+      'The OCX file was not found:' + #13#10 + OcxPath,
+      mbError,
+      MB_OK);
+
+    MarkInstallationAsFailed();
+    CleanupFailedInstallation();
+    Abort;
+  end;
+
+  { Register when forced or when the OCX is not currently registered. }
+  ShouldRegister :=
+    ForceRegister or
+    (not IsOcxRegistered(TypeLibKey));
 
   if not ShouldRegister then
     Exit;
@@ -626,7 +648,7 @@ begin
 end;
 
 
-{ Executes runtime installation, OCX registration, and temporary-file cleanup. }
+{ Executes runtime installation, OCX registration, and cleanup. }
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   OcxPath1: String;
@@ -637,10 +659,11 @@ begin
   if CurStep <> ssPostInstall then
     Exit;
 
-  InstallWebView2IfNeeded();
-  InstallVC2008IfNeeded();
-  InstallVC2013IfNeeded();
+  { Always install VC++ 2008 and VC++ 2013. }
+  InstallVC2008();
+  InstallVC2013();
 
+  { Register the first OCX component. }
   OcxPath1 := ExpandConstant(
     '{app}\Support\UIF\fripendant.ocx');
 
@@ -649,6 +672,7 @@ begin
     TypeLibKey1,
     IsForceChecked(OcxCheckIndex1));
 
+  { Register the second OCX component. }
   OcxPath2 := ExpandConstant(
     '{app}\Support\UIF\fripcontrols.ocx');
 
@@ -657,6 +681,7 @@ begin
     TypeLibKey2,
     IsForceChecked(OcxCheckIndex2));
 
+  { Register the third OCX component. }
   OcxPath3 := ExpandConstant(
     '{app}\Support\UIF\frtreeview.ocx');
 
@@ -664,21 +689,27 @@ begin
     OcxPath3,
     TypeLibKey3,
     IsForceChecked(OcxCheckIndex3));
+    
+  { Install WebView2 only when it is missing. }
+  InstallWebView2IfNeeded();
 
   WizardForm.StatusLabel.Caption :=
     'Cleaning up runtime installer files...';
   WizardForm.Refresh;
 
+  { Remove VC++ 2008 installer files after installation. }
   CleanupPath := ExpandConstant('{app}\Support\VC2008');
 
   if DirExists(CleanupPath) then
     DelTree(CleanupPath, True, True, True);
 
+  { Remove VC++ 2013 installer files after installation. }
   CleanupPath := ExpandConstant('{app}\Support\VC2013');
 
   if DirExists(CleanupPath) then
     DelTree(CleanupPath, True, True, True);
 
+  { Remove WebView2 installer files after installation. }
   CleanupPath := ExpandConstant('{app}\Support\webview2');
 
   if DirExists(CleanupPath) then
