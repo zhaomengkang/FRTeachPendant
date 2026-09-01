@@ -166,7 +166,8 @@ namespace FRTeachPendant
                             UpdateUI(() =>
                             {
                                 InitAll();
-                                bt_topMost_Click(sender, e); // Disable TopMost
+                                // Disable TopMost when showing the message box
+                                if (this.TopMost) bt_topMost_Click(sender, e); 
                                 if (authStatus == 1)
                                 {
                                     MessageBox.Show("401 Unauthorized: Please unlock KAREL resources on the teach pendant:\nMENU - SETUP - HostComm - HTTP", "Authorization Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
