@@ -130,14 +130,14 @@
             this.tb_robotIP.Location = new System.Drawing.Point(2, 2);
             this.tb_robotIP.Margin = new System.Windows.Forms.Padding(2);
             this.tb_robotIP.Name = "tb_robotIP";
-            this.tb_robotIP.Size = new System.Drawing.Size(113, 18);
+            this.tb_robotIP.Size = new System.Drawing.Size(113, 20);
             this.tb_robotIP.TabIndex = 73;
             this.tb_robotIP.Text = "127.0.0.1";
             this.tb_robotIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // bt_topMost
             // 
-            this.bt_topMost.BackColor = System.Drawing.Color.GreenYellow;
+            this.bt_topMost.BackColor = System.Drawing.SystemColors.Control;
             this.bt_topMost.Font = new System.Drawing.Font("Segoe UI Symbol", 7F);
             this.bt_topMost.Location = new System.Drawing.Point(663, 75);
             this.bt_topMost.Margin = new System.Windows.Forms.Padding(2);
@@ -183,7 +183,7 @@
             this.tb_name.Location = new System.Drawing.Point(149, 1);
             this.tb_name.Margin = new System.Windows.Forms.Padding(2);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(63, 18);
+            this.tb_name.Size = new System.Drawing.Size(63, 20);
             this.tb_name.TabIndex = 77;
             this.tb_name.Text = "anonymous";
             this.tb_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -193,7 +193,7 @@
             this.tb_password.Location = new System.Drawing.Point(234, 1);
             this.tb_password.Margin = new System.Windows.Forms.Padding(2);
             this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(63, 18);
+            this.tb_password.Size = new System.Drawing.Size(63, 20);
             this.tb_password.TabIndex = 78;
             this.tb_password.Text = "anonymous@";
             this.tb_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -204,7 +204,7 @@
             this.lb_name.Location = new System.Drawing.Point(119, 3);
             this.lb_name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_name.Name = "lb_name";
-            this.lb_name.Size = new System.Drawing.Size(30, 9);
+            this.lb_name.Size = new System.Drawing.Size(35, 11);
             this.lb_name.TabIndex = 79;
             this.lb_name.Text = "USER:";
             // 
@@ -214,7 +214,7 @@
             this.lb_password.Location = new System.Drawing.Point(212, 3);
             this.lb_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_password.Name = "lb_password";
-            this.lb_password.Size = new System.Drawing.Size(25, 9);
+            this.lb_password.Size = new System.Drawing.Size(29, 11);
             this.lb_password.TabIndex = 80;
             this.lb_password.Text = "PWD:";
             // 
@@ -240,7 +240,7 @@
             this.cb_bfSelect.Location = new System.Drawing.Point(298, 4);
             this.cb_bfSelect.Margin = new System.Windows.Forms.Padding(2);
             this.cb_bfSelect.Name = "cb_bfSelect";
-            this.cb_bfSelect.Size = new System.Drawing.Size(54, 14);
+            this.cb_bfSelect.Size = new System.Drawing.Size(63, 17);
             this.cb_bfSelect.TabIndex = 82;
             this.cb_bfSelect.Text = "ExitUI";
             this.toolTip1.SetToolTip(this.cb_bfSelect, resources.GetString("cb_bfSelect.ToolTip"));
@@ -285,7 +285,7 @@
             this.cb_Comment.Location = new System.Drawing.Point(62, 17);
             this.cb_Comment.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Comment.Name = "cb_Comment";
-            this.cb_Comment.Size = new System.Drawing.Size(74, 14);
+            this.cb_Comment.Size = new System.Drawing.Size(87, 17);
             this.cb_Comment.TabIndex = 81;
             this.cb_Comment.Text = "CommentEnb";
             this.toolTip1.SetToolTip(this.cb_Comment, "Export the LS program with register and I/O comments.");
@@ -298,7 +298,7 @@
             this.lb_HostName.Location = new System.Drawing.Point(320, 5);
             this.lb_HostName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_HostName.Name = "lb_HostName";
-            this.lb_HostName.Size = new System.Drawing.Size(0, 9);
+            this.lb_HostName.Size = new System.Drawing.Size(0, 11);
             this.lb_HostName.TabIndex = 83;
             // 
             // pnCGTP
@@ -1029,7 +1029,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(684, 823);
+            this.ClientSize = new System.Drawing.Size(682, 823);
             this.Controls.Add(this.pn_RobotCfg);
             this.Controls.Add(this.pnKeyboard);
             this.Controls.Add(this.lb_HostName);
@@ -1048,7 +1048,6 @@
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TeachPendantV26.08.22";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.pnCGTP.ResumeLayout(false);

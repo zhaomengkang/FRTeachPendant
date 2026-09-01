@@ -109,6 +109,46 @@ namespace FRTeachPendant
             }
         }
 
+        /// <summary>
+        /// Use default KAREL/A_MKWEB?func_name=LIB_VER query to check HTTP auth status for the controller IP.
+        /// Returns: authorized 0, 401 -> 1, 402 -> 2, others or error -> -1.
+        /// </summary>
+        public static int CheckAuthStatus(string ip)
+        {
+            var queryParams = new Dictionary<string, string>
+            {
+                ["func_name"] = "LIB_VER"
+            };
+
+            var url = BuildUrl(ip, "KAREL/A_MKWEB", queryParams);
+
+            try
+            {
+                var response = _httpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead).GetAwaiter().GetResult();
+                if (response.IsSuccessStatusCode)
+                    return 0;
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    return 1;
+
+                if (response.StatusCode == System.Net.HttpStatusCode.PaymentRequired)
+                    return 2;
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                    return 3;
+
+                return -1;
+            }
+            catch (HttpRequestException)
+            {
+                return -1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
         public static int SimTpKey(string ip, string keyCodes)
         {
             var queryParams = new Dictionary<string, string>
@@ -181,7 +221,9 @@ namespace FRTeachPendant
             {
                 var response = _httpClient.GetAsync(url).GetAwaiter().GetResult();
                 if (!response.IsSuccessStatusCode)
+                {
                     return string.Empty;
+                }
 
                 return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             }

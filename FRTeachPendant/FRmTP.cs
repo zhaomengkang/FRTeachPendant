@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -111,7 +112,7 @@ namespace FRTeachPendant
                 string adminName = tb_name.Text;
                 string adminPass = tb_password.Text;
 
-                Task.Run(() =>
+                Task.Run(async () =>
                 {
                     try
                     {
@@ -157,6 +158,35 @@ namespace FRTeachPendant
                             });
                             return;
                         }
+
+                        // Check HTTP authorization using CheckAuthStatus
+                        int authStatus = MkWebClient.CheckAuthStatus("http://" + robotIp);
+                        if (authStatus != 0)
+                        {
+                            UpdateUI(() =>
+                            {
+                                InitAll();
+                                bt_topMost_Click(sender, e); // Disable TopMost
+                                if (authStatus == 1)
+                                {
+                                    MessageBox.Show("401 Unauthorized: Please unlock KAREL resources on the teach pendant:\nMENU - SETUP - HostComm - HTTP", "Authorization Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else if (authStatus == 2)
+                                {
+                                    MessageBox.Show("402 Payment Required: HTTP access requires payment or license", "Payment Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else if (authStatus == 3)
+                                {
+                                    MessageBox.Show("403 Forbidden: Please unlock KAREL resources on the teach pendant:\nMENU - SETUP - HostComm - HTTP", "Forbidden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("HTTP access blocked or an error occurred. Please check network and controller settings.", "Authorization Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            });
+                            return;
+                        }
+
 
                         // Initialize CGTP sever file
                         Uri url = new Uri("http://" + robotIp + "/frh/cgtp/echo.htm");
@@ -896,7 +926,7 @@ namespace FRTeachPendant
         #endregion
 
         #region Window TopMost
-        bool isTop = true;
+        bool isTop = false;
         private void bt_topMost_Click(object sender, EventArgs e)
         {
             if (isTop == true)
@@ -1430,35 +1460,57 @@ namespace FRTeachPendant
         private async Task<bool> IsRobotConnectedAsync(string robotIp, int retryCount = 3, int timeout = 1000)
         {
             if (string.IsNullOrWhiteSpace(robotIp))
-            {
                 return false;
-            }
 
             int successCount = 0;
-            using (var ping = new Ping())
+            using (Ping ping = new Ping())
             {
                 for (int i = 0; i < retryCount; i++)
                 {
                     try
                     {
                         PingReply reply = await ping.SendPingAsync(robotIp, timeout);
-                        if (reply.Status == IPStatus.Success)
+                        if (reply != null && reply.Status == IPStatus.Success)
                         {
                             successCount++;
                         }
                     }
                     catch
                     {
-                        // ignore individual ping errors
+                        //
                     }
 
                     await Task.Delay(100);
                 }
             }
 
-            // Require a majority of pings to succeed (round up)
-            int required = (int)Math.Ceiling(retryCount * 0.5);
-            return successCount >= required;
+            // Majority threshold (e.g., retryCount=3 -> threshold=2)
+            int threshold = (retryCount + 1) / 2;
+
+            // Check HTTP version string using the provided robotIp (do not access UI controls here)
+            string baseUrl = robotIp.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || robotIp.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
+                ? robotIp
+                : "http://" + robotIp;
+
+            string version = null;
+            try
+            {
+                var getLibTask = Task.Run(() => MkWebClient.GetLibVersion(baseUrl));
+                var completed = await Task.WhenAny(getLibTask, Task.Delay(1500));
+                if (completed == getLibTask)
+                {
+                    version = getLibTask.Result;
+                }
+            }
+            catch
+            {
+                // ignore errors retrieving version
+            }
+
+            bool webOk = !string.IsNullOrEmpty(version);
+
+            // Require majority ping success and valid web version to consider fully connected
+            return webOk && (successCount >= threshold);
         }
 
         private async void timer1_Tick(object sender, EventArgs e)
@@ -1471,11 +1523,9 @@ namespace FRTeachPendant
             else
             {
                 this.robotIsConnected = false;
-                InitAll();
                 Application.Restart();
             }
 
-            // Update the teach pendant switch image based on the robot's connection status
             if (robotIsConnected)
             {
                 try
@@ -1488,8 +1538,7 @@ namespace FRTeachPendant
                     {
                         pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenon;
                     }
-                }
-                catch
+                }catch
                 {
                     pb_TPSwitch.Image = FRTeachPendant.Properties.Resources.tpenoff;
                 }
