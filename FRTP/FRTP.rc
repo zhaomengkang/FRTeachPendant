@@ -1,0 +1,308 @@
+// Microsoft Visual C++ generated resource script.
+//
+#pragma code_page(65001)
+
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#include ""res\\FRTP.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""      // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\FRTP.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FRTP_DIALOG DIALOGEX 0, 0, 485, 510
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "FRTP V26.10.22"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "Connect",IDC_BT_CONNECT,"Button",BS_OWNERDRAW | WS_TABSTOP,1,1,66,11
+    EDITTEXT        IDC_TB_ROBOTIP,69,2,75,12,ES_CENTER | ES_AUTOHSCROLL
+    LTEXT           "USER:",IDC_LB_NAME,147,3,23,9
+    EDITTEXT        IDC_TB_NAME,172,1,58,12,ES_CENTER | ES_AUTOHSCROLL
+    LTEXT           "PWD:",IDC_LB_PASSWORD,232,3,20,9
+    EDITTEXT        IDC_TB_PASSWORD,254,1,62,12,ES_CENTER | ES_AUTOHSCROLL
+    CONTROL         "ExitUI",IDC_CB_BFSELECT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,319,2,42,10
+    CONTROL         "",IDC_AREA_ROBOTCFG,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,68,1,295,13
+    LTEXT           "HostName:",IDC_LB_HOSTNAME,213,3,133,7
+    PUSHBUTTON      "?",IDC_BT_HELP,472,17,12,14
+    CONTROL         "KB",IDC_BT_TBKEYSHOW,"Button",BS_OWNERDRAW | WS_TABSTOP,472,31,12,14
+    CONTROL         "Pin",IDC_BT_TOPMOST,"Button",BS_OWNERDRAW | WS_TABSTOP,472,46,12,14
+    CONTROL         "",IDC_PN_CGTP,"Static",SS_BLACKFRAME,8,13,463,304
+    CONTROL         "",IDC_EXPLORER_CGTP,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,11,15,457,297
+    CONTROL         "",IDC_WEBVIEW_CGTP,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,11,15,457,297
+    CONTROL         "",IDC_AREA_KEYBOARD,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,38,319,378,190
+    CONTROL         "",IDC_PIC_TPSWITCH,"Static",SS_BITMAP | SS_CENTERIMAGE,41,446,29,25
+    GROUPBOX        "FTP Utilities",IDC_GB_FTP,291,425,123,81
+    PUSHBUTTON      "Backup",IDC_BT_BACKUP,293,433,40,22
+    CONTROL         "",IDC_PB_BACKUP,"msctls_progress32",NOT WS_VISIBLE | WS_BORDER,334,446,73,9
+    PUSHBUTTON      "DownLoad",IDC_BT_DOWNLOAD,293,457,52,21
+    CONTROL         "CommentEnb",IDC_CB_COMMENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,335,435,77,10
+    CONTROL         "UpLoad Area",IDC_BT_UPLOADAREA,"Button",BS_OWNERDRAW | WS_TABSTOP,293,478,100,26
+    PUSHBUTTON      "KeyBoard",IDC_BT_KEYBOARD,39,398,50,28
+    CONTROL         "SHIFT",IDC_BT_SHIFTL,"Button",BS_OWNERDRAW | WS_TABSTOP,39,345,36,42
+    PUSHBUTTON      "PREV",IDC_BT_PREV,39,319,36,18
+    PUSHBUTTON      "F1",IDC_BT_F1,92,319,30,18
+    PUSHBUTTON      "F2",IDC_BT_F2,145,319,30,18
+    PUSHBUTTON      "F3",IDC_BT_F3,197,319,30,18
+    PUSHBUTTON      "F4",IDC_BT_F4,250,319,30,18
+    PUSHBUTTON      "F5",IDC_BT_F5,303,319,30,18
+    PUSHBUTTON      "NEXT",IDC_BT_NEXT,355,319,36,18
+    PUSHBUTTON      "MENU",IDC_BT_MENU,95,338,38,22
+    PUSHBUTTON      "SELECT",IDC_BT_SELECT,139,338,42,22
+    PUSHBUTTON      "EDIT",IDC_BT_EDIT,184,338,38,22
+    PUSHBUTTON      "DATA",IDC_BT_DATA,229,338,38,22
+    PUSHBUTTON      "FCTN",IDC_BT_FCTN,273,338,38,22
+    PUSHBUTTON      "",IDC_BT_DISP,78,366,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_RESET,110,366,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_BACKSPACE,140,366,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ITEM,170,366,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ENTER,245,389,40,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_STEP,203,366,40,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ARROWUP,318,350,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ARROWLEFT,287,366,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ARROWRIGHT,349,365,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_ARROWDOWN,318,380,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM7,110,389,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM8,140,389,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM9,170,389,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM4,110,412,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM5,140,412,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM6,170,412,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM1,110,436,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM2,140,436,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM3,170,436,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_NUM0,110,460,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_DOT,140,460,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_COMM,170,460,30,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_DIAG,110,484,30,22,BS_BITMAP
+    PUSHBUTTON      "POSN",IDC_BT_POSN,140,484,30,22
+    PUSHBUTTON      "I/O",IDC_BT_IO,170,484,30,22
+    PUSHBUTTON      "TOOL1",IDC_BT_TOOL1,203,389,40,22
+    PUSHBUTTON      "TOOL2",IDC_BT_TOOL2,203,412,40,22
+    PUSHBUTTON      "MOVEM",IDC_BT_MOVEMENU,203,436,40,22
+    PUSHBUTTON      "SETUP",IDC_BT_SETUP,203,460,40,22
+    PUSHBUTTON      "STATUS",IDC_BT_STATUS,203,484,40,22
+    PUSHBUTTON      "COORD",IDC_BT_COORD,245,412,40,22
+    PUSHBUTTON      "GROUP",IDC_BT_GROUP,245,436,40,22
+    PUSHBUTTON      "",IDC_BT_SPEEDUP,245,460,40,22,BS_BITMAP
+    PUSHBUTTON      "",IDC_BT_SPEEDDOWN,245,484,40,22,BS_BITMAP
+END
+
+IDD_HELP_DIALOG DIALOGEX 0, 0, 588, 402
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "Help"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_WEBVIEW_HELP,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,0,0,583,394
+END
+
+IDD_INPUT_DIALOG DIALOGEX 0, 0, 200, 92
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Input Data"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_TB_INPUT,7,31,187,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Send",IDOK,7,62,40,15
+    PUSHBUTTON      "Abort",IDCANCEL,153,62,40,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_TPITEMEG            BITMAP                  "res\\tpitemeg.bmp"
+
+IDB_TPRIGHTARROW        BITMAP                  "res\\tprightarrow.bmp"
+
+IDB_TPLEFTARROW         BITMAP                  "res\\tpleftarrow.bmp"
+
+IDB_TPUPARROW           BITMAP                  "res\\tpuparrow.bmp"
+
+IDB_TPDOWNARROW         BITMAP                  "res\\tpdownarrow.bmp"
+
+IDB_TPSEVEN             BITMAP                  "res\\tpseven.bmp"
+
+IDB_TPEIGHT             BITMAP                  "res\\tpeight.bmp"
+
+IDB_TPNINE              BITMAP                  "res\\tpnine.bmp"
+
+IDB_TPFOUR              BITMAP                  "res\\tpfour.bmp"
+
+IDB_TPFIVE              BITMAP                  "res\\tpfive.bmp"
+
+IDB_TPSIX               BITMAP                  "res\\tpsix.bmp"
+
+IDB_TPONE               BITMAP                  "res\\tpone.bmp"
+
+IDB_TPTWO               BITMAP                  "res\\tptwo.bmp"
+
+IDB_TPTHREE             BITMAP                  "res\\tpthree.bmp"
+
+IDB_TPZERO              BITMAP                  "res\\tpzero.bmp"
+
+IDB_TPDOT               BITMAP                  "res\\tpdot.bmp"
+
+IDB_TPMINUS             BITMAP                  "res\\tpminus.bmp"
+
+IDB_TPHELPEG            BITMAP                  "res\\tphelpeg.bmp"
+
+IDB_TPSTEP              BITMAP                  "res\\tpstep.bmp"
+
+IDB_TPDISPCH            BITMAP                  "res\\tpdispch.bmp"
+
+IDB_TPOVERRIDEUP        BITMAP                  "res\\tpoverrideup.bmp"
+
+IDB_TPOVERRIDEDOWN      BITMAP                  "res\\tpoverridedown.bmp"
+
+IDB_TPRESETEG           BITMAP                  "res\\tpreseteg.bmp"
+
+IDB_TPBSEG              BITMAP                  "res\\tpbseg.bmp"
+
+IDB_TPENTEREG           BITMAP                  "res\\tpentereg.bmp"
+
+IDB_TPENOFF             BITMAP                  "res\\tpenoff.bmp"
+
+IDB_TPENON              BITMAP                  "res\\tpenon.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_FRTP_DIALOG, DIALOG
+    BEGIN
+    END
+
+    IDD_HELP_DIALOG, DIALOG
+    BEGIN
+    END
+
+    IDD_INPUT_DIALOG, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_FRTP_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_APP_TITLE           "FRTP"
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+#endif    // 英语(美国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#include "res\FRTP.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"      // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

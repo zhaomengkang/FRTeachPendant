@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{5A1F7C52-8E0B-4C0F-9B7A-3D2C6E41F9A8}</ProjectGuid>
+    <Keyword>MFCProj</Keyword>
+    <RootNamespace>FRTP</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WebView2LoaderPreference>Static</WebView2LoaderPreference>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <OutDir>$(MSBuildProjectDirectory)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(MSBuildProjectDirectory)\obj\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)'=='Debug'">true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>ws2_32.lib;iphlpapi.lib;winhttp.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BrowserSite.cpp" />
+    <ClCompile Include="ColorButton.cpp" />
+    <ClCompile Include="FRLoadUserPC.cpp" />
+    <ClCompile Include="FRTP.cpp" />
+    <ClCompile Include="FRTPDlg.cpp" />
+    <ClCompile Include="FtpClient.cpp" />
+    <ClCompile Include="HelpDlg.cpp" />
+    <ClCompile Include="InputDlg.cpp" />
+    <ClCompile Include="MkWebClient.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="RobotChecker.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="WebView2Host.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BrowserSite.h" />
+    <ClInclude Include="ColorButton.h" />
+    <ClInclude Include="FRLoadUserPC.h" />
+    <ClInclude Include="FRTP.h" />
+    <ClInclude Include="FRTPDlg.h" />
+    <ClInclude Include="FtpClient.h" />
+    <ClInclude Include="HelpDlg.h" />
+    <ClInclude Include="InputDlg.h" />
+    <ClInclude Include="MkWebClient.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="RobotChecker.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="WebView2Host.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="KeyBitmaps.inc" />
+    <None Include="KeyTable.inc" />
+    <None Include="res\FRTP.rc2" />
+    <None Include="res\Helper\help.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FRTP.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4129.50" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ItemGroup>
+    <RuntimeFiles Include="$(MSBuildProjectDirectory)\..\KarelProject\release\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\FRTP.ico" />
+    <Image Include="res\tpbseg.bmp" />
+    <Image Include="res\tpdispch.bmp" />
+    <Image Include="res\tpdot.bmp" />
+    <Image Include="res\tpdownarrow.bmp" />
+    <Image Include="res\tpeight.bmp" />
+    <Image Include="res\tpenoff.bmp" />
+    <Image Include="res\tpenon.bmp" />
+    <Image Include="res\tpentereg.bmp" />
+    <Image Include="res\tpfive.bmp" />
+    <Image Include="res\tpfour.bmp" />
+    <Image Include="res\tphelpeg.bmp" />
+    <Image Include="res\tpitemeg.bmp" />
+    <Image Include="res\tpleftarrow.bmp" />
+    <Image Include="res\tpminus.bmp" />
+    <Image Include="res\tpnine.bmp" />
+    <Image Include="res\tpone.bmp" />
+    <Image Include="res\tpoverridedown.bmp" />
+    <Image Include="res\tpoverrideup.bmp" />
+    <Image Include="res\tpreseteg.bmp" />
+    <Image Include="res\tprightarrow.bmp" />
+    <Image Include="res\tpseven.bmp" />
+    <Image Include="res\tpsix.bmp" />
+    <Image Include="res\tpstep.bmp" />
+    <Image Include="res\tpthree.bmp" />
+    <Image Include="res\tptwo.bmp" />
+    <Image Include="res\tpuparrow.bmp" />
+    <Image Include="res\tpzero.bmp" />
+  </ItemGroup>
+  <Target Name="CopyRuntimeFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(RuntimeFiles)" DestinationFiles="@(RuntimeFiles->'$(OutDir)KAREL\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(MSBuildProjectDirectory)\..\KarelProject\release')" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\res\Helper\help.html" DestinationFolder="$(OutDir)res\Helper\" />
+  </Target>
+</Project>

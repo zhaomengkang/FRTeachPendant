@@ -1,10 +1,10 @@
-# Software Help Documentation
-Version V2026.08.22 · Author: Zhao Mengkang
+# FRTP Help Documentation
+Version V2026.10.22 · Author: Zhao Mengkang
 
 ## Version Information
 | Item | Content |
 |------|---------|
-| Software Version | V2026.08.22 |
+| Software Version | V2026.10.22 |
 | Author | Zhao Mengkang |
 | WeChat | Mengk_964210817 |
 | QQ | 964210817 |
@@ -21,6 +21,11 @@ URL: https://github.com/zhaomengkang/FRTeachPendant/releases
 URL: https://github.com/zhaomengkang/FRTeachPendant
 
 ## Changelog
+### 2026.10.22
+- Migrated the project to the MFC framework
+- Removed the R-50iA-specific DID read and unified DID variable usage across controller models
+- Renamed the application to FRTP
+
 ### 2026.08.22
 - Adjusted UI control appearance
 
@@ -44,6 +49,14 @@ URL: https://github.com/zhaomengkang/FRTeachPendant
 - Project launched for the first time; this tool supports remote teach pendant access
 
 ## Instructions
+### Command Line
+Run `FRTP.exe <IP> <Name> <Pwd>` to start the application and connect automatically. Use `FRTP.exe -h` or `FRTP.exe --help` to display the English command-line help. Running without arguments opens the application without connecting.
+
+> **Security:** A password supplied on the command line may be visible in process listings and shell history.
+
+### MFC ECHO Viewer
+The `MfcEchoViewer` folder contains a separate native MFC viewer for the ECHO screen. It preserves the 640x480 display and main window layout, while pendant keys and FTP controls are disabled placeholders. This viewer does not send robot commands or transfer files. See [MfcEchoViewer/README.md](MfcEchoViewer/README.md) for build details.
+
 ### Software Dependencies
 iPendant Controls dependency files:
 - `fripendant.ocx`
@@ -86,7 +99,7 @@ If you encounter this issue, please try the following solutions in order:
 ```LicenseInfo
 License
 ┌──────────────────────────────────────────────────────────────┐
-                    FRTeachPendant                            
+                    FRTP
                     Author: Zhao Mengkang                     
               Email: zhaomengkang@hotmail.com                 
            GitHub: https://github.com/zhaomengkang/           
